@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="home_title">FRPD - Firm of Research and Policy Development</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a', /* Dark Blue */
+                            light: '#1e293b',
+                            accent: '#3b82f6', /* Blue Accent */
+                            white: '#f8fafc',
+                            gray: '#f1f5f9'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <!-- Navbar Component -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="flex-grow">
+        <!-- Hero Component -->
+        <div id="hero-placeholder"></div>
+
+        <!-- About Summary section -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h2 class="text-4xl font-heading font-bold text-brand-dark mb-6" data-i18n="about_heading">About
+                        FRPD</h2>
+                    <p class="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="about_summary">
+                        Firm of Research and Policy Development (FRPD) is a premier organization dedicated to advancing
+                        multidisciplinary research, offering cutting-edge training, and driving policy innovation
+                        globally.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="py-16 bg-brand-dark relative border-y-4 border-brand-accent">
+            <div
+                class="absolute inset-0 bg-[url('https://source.unsplash.com/1600x900/?data,network')] opacity-5 mix-blend-overlay">
+            </div>
+            <div
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center text-white">
+                <div class="flex flex-col items-center group">
+                    <i
+                        class="fas fa-file-contract text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-5xl font-extrabold font-heading mb-2">120+</div>
+                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Researches</div>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i
+                        class="fas fa-project-diagram text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-5xl font-extrabold font-heading mb-2">65</div>
+                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Global Projects</div>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i
+                        class="fas fa-feather-alt text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-5xl font-extrabold font-heading mb-2">500+</div>
+                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Insights & Blogs</div>
+                </div>
+                <div class="flex flex-col items-center group">
+                    <i
+                        class="fas fa-users text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+                    <div class="text-5xl font-extrabold font-heading mb-2">10k+</div>
+                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Trained Experts</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Blogs/Publications -->
+        <section class="py-20 bg-gray-50 border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-4">Latest Insights & Publications
+                    </h2>
+                    <p class="text-lg text-gray-500 max-w-2xl mx-auto">Explore the newest perspectives assembled by our
+                        international research teams.</p>
+                    <div class="w-16 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
+                </div>
+                <div id="latest-blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Cards will be populated by JSON Data Loader -->
+                </div>
+                <div class="text-center mt-12">
+                    <a href="/pages/blog.html"
+                        class="inline-block border border-brand-dark text-brand-dark font-bold px-8 py-3 rounded-full hover:bg-brand-dark hover:text-white transition-colors">View
+                        All Publications</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Courses -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div
+                    class="text-center mb-16 flex flex-col md:flex-row items-end justify-between border-b border-gray-200 pb-6">
+                    <div class="text-left">
+                        <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-4">Upcoming Training</h2>
+                        <p class="text-lg text-gray-500">Upgrade your expertise with structured programs.</p>
+                    </div>
+                    <div class="mt-6 md:mt-0">
+                        <a href="/pages/courses.html"
+                            class="text-brand-accent font-bold hover:text-brand-dark transition-colors flex items-center">
+                            Explore All Courses <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                        </a>
+                    </div>
+                </div>
+                <div id="featured-courses-container" class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <!-- Course Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Banner -->
+        <section
+            class="py-20 bg-gradient-to-r from-brand-accent to-blue-800 text-white relative flex justify-center overflow-hidden">
+            <div class="max-w-4xl w-full mx-auto px-4 relative z-10 text-center">
+                <i class="fas fa-envelope-open-text text-5xl mb-6 opacity-80"></i>
+                <h2 class="text-4xl font-heading font-bold mb-4">Stay at the Forefront of Policy Innovation</h2>
+                <p class="text-lg text-blue-100 mb-10 max-w-2xl mx-auto">Subscribe to our secure newsletter for early
+                    access to global market trends, social impact reports, and breakthrough medical studies.</p>
+                <form onsubmit="event.preventDefault(); alert('Subscribed to newsletter successfully!');"
+                    class="flex flex-col sm:flex-row shadow-2xl rounded-lg overflow-hidden max-w-2xl mx-auto border-4 border-white/20">
+                    <input type="email" placeholder="Enter your email address..."
+                        class="flex-grow px-6 py-4 text-gray-800 focus:outline-none" required>
+                    <button type="submit"
+                        class="bg-brand-dark text-white font-bold px-10 py-4 hover:bg-gray-800 transition-colors">Subscribe</button>
+                </form>
+                <p class="text-xs text-blue-200 mt-4"><i class="fas fa-lock mr-1"></i> Your data is safe. We never sell
+                    your information.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer Component -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Modals from Javascript -->
+    <div id="modal-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="/utils/helpers.js"></script>
+    <script src="/js/loadComponents.js"></script>
+    <script src="/js/languageSwitcher.js"></script>
+    <script src="/js/dataLoader.js"></script>
+    <script src="/js/pdfHandler.js"></script>
+    <script src="/js/socialAutoPost.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "c1",
+        "title": "Machine Learning for Researchers",
+        "iconClass": "fas fa-robot",
+        "duration": "8 Weeks",
+        "description": "An intensive course covering foundational and advanced ML techniques used in scientific research."
+    },
+    {
+        "id": "c2",
+        "title": "Advanced Data Analytics with Python",
+        "iconClass": "fab fa-python",
+        "duration": "12 Weeks",
+        "description": "Learn to manipulate, analyze and visualize complex datasets effectively using Python."
+    }
+]

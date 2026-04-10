@@ -1,0 +1,133 @@
+<nav class="bg-brand-dark text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center pr-4">
+                <a href="/" class="flex items-center group">
+                    <img src="/assets/icons/logo.jpg" alt="FRPD Logo"
+                        class="h-10 md:h-12 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform">
+                    <div class="hidden lg:flex flex-col justify-center ml-3">
+                        <span
+                            class="text-xl font-heading font-extrabold text-white tracking-widest leading-none mb-1 shadow-sm">FRPD</span>
+                        <span
+                            class="text-[10px] text-brand-accent font-bold uppercase tracking-widest leading-none">Firm
+                            of Research and Policy Development</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Right Wrapper -->
+            <div class="flex items-center space-x-6 md:space-x-8">
+                <!-- Main Nav -->
+                <div class="hidden md:flex space-x-6 items-center text-[15px] font-medium">
+                    <a href="/" class="hover:text-brand-accent transition-colors" data-i18n="nav_home">Home</a>
+
+                    <!-- Research Dropdown -->
+                    <div class="relative dropdown group">
+                        <button
+                            class="hover:text-brand-accent flex items-center transition-colors pb-8 -mb-8 pt-8 -mt-8">
+                            <span data-i18n="nav_research">Research</span> <i
+                                class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div
+                            class="dropdown-menu absolute left-0 top-full w-56 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1">
+                            <a href="/pages/research.html#market"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_market_research">Market Research</a>
+                            <a href="/pages/research.html#social"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_social_research">Social Science Research</a>
+                            <a href="/pages/research.html#medical"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_medical_research">Medical Research</a>
+                        </div>
+                    </div>
+
+                    <!-- Programs Dropdown -->
+                    <div class="relative dropdown group">
+                        <button
+                            class="hover:text-brand-accent flex items-center transition-colors pb-8 -mb-8 pt-8 -mt-8">
+                            <span>Programs</span> <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div
+                            class="dropdown-menu absolute left-0 top-full w-56 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1">
+                            <a href="/pages/courses.html"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_training">Training & Courses</a>
+                            <a href="/pages/events.html"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_events">Events & Webinars</a>
+                            <a href="/pages/projects.html"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_projects">Projects</a>
+                            <div class="border-t border-gray-100 my-1"></div>
+                            <a href="/pages/blog.html"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_blog">Blog & Publications</a>
+                        </div>
+                    </div>
+
+                    <!-- About Us Dropdown -->
+                    <div class="relative dropdown group">
+                        <button
+                            class="hover:text-brand-accent flex items-center transition-colors pb-8 -mb-8 pt-8 -mt-8">
+                            <span data-i18n="nav_about">About Us</span> <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div
+                            class="dropdown-menu absolute right-0 top-full w-56 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1">
+                            <a href="/pages/about.html#vision"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_vision">Vision</a>
+                            <a href="/pages/about.html#mission"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_mission">Mission</a>
+                            <a href="/pages/about.html#board"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_board">Board of Governors</a>
+                            <a href="/pages/about.html#team"
+                                class="block px-4 py-3 hover:bg-brand-gray hover:text-brand-accent"
+                                data-i18n="nav_team">Our
+                                Team</a>
+                        </div>
+                    </div>
+
+                    <a href="/pages/contact.html"
+                        class="bg-brand-accent text-white px-6 py-2.5 rounded-full hover:bg-blue-600 transition-colors btn-hover shadow-md font-semibold"
+                        data-i18n="nav_contact">Contact Us</a>
+                </div>
+
+                <!-- Controls (Lang switcher) -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative">
+                        <select id="lang-switcher"
+                            class="appearance-none bg-brand-light text-white text-sm rounded border border-gray-600 pl-3 pr-8 py-1.5 outline-none cursor-pointer hover:border-brand-accent transition-colors"
+                            onchange="window.changeLanguage ? window.changeLanguage(this.value) : null">
+                            <option value="en">EN</option>
+                            <option value="ar">AR</option>
+                            <option value="fr">FR</option>
+                            <option value="zh">ZH</option>
+                            <option value="de">DE</option>
+                        </select>
+                        <div
+                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-300">
+                            <i class="fas fa-globe text-sm"></i>
+                        </div>
+                    </div>
+
+                    <!-- Mobile button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobile-menu-btn" class="text-white hover:text-brand-accent focus:outline-none p-2">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div> <!-- End Right Wrapper -->
+        </div>
+    </div>
+
+    <!-- Script to set lang-switcher value to currentLang -->
+    <script>
+        document.getElementById('lang-switcher').value = window.currentLang || 'en';
+    </script>
+</nav>

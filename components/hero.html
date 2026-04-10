@@ -1,0 +1,38 @@
+<div class="relative bg-brand-dark text-white overflow-hidden min-h-[500px]">
+    <!-- Video Background (Reduced opacity to 30% to blend with dark container) -->
+    <video autoplay loop muted playsinline
+        class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity">
+        <source src="/assets/videos/banner.mp4" type="video/mp4">
+    </video>
+
+    <!-- Solid dark overlay + Gradient Overlay for perfect text contrast -->
+    <div class="absolute inset-0 bg-brand-dark/50 z-0"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent z-0"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-40">
+        <div class="max-w-3xl">
+            <h1 class="text-5xl md:text-6xl font-heading font-extrabold tracking-tight mb-8 leading-tight">
+                Advancing Multidisciplinary <br /> <span class="text-brand-accent">Research & Policy</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
+                FRPD is dedicated to driving innovation globally through cutting-edge research, specialized training
+                programs, and strategic policy development.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="/pages/research.html"
+                    class="bg-brand-accent hover:bg-blue-600 text-white font-semibold py-3.5 px-8 rounded-full transition-all duration-300 btn-hover tracking-wide shadow-lg shadow-blue-500/30">
+                    Explore Research
+                </a>
+                <a href="/pages/contact.html"
+                    class="bg-transparent border border-gray-400 hover:border-white hover:bg-white/5 text-gray-300 hover:text-white font-semibold py-3.5 px-8 rounded-full transition-all duration-300 btn-hover">
+                    Contact Us
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative element -->
+    <div class="absolute bottom-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 translate-y-1/4">
+        <i class="fas fa-globe text-[400px]"></i>
+    </div>
+</div>

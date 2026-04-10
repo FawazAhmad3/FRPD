@@ -1,0 +1,19 @@
+<div
+    class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+    <div class="p-8 flex-grow relative">
+        <div class="absolute top-0 right-0 w-24 h-24 bg-brand-gray rounded-bl-full -z-0 opacity-50"></div>
+        <div
+            class="w-14 h-14 bg-brand-gray text-brand-accent rounded-xl flex items-center justify-center text-2xl mb-6 shadow-sm border border-gray-200">
+            <i class="{{iconClass}}"></i>
+        </div>
+        <h3 class="text-2xl font-bold text-brand-dark mb-3 font-heading">{{title}}</h3>
+        <p class="text-gray-500 text-sm mb-4 leading-relaxed">{{description}}</p>
+    </div>
+    <div class="bg-brand-gray px-8 py-5 border-t border-gray-200 flex justify-between items-center">
+        <span class="text-gray-600 font-semibold text-sm flex items-center"><i
+                class="far fa-clock text-brand-accent mr-2"></i> {{duration}}</span>
+        <a href="/pages/contact.html"
+            class="text-brand-accent font-bold hover:text-blue-700 transition text-sm tracking-wide">VIEW
+            COURSE</a>
+    </div>
+</div>

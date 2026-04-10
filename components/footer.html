@@ -1,0 +1,90 @@
+<footer class="bg-brand-dark text-gray-400 py-16 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+            <!-- Brand -->
+            <div class="md:col-span-1">
+                <h3 class="text-3xl font-heading font-bold text-white tracking-widest mb-4">FRPD</h3>
+                <p class="text-sm leading-relaxed mb-6">Firm of Research and Policy Development. Advancing
+                    multidisciplinary research globally, providing leading courses and policy frameworks.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-lg font-heading font-semibold text-white mb-5 uppercase tracking-wide">Quick Links</h4>
+                <ul class="space-y-3 test-sm">
+                    <li><a href="/" class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span data-i18n="nav_home">Home</span></a>
+                    </li>
+                    <li><a href="/pages/research.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span
+                                data-i18n="nav_research">Research</span></a></li>
+                    <li><a href="/pages/courses.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span
+                                data-i18n="nav_training">Training</span></a></li>
+                    <li><a href="/pages/events.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span
+                                data-i18n="nav_events">Events</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Information -->
+            <div>
+                <h4 class="text-lg font-heading font-semibold text-white mb-5 uppercase tracking-wide">Information</h4>
+                <ul class="space-y-3 test-sm">
+                    <li><a href="/pages/about.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span data-i18n="nav_about">About
+                                Us</span></a></li>
+                    <li><a href="/pages/contact.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span data-i18n="nav_contact">Contact
+                                Us</span></a></li>
+                    <li><a href="/pages/blog.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span data-i18n="nav_blog">Blog &
+                                Publications</span></a></li>
+                    <li><a href="/pages/projects.html"
+                            class="hover:text-brand-accent transition-colors flex items-center"><i
+                                class="fas fa-angle-right mr-2 text-xs"></i> <span
+                                data-i18n="nav_projects">Projects</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Connect -->
+            <div>
+                <h4 class="text-lg font-heading font-semibold text-white mb-5 uppercase tracking-wide">Connect With Us
+                </h4>
+                <div class="flex space-x-5 mb-6 text-xl">
+                    <a href="https://whatsapp.com/channel/0029Vae6bpnISTkOmoPQwp25" target="_blank"
+                        class="text-gray-400 hover:text-green-500 transition-colors btn-hover" aria-label="WhatsApp"><i
+                            class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.linkedin.com/in/frpd2018" target="_blank"
+                        class="text-gray-400 hover:text-blue-500 transition-colors btn-hover" aria-label="LinkedIn"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-600 transition-colors btn-hover"
+                        aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-pink-500 transition-colors btn-hover"
+                        aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom divider -->
+        <div
+            class="border-t border-gray-800 mt-12 pt-8 text-sm text-center flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-4 md:mb-0">
+                &copy; <span id="year"></span> FRPD. All rights reserved.
+            </div>
+            <div class="space-x-4">
+                <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</footer>
