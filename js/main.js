@@ -4,6 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Load Static Layout Components
     loadComponent('navbar-placeholder', '/components/navbar.html', () => {
         if (window.applyTranslations) applyTranslations();
+        
+        // Bind mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
     });
 
     loadComponent('footer-placeholder', '/components/footer.html', () => {
