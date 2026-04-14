@@ -1,3 +1,12 @@
+/*
+  ===========================================
+  [GLOBAL STYLESHEET: main.css]
+  ===========================================
+  Role: Establishes Tailwind custom rendering utilities and core stylistic overrides (e.g. Animations, Base resets).
+  Dependencies:
+  - Mounted explicitly inside the <head> of EVERY standalone .html page natively.
+  - Supports structural classes like `.dropdown` mapped inside `components/navbar.html`.
+*/
 /* main.css - Core Styling & Utilities */
 
 :root {
@@ -64,4 +73,13 @@ body {
 .btn-hover:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Navbar Slide Down Animation */
+@keyframes navSlideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.nav-animate {
+  animation: navSlideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

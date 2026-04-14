@@ -1,0 +1,27 @@
+<!-- 
+  ===========================================
+  [DYNAMIC EVENT CARD TEMPLATE]
+  ===========================================
+  Role: Structural model generating both Past & Upcoming Event configurations.
+  Dependencies:
+  - Driven by `js/dataLoader.js` parsing `data/events.json`.
+  - IMPORTANT: Uses a combined `href="{{formLink}}{{driveLink}}"` which inherently renders correctly because only ONE link property exists per row object in the schema.
+-->
+<div class="{{cardBg}} rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center hover:shadow-lg transition-all duration-300">
+    <div class="flex-1 w-full relative">
+        <div class="absolute -left-10 top-0 bottom-0 w-1 bg-brand-accent rounded-r hidden md:block"></div>
+        <div class="text-xs uppercase tracking-widest bg-blue-50 inline-block px-3 py-1 rounded-full font-bold mb-3 border {{typeColor}}">
+            {{type}}</div>
+        <h3 class="text-3xl font-bold font-heading text-brand-dark mb-4 leading-tight">{{title}}</h3>
+        <p class="text-gray-600 mb-6 text-lg leading-relaxed">{{description}}</p>
+        <div class="flex flex-wrap items-center text-sm font-semibold text-gray-600 gap-6">
+            <span class="flex items-center"><i
+                    class="far fa-calendar-check mr-2 {{iconColor}} text-lg"></i> {{date}}</span>
+            {{timeString}}
+        </div>
+    </div>
+    <div class="w-full md:w-auto mt-6 md:mt-0 flex-shrink-0">
+        <a href="{{formLink}}{{driveLink}}" target="_blank"
+            class="inline-block text-center rounded-full font-bold w-full md:w-auto tracking-wide px-8 py-3 transition-colors md:px-10 md:py-4 {{buttonClass}}">{{buttonText}} <i class="fas fa-external-link-alt text-xs ml-1 opacity-80"></i></a>
+    </div>
+</div>

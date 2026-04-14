@@ -1,3 +1,13 @@
+<!-- 
+  ===========================================
+  [DYNAMIC COURSE CARD TEMPLATE]
+  ===========================================
+  Role: Raw structure used recursively to build the course grids dynamically.
+  Dependencies:
+  - Consumed purely by `js/dataLoader.js`
+  - Variables mapped inside `{{...}}` link EXACTLY to keys defined natively inside `data/courses.json`. 
+    (e.g., {{driveLink}} -> "driveLink": "...")
+-->
 <div
     class="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
     <div class="p-8 flex-grow relative">
@@ -12,8 +22,8 @@
     <div class="bg-brand-gray px-8 py-5 border-t border-gray-200 flex justify-between items-center">
         <span class="text-gray-600 font-semibold text-sm flex items-center"><i
                 class="far fa-clock text-brand-accent mr-2"></i> {{duration}}</span>
-        <a href="/pages/contact.html"
+        <a href="{{driveLink}}" target="_blank"
             class="text-brand-accent font-bold hover:text-blue-700 transition text-sm tracking-wide">VIEW
-            COURSE</a>
+            COURSE <i class="fas fa-external-link-alt text-xs ml-1"></i></a>
     </div>
 </div>

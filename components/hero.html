@@ -1,38 +1,85 @@
-<div class="relative bg-brand-dark text-white overflow-hidden min-h-[500px]">
-    <!-- Video Background (Reduced opacity to 30% to blend with dark container) -->
-    <video autoplay loop muted playsinline
-        class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-luminosity">
-        <source src="/assets/videos/banner.mp4" type="video/mp4">
-    </video>
+<!-- 
+  ===========================================
+  [INDEX PAGE HERO COMPONENT]
+  ===========================================
+  Role: Pure image slider loop consuming viewport without overlaid UI text grids.
+-->
+<div class="relative w-full">
+    <div id="hero-wrapper"
+        class="relative w-full h-[500px] md:h-[600px] lg:h-[750px] bg-brand-dark overflow-hidden bg-gray-900 group">
 
-    <!-- Solid dark overlay + Gradient Overlay for perfect text contrast -->
-    <div class="absolute inset-0 bg-brand-dark/50 z-0"></div>
-    <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent z-0"></div>
+        <img src="/assets/images/sample1.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-100 slide-img"
+            alt="Slide 1" />
+        <img src="/assets/images/sample2.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-img"
+            alt="Slide 2" />
+        <img src="/assets/images/sample3.jpg"
+            class="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 opacity-0 slide-img"
+            alt="Slide 3" />
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-32 pb-40">
-        <div class="max-w-3xl">
-            <h1 class="text-5xl md:text-6xl font-heading font-extrabold tracking-tight mb-8 leading-tight">
-                Advancing Multidisciplinary <br /> <span class="text-brand-accent">Research & Policy</span>
-            </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl leading-relaxed">
-                FRPD is dedicated to driving innovation globally through cutting-edge research, specialized training
-                programs, and strategic policy development.
-            </p>
-            <div class="flex flex-wrap gap-4">
-                <a href="/pages/research.html"
-                    class="bg-brand-accent hover:bg-blue-600 text-white font-semibold py-3.5 px-8 rounded-full transition-all duration-300 btn-hover tracking-wide shadow-lg shadow-blue-500/30">
-                    Explore Research
-                </a>
-                <a href="/pages/contact.html"
-                    class="bg-transparent border border-gray-400 hover:border-white hover:bg-white/5 text-gray-300 hover:text-white font-semibold py-3.5 px-8 rounded-full transition-all duration-300 btn-hover">
-                    Contact Us
-                </a>
-            </div>
-        </div>
+        <div class="absolute inset-0 bg-black/10 z-0 pointer-events-none"></div>
+
+        <!-- Navigation Overlay -->
+        <button id="hero-prev"
+            class="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-gray-800/80 hover:text-black flex items-center justify-center transition-all z-20 hover:scale-110 drop-shadow-md">
+            <i class="fas fa-angle-left text-5xl md:text-7xl font-bold"></i>
+        </button>
+        <button id="hero-next"
+            class="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-gray-800/80 hover:text-black flex items-center justify-center transition-all z-20 hover:scale-110 drop-shadow-md">
+            <i class="fas fa-angle-right text-5xl md:text-7xl font-bold"></i>
+        </button>
+
+        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex space-x-3 z-20" id="hero-dots"></div>
+
+        <script>
+            (function () {
+                const slides = document.querySelectorAll('.slide-img');
+                const dotsContainer = document.getElementById('hero-dots');
+                if (slides.length <= 1) return;
+
+                slides.forEach((_, i) => {
+                    const dot = document.createElement('button');
+                    dot.className = `w-3 h-3 rounded-full transition-all cursor-pointer shadow-lg ${i === 0 ? 'bg-white scale-125' : 'bg-white/40'}`;
+                    dot.onclick = () => goToSlide(i);
+                    dotsContainer.appendChild(dot);
+                });
+
+                let currentSlide = 0;
+                let slideInterval;
+
+                function goToSlide(index) {
+                    if (!slides[currentSlide]) return;
+                    slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+                    if (dotsContainer.children[currentSlide]) dotsContainer.children[currentSlide].className = 'w-3 h-3 rounded-full transition-all bg-white/40 shadow-lg';
+
+                    currentSlide = index;
+
+                    if (slides[currentSlide]) slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+                    if (dotsContainer.children[currentSlide]) dotsContainer.children[currentSlide].className = 'w-3 h-3 rounded-full transition-all bg-white scale-125 shadow-lg';
+
+                    resetTimer();
+                }
+
+                function nextSlide() { goToSlide((currentSlide + 1) % slides.length); }
+                function prevSlide() { goToSlide((currentSlide - 1 + slides.length) % slides.length); }
+
+                function resetTimer() {
+                    clearInterval(slideInterval);
+                    slideInterval = setInterval(nextSlide, 4000);
+                }
+
+                document.getElementById('hero-next').onclick = nextSlide;
+                document.getElementById('hero-prev').onclick = prevSlide;
+
+                resetTimer();
+            })();
+        </script>
     </div>
-
-    <!-- Decorative element -->
-    <div class="absolute bottom-0 right-0 opacity-10 pointer-events-none transform translate-x-1/4 translate-y-1/4">
-        <i class="fas fa-globe text-[400px]"></i>
+    <!-- Ribbon attached to the bottom of the hero -->
+    <div class="w-full text-center py-2.5 px-4" style="background-color: #0f1729;">
+        <p class="text-[#c75e2b] text-xs md:text-sm font-bold uppercase tracking-widest">
+            Organization in special consultative status with the economic and social council since 2022
+        </p>
     </div>
 </div>

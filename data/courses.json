@@ -4,13 +4,15 @@
         "title": "Machine Learning for Researchers",
         "iconClass": "fas fa-robot",
         "duration": "8 Weeks",
-        "description": "An intensive course covering foundational and advanced ML techniques used in scientific research."
+        "description": "An intensive course covering foundational and advanced ML techniques used in scientific research.",
+        "driveLink": "https://pern-my.sharepoint.com/:f:/g/personal/04162114042_student_qau_edu_pk/IgCQD05IUw2sQK2H8VFiTdGWAUJBfA7QutqFex2DTO99BZA?e=wUHjm9"
     },
     {
         "id": "c2",
         "title": "Advanced Data Analytics with Python",
         "iconClass": "fab fa-python",
         "duration": "12 Weeks",
-        "description": "Learn to manipulate, analyze and visualize complex datasets effectively using Python."
+        "description": "Learn to manipulate, analyze and visualize complex datasets effectively using Python.",
+        "driveLink": "https://drive.google.com/"
     }
 ]

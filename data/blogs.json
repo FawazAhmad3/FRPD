@@ -16,5 +16,14 @@
         "date": "March 15, 2026",
         "image": "/assets/images/sample2.jpg",
         "pdfUrl": "/Documents/sample.pdf"
+    },
+    {
+        "id": "b3",
+        "title": "Sustainable Economic Policies",
+        "category": "Economy",
+        "summary": "Analyzing the impact of sustainable business models on local economies.",
+        "date": "May 20, 2026",
+        "image": "/assets/images/sample3.jpg",
+        "pdfUrl": "/Documents/sample.pdf"
     }
 ]

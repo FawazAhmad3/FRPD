@@ -1,0 +1,30 @@
+[
+  {
+    "id": "e1",
+    "type": "Upcoming Webinar",
+    "typeColor": "text-brand-accent bg-blue-50 border-blue-100",
+    "cardBg": "bg-white shadow-sm border border-gray-100",
+    "iconColor": "text-brand-accent",
+    "title": "Global Economic Policies 2026",
+    "description": "A deep dive into regulatory approaches and financial innovation for the next decade. Featuring leading economists and policymakers.",
+    "date": "May 15, 2026",
+    "timeString": "<span class=\"flex items-center\"><i class=\"far fa-clock mr-2 text-brand-accent text-lg\"></i> 10:00 AM (EST)</span>",
+    "buttonText": "Register Now",
+    "buttonClass": "bg-brand-dark text-white hover:bg-brand-accent hover:-translate-y-1 shadow-md hover:shadow-lg",
+    "formLink": "https://docs.google.com/forms/viewform?id=dummyformlink"
+  },
+  {
+    "id": "e2",
+    "type": "Past Event",
+    "typeColor": "text-gray-500 bg-gray-200 border-transparent",
+    "cardBg": "bg-gray-50 border border-gray-200 opacity-90",
+    "iconColor": "text-gray-400",
+    "title": "Health Systems Resilience Workshop",
+    "description": "Interactive discussion panel reflecting on pandemic responsiveness and infrastructure upgrades in medical research facilities.",
+    "date": "February 10, 2026",
+    "timeString": "",
+    "buttonText": "Watch Recording",
+    "buttonClass": "bg-white text-gray-700 border-2 border-gray-300 hover:border-gray-400 hover:bg-gray-100",
+    "driveLink": "https://drive.google.com/"
+  }
+]

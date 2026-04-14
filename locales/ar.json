@@ -1,7 +1,7 @@
 {
-    "home_title": "FRPD - شركة البحث وتطوير السياسات",
-    "about_heading": "حول FRPD",
-    "about_summary": "تعتبر شركة ابحاث وتطوير السياسات (FRPD) منظمة رائدة مكرسة لتعزيز البحث متعدد التخصصات.",
+    "home_title": "FRPD - مؤسسة البحث وتطوير السياسات",
+    "about_heading": "عن FRPD",
+    "about_summary": "مؤسسة البحث وتطوير السياسات (FRPD) هي منظمة رائدة مكرسة لتعزيز البحوث متعددة التخصصات، وتقديم تدريب متطور، ودفع الابتكار في السياسات على مستوى العالم.",
     "nav_home": "الرئيسية",
     "nav_research": "الأبحاث",
     "nav_market_research": "أبحاث السوق",
@@ -10,8 +10,8 @@
     "nav_training": "التدريب والدورات",
     "nav_events": "الفعاليات والندوات",
     "nav_projects": "المشاريع",
-    "nav_completed_projects": "المشاريع المنجزة",
-    "nav_ongoing_projects": "المشاريع المستمرة",
+    "nav_completed_projects": "المشاريع المكتملة",
+    "nav_ongoing_projects": "المشاريع الجارية",
     "nav_blog": "المدونة والمنشورات",
     "nav_about": "معلومات عنا",
     "nav_vision": "الرؤية",
@@ -23,5 +23,6 @@
     "btn_download": "تحميل",
     "btn_preview": "معاينة",
     "status_completed": "مكتمل",
-    "status_ongoing": "جاري"
+    "status_ongoing": "جاري",
+    "nav_programs": "البرامج"
 }

@@ -23,5 +23,6 @@
     "btn_download": "Download",
     "btn_preview": "Preview",
     "status_completed": "Completed",
-    "status_ongoing": "Ongoing"
+    "status_ongoing": "Ongoing",
+    "nav_programs": "Programs"
 }

@@ -1,11 +1,17 @@
 // dataLoader.js
-// Responsible for dynamically loading card templates and marrying them with JSON data
+// Handles consuming flat static JSON databases and visually converting them recursively into Card HTML interfaces.
+// Linked heavily against: `components/card-*.html` templates and `/data/*.json` schemas.
 
+/**
+ * GLOBALLY BOUND PATH REGISTRY
+ * Lists out the explicit locations to the database files to avoid re-writing URLs on functions.
+ */
 const DATA_PATHS = {
     projects: '/data/projects.json',
     blogs: '/data/blogs.json',
     courses: '/data/courses.json',
-    research: '/data/research.json'
+    research: '/data/research.json',
+    events: '/data/events.json'
 };
 
 /**
@@ -26,15 +32,22 @@ async function loadAndRenderCards(dataPath, containerId, templatePath) {
         const templateHtml = await templateRes.text();
         let htmlContent = '';
 
+        // Iterate over the parsed JSON array dynamically 
         data.forEach(item => {
             let cardHtml = templateHtml;
-            // Simple replace of {{key}} with object literal value
+            
+            // For every Key:Value mapping inside the JSON (eg. "title": "Example"), 
+            // the regex replaces strictly identical instances of {{key}} found purely within the fetched HTML.
             for (const key in item) {
                 const regex = new RegExp(`{{${key}}}`, 'g');
                 cardHtml = cardHtml.replace(regex, item[key] || '');
             }
-            // Cleanup missing double-braced tags that had no data mapping
+            
+            // Post-hook cleanup filter deletes all {{...}} structures that never got mapped in JSON, 
+            // ensuring broken tag variables aren't visibly rendered to the user on empty data fields.
             cardHtml = cardHtml.replace(/{{.*?}}/g, '');
+            
+            // Append modified template iteration to total inner output string.
             htmlContent += cardHtml;
         });
 
@@ -48,6 +61,11 @@ async function loadAndRenderCards(dataPath, containerId, templatePath) {
     }
 }
 
+/**
+ * GLOBAL DISPATCHER INVOKER
+ * Fired instantly from `main.js` upon completion of the basic layout components.
+ * Configured explicitly linking logical specific arrays into defined matching front-end containers mapped across any site page.
+ */
 // Global invocation - called specifically in various pages
 window.initDataLoading = function () {
     loadAndRenderCards(DATA_PATHS.projects, 'completed-projects-container', '/components/card-project.html');
@@ -58,4 +76,7 @@ window.initDataLoading = function () {
 
     loadAndRenderCards(DATA_PATHS.courses, 'featured-courses-container', '/components/card-course.html');
     loadAndRenderCards(DATA_PATHS.courses, 'all-courses-container', '/components/card-course.html');
+    
+    // Load Events Data
+    loadAndRenderCards(DATA_PATHS.events, 'events-container', '/components/card-event.html');
 }
