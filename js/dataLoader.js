@@ -10,8 +10,9 @@ const DATA_PATHS = {
     projects: '/data/projects.json',
     blogs: '/data/blogs.json',
     courses: '/data/courses.json',
+    events: '/data/events.json',
     research: '/data/research.json',
-    events: '/data/events.json'
+    policy: '/data/policy.json'
 };
 
 /**
@@ -74,8 +75,21 @@ window.initDataLoading = function () {
     loadAndRenderCards(DATA_PATHS.blogs, 'latest-blogs-container', '/components/card-blog.html');
     loadAndRenderCards(DATA_PATHS.blogs, 'all-blogs-container', '/components/card-blog.html');
 
+    // Research Hook Assignments
+    loadAndRenderCards(DATA_PATHS.research, 'micro-research-container', '/components/card-blog.html');
+    loadAndRenderCards(DATA_PATHS.research, 'macro-research-container', '/components/card-blog.html');
+    loadAndRenderCards(DATA_PATHS.research, 'monetary-research-container', '/components/card-blog.html');
+    loadAndRenderCards(DATA_PATHS.research, 'international-research-container', '/components/card-blog.html');
+    loadAndRenderCards(DATA_PATHS.research, 'development-research-container', '/components/card-blog.html');
+    loadAndRenderCards(DATA_PATHS.research, 'public-research-container', '/components/card-blog.html');
+
+    // Policy Assignments
+    loadAndRenderCards(DATA_PATHS.policy, 'policy-container', '/components/card-blog.html');
+
+    // Course Mappings
     loadAndRenderCards(DATA_PATHS.courses, 'featured-courses-container', '/components/card-course.html');
-    loadAndRenderCards(DATA_PATHS.courses, 'all-courses-container', '/components/card-course.html');
+    loadAndRenderCards(DATA_PATHS.courses, 'trainings-container', '/components/card-course.html');
+    loadAndRenderCards(DATA_PATHS.courses, 'online-courses-container', '/components/card-course.html');
     
     // Load Events Data
     loadAndRenderCards(DATA_PATHS.events, 'events-container', '/components/card-event.html');

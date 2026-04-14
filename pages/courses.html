@@ -28,10 +28,28 @@
     </div>
 
     <main class="flex-grow py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-            <div id="all-courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Courses injected via JSON -->
-            </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+            
+            <!-- Training -->
+            <section id="trainings" class="scroll-mt-32">
+                <div class="mb-6 border-b border-gray-200 pb-2">
+                    <h2 class="text-3xl font-heading font-bold text-brand-dark" data-i18n="nav_training_other">Training</h2>
+                </div>
+                <div id="trainings-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <p class="text-gray-500 italic">Training events loading...</p>
+                </div>
+            </section>
+            
+            <!-- Online Courses -->
+            <section id="online-courses" class="scroll-mt-32">
+                <div class="mb-6 border-b border-gray-200 pb-2">
+                    <h2 class="text-3xl font-heading font-bold text-brand-dark" data-i18n="nav_online_courses">Online courses</h2>
+                </div>
+                <div id="online-courses-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Courses injected via JSON -->
+                    <p class="text-gray-500 italic">Courses loading...</p>
+                </div>
+            </section>
         </div>
     </main>
 
