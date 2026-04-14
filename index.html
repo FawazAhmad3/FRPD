@@ -44,7 +44,7 @@
     <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Animate.css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/styles/main.css">
 </head>
@@ -62,8 +62,7 @@
         <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <h2 class="text-4xl font-heading font-bold text-brand-dark mb-6" data-i18n="about_heading">About
-                        FRPD</h2>
+                    <h2 class="text-4xl font-heading font-bold text-brand-dark mb-6" data-i18n="about_heading">FRPD</h2>
                     <p class="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="about_summary">
                         Firm of Research and Policy Development (FRPD) is a premier organization dedicated to advancing
                         multidisciplinary research, offering cutting-edge training, and driving policy innovation
@@ -74,34 +73,38 @@
         </section>
 
         <!-- Stats Section -->
-        <section class="py-16 bg-brand-dark relative border-y-4 border-brand-accent">
+        <section class="py-16 bg-[#FAFEFF] relative">
             <div
                 class="absolute inset-0 bg-[url('https://source.unsplash.com/1600x900/?data,network')] opacity-5 mix-blend-overlay">
             </div>
             <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center text-white">
+                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center text-[#0f1729]">
                 <div class="flex flex-col items-center group">
                     <i
                         class="fas fa-file-contract text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="120" data-suffix="+">0+</div>
-                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Researches</div>
+                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="120"
+                        data-suffix="+">0+</div>
+                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Researches</div>
                 </div>
                 <div class="flex flex-col items-center group">
                     <i
                         class="fas fa-project-diagram text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="65" data-suffix="">0</div>
-                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Global Projects</div>
+                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="65" data-suffix="">0
+                    </div>
+                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Global Projects</div>
                 </div>
                 <div class="flex flex-col items-center group">
                     <i
                         class="fas fa-feather-alt text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="500" data-suffix="+">0+</div>
-                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Insights & Blogs</div>
+                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="500"
+                        data-suffix="+">0+</div>
+                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Insights & Blogs</div>
                 </div>
                 <div class="flex flex-col items-center group">
                     <i
                         class="fas fa-users text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="10" data-suffix="k+">0k+</div>
+                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="10"
+                        data-suffix="k+">0k+</div>
                     <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Trained Experts</div>
                 </div>
             </div>
@@ -111,7 +114,7 @@
                 document.addEventListener('DOMContentLoaded', () => {
                     const stats = document.querySelectorAll('.stat-number');
                     const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
-                    
+
                     const statsObserver = new IntersectionObserver((entries, observer) => {
                         entries.forEach(entry => {
                             if (entry.isIntersecting) {
@@ -120,7 +123,7 @@
                                 const suffix = targetElement.getAttribute('data-suffix');
                                 const duration = 2500;
                                 let startTimestamp = null;
-                                
+
                                 const step = (timestamp) => {
                                     if (!startTimestamp) startTimestamp = timestamp;
                                     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
@@ -131,7 +134,7 @@
                                         window.requestAnimationFrame(step);
                                     }
                                 };
-                                
+
                                 window.requestAnimationFrame(step);
                                 observer.unobserve(targetElement); // Guarantee it only ticks once
                             }
@@ -144,7 +147,7 @@
         </section>
 
         <!-- Featured Blogs/Publications -->
-        <section class="py-20 bg-gray-50 border-t border-gray-100">
+        <section class="py-20 bg-[#ebeff4] border-t border-gray-100">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-4">Latest Insights & Publications
@@ -165,7 +168,7 @@
         </section>
 
         <!-- Featured Courses -->
-        <section class="py-20 bg-white">
+        <section class="py-20 bg-[#d7dee9]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div
                     class="text-center w-full mb-16 flex flex-col items-center justify-center border-b border-gray-200 pb-6">

@@ -11,10 +11,10 @@
         <img src="/assets/images/sample1.jpg"
             class="absolute inset-0 w-full h-full object-cover transition-all duration-[1500ms] ease-out opacity-100 scale-100 slide-img"
             alt="Slide 1" />
-        <img src="/assets/images/sample2.jpg"
+        <img src="/assets/images/sample2.png"
             class="absolute inset-0 w-full h-full object-cover transition-all duration-[1500ms] ease-out opacity-0 scale-105 slide-img"
             alt="Slide 2" />
-        <img src="/assets/images/sample3.jpg"
+        <img src="/assets/images/sample3.png"
             class="absolute inset-0 w-full h-full object-cover transition-all duration-[1500ms] ease-out opacity-0 scale-105 slide-img"
             alt="Slide 3" />
 
@@ -52,7 +52,7 @@
                     if (!slides[currentSlide]) return;
                     slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
                     slides[currentSlide].classList.replace('scale-100', 'scale-105');
-                    
+
                     if (dotsContainer.children[currentSlide]) dotsContainer.children[currentSlide].className = 'w-3 h-3 rounded-full transition-all bg-white/40 shadow-lg';
 
                     currentSlide = index;
