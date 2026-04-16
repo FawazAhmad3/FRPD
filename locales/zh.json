@@ -1,7 +1,7 @@
 {
-    "home_title": "FRPD - 研究与政策开发公司",
+    "home_title": "FRPD - 研究、政策与开发公司",
     "about_heading": "关于 FRPD",
-    "about_summary": "研究与政策开发公司 (FRPD) 是一家首屈一指的组织，致力于推进多学科研究，提供尖端培训，推动全球政策创新。",
+    "about_summary": "研究、政策与开发公司 (FRPD) 是一家首屈一指的组织，致力于推进多学科 research, offering 尖端 training, and driving global policy innovation.",
     "nav_home": "首页",
     "nav_research": "研究",
     "nav_market_research": "市场研究",
@@ -24,5 +24,10 @@
     "btn_preview": "预览",
     "status_completed": "已完成",
     "status_ongoing": "进行中",
-    "nav_datahub": "DataHub"
+    "nav_datahub": "数据中心",
+    "nav_what_we_do": "我们的业务",
+    "nav_research_wing": "研究分部",
+    "nav_online_courses": "在线课程",
+    "nav_mandate": "职责范围",
+    "nav_governance": "治理结构"
 }

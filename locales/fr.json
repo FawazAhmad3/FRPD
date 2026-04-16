@@ -1,7 +1,7 @@
 {
-    "home_title": "FRPD - Firme de Recherche et de Développement des Politiques",
+    "home_title": "FRPD - Firme de Recherche, de Politique et de Développement",
     "about_heading": "À propos de FRPD",
-    "about_summary": "La Firme de Recherche et de Développement des Politiques (FRPD) est une organisation de premier plan dédiée à l'avancement de la recherche multidisciplinaire, offrant une formation de pointe et stimulant l'innovation politique à l'échelle mondiale.",
+    "about_summary": "La Firme de Recherche, de Politique et de Développement (FRPD) est une organisation de premier plan dédiée à l'avancement de la recherche multidisciplinaire, offrant une formation de pointe et stimulant l'innovation politique à l'échelle mondiale.",
     "nav_home": "Accueil",
     "nav_research": "Recherche",
     "nav_market_research": "Étude de marché",
@@ -24,5 +24,10 @@
     "btn_preview": "Aperçu",
     "status_completed": "Terminé",
     "status_ongoing": "En cours",
-    "nav_datahub": "DataHub"
+    "nav_datahub": "DataHub",
+    "nav_what_we_do": "Ce que nous faisons",
+    "nav_research_wing": "Aile de recherche",
+    "nav_online_courses": "Cours en ligne",
+    "nav_mandate": "Mandat",
+    "nav_governance": "Gouvernance"
 }

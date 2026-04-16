@@ -1,7 +1,7 @@
 {
-    "home_title": "FRPD - Firm of Research and Policy Development",
+    "home_title": "FRPD - Firm of Research, Policy and Development",
     "about_heading": "FRPD",
-    "about_summary": "Firm of Research and Policy Development (FRPD) is a premier organization dedicated to advancing multidisciplinary research, offering cutting-edge training, and driving policy innovation globally.",
+    "about_summary": "Firm of Research, Policy and Development (FRPD) is a premier organization dedicated to advancing multidisciplinary research, offering cutting-edge training, and driving policy innovation globally.",
     "nav_home": "Home",
     "nav_research": "Research",
     "nav_market_research": "Market Research",
@@ -27,17 +27,7 @@
     "nav_datahub": "DataHub",
     "nav_what_we_do": "What we do",
     "nav_research_wing": "Research Wing",
-    "nav_micro_econ": "Micro economics",
-    "nav_macro_econ": "Macro Economics",
-    "nav_monetary_econ": "Monetory Economics",
-    "nav_intl_econ": "International Economics",
-    "nav_dev_econ": "Development Economics",
-    "nav_public_econ": "Public Economics",
-    "nav_training_wing": "Training and Development wing",
     "nav_online_courses": "Online courses",
-    "nav_training_other": "Training",
-    "nav_policy_wing": "Policy and Advocacy Wing",
-    "nav_research_wing": "Research Wing",
     "nav_mandate": "Mandate",
     "nav_governance": "Governance"
 }

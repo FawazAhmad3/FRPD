@@ -1,7 +1,7 @@
 {
-    "home_title": "FRPD - Forschungs- und Politikentwicklungsunternehmen",
+    "home_title": "FRPD - Forschungs-, Politik- und Entwicklungsunternehmen",
     "about_heading": "Über FRPD",
-    "about_summary": "Die Firm of Research and Policy Development (FRPD) ist eine führende Organisation, die sich der Förderung multidisziplinärer Forschung, dem Angebot modernster Schulungen und der weltweiten Förderung politischer Innovationen verschrieben hat.",
+    "about_summary": "Die Firm of Research, Policy and Development (FRPD) ist eine führende Organisation, die sich der Förderung multidisziplinärer Forschung, dem Angebot modernster Schulungen und der weltweiten Förderung politischer Innovationen verschrieben hat.",
     "nav_home": "Startseite",
     "nav_research": "Forschung",
     "nav_market_research": "Marktforschung",
@@ -24,5 +24,10 @@
     "btn_preview": "Vorschau",
     "status_completed": "Abgeschlossen",
     "status_ongoing": "Laufend",
-    "nav_datahub": "DataHub"
+    "nav_datahub": "Datenzentrum",
+    "nav_what_we_do": "Was wir tun",
+    "nav_research_wing": "Forschungsabteilung",
+    "nav_online_courses": "Online-Kurse",
+    "nav_mandate": "Auftrag",
+    "nav_governance": "Unternehmensführung"
 }
