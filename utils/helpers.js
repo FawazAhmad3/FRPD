@@ -1,11 +1,21 @@
 /**
+ * Normalizes absolute paths (starting with /) into relative paths based on current page depth.
+ * This ensures file:// and server environments both work correctly.
+ */
+function getRelativePath(path) {
+    if (!path || !path.startsWith('/')) return path;
+    const isSubPage = window.location.pathname.includes('/pages/');
+    const prefix = isSubPage ? '../' : './';
+    return prefix + path.substring(1);
+}
+
+/**
  * Helper to fetch JSON data
- * @param {string} url - The URL to fetch data from
- * @returns {Promise<any>} Data object or null
  */
 async function fetchJSON(url) {
     try {
-        const response = await fetch(url);
+        const finalUrl = getRelativePath(url);
+        const response = await fetch(finalUrl);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         return await response.json();
     } catch (error) {

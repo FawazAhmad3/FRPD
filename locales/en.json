@@ -24,7 +24,7 @@
     "btn_preview": "Preview",
     "status_completed": "Completed",
     "status_ongoing": "Ongoing",
-    "nav_programs": "Programs",
+    "nav_datahub": "DataHub",
     "nav_what_we_do": "What we do",
     "nav_research_wing": "Research Wing",
     "nav_micro_econ": "Micro economics",
@@ -36,5 +36,8 @@
     "nav_training_wing": "Training and Development wing",
     "nav_online_courses": "Online courses",
     "nav_training_other": "Training",
-    "nav_policy_wing": "Policy and Advocacy Wing"
+    "nav_policy_wing": "Policy and Advocacy Wing",
+    "nav_research_wing": "Research Wing",
+    "nav_mandate": "Mandate",
+    "nav_governance": "Governance"
 }

@@ -1,0 +1,61 @@
+<!-- section-stats.html -->
+<section class="py-10 bg-[#FAFEFF] relative">
+    <div class="absolute inset-0 bg-[#f0f9ff]/20 opacity-10 mix-blend-overlay"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-12 text-center text-[#0f1729]">
+        <div class="flex flex-col items-center group">
+            <i class="fas fa-file-contract text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading mb-2 stat-number" data-target="{{researchesTarget}}" data-suffix="{{researchesSuffix}}">0+</div>
+            <div class="text-gray-600 font-semibold uppercase tracking-wider text-[10px] sm:text-sm">{{researchesLabel}}</div>
+        </div>
+        <div class="flex flex-col items-center group">
+            <i class="fas fa-project-diagram text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading mb-2 stat-number" data-target="{{projectsTarget}}" data-suffix="{{projectsSuffix}}">0</div>
+            <div class="text-gray-600 font-semibold uppercase tracking-wider text-[10px] sm:text-sm">{{projectsLabel}}</div>
+        </div>
+        <div class="flex flex-col items-center group">
+            <i class="fas fa-feather-alt text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading mb-2 stat-number" data-target="{{blogsTarget}}" data-suffix="{{blogsSuffix}}">0+</div>
+            <div class="text-gray-600 font-semibold uppercase tracking-wider text-[10px] sm:text-sm">{{blogsLabel}}</div>
+        </div>
+        <div class="flex flex-col items-center group">
+            <i class="fas fa-users text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
+            <div class="text-3xl sm:text-5xl font-extrabold font-heading mb-2 stat-number" data-target="{{expertsTarget}}" data-suffix="{{expertsSuffix}}">0k+</div>
+            <div class="text-gray-600 font-semibold uppercase tracking-wider text-[10px] sm:text-sm">{{expertsLabel}}</div>
+        </div>
+    </div>
+
+    <!-- Stats Scroll Counter Animation -->
+    <script>
+        (function() {
+            const stats = document.querySelectorAll('.stat-number');
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+
+            const statsObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const targetElement = entry.target;
+                        const target = parseInt(targetElement.getAttribute('data-target'));
+                        const suffix = targetElement.getAttribute('data-suffix');
+                        const duration = 2500;
+                        let startTimestamp = null;
+
+                        const step = (timestamp) => {
+                            if (!startTimestamp) startTimestamp = timestamp;
+                            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                            const easeOutQuad = 1 - (1 - progress) * (1 - progress);
+                            targetElement.innerText = Math.floor(easeOutQuad * target) + suffix;
+                            if (progress < 1) {
+                                window.requestAnimationFrame(step);
+                            }
+                        };
+
+                        window.requestAnimationFrame(step);
+                        observer.unobserve(targetElement);
+                    }
+                });
+            }, observerOptions);
+
+            stats.forEach(stat => statsObserver.observe(stat));
+        })();
+    </script>
+</section>

@@ -1,0 +1,67 @@
+[
+    {
+        "id": "res-001",
+        "category": "Micro economics",
+        "type": "Ongoing Projects",
+        "title": "Supply Chain Resilience in Developing Markets",
+        "image": "/assets/images/sample1.jpg",
+        "articleTitle": "A Microeconomic Analysis of Supply Chain Disruptions 2026",
+        "date": "April 15, 2026",
+        "team": "Economic Resilience Group",
+        "details": "This study explores how small and medium enterprises in emerging markets adapt to global supply chain shocks. We utilize high-frequency data to track price transmission and inventory management strategies across various industrial clusters.",
+        "previewUrl": "https://pern-my.sharepoint.com/:b:/g/personal/04162114042_student_qau_edu_pk/IQAv1QdrsrP6SKlPfa90kcwFAc0C3nMv82I4rU_huNeI8jU?e=E6zsTk/preview",
+        "downloadUrl": "https://pern-my.sharepoint.com/:b:/g/personal/04162114042_student_qau_edu_pk/IQAv1QdrsrP6SKlPfa90kcwFAc0C3nMv82I4rU_huNeI8jU?e=E6zsTk"
+    },
+    {
+        "id": "res-002",
+        "category": "Macro Economics",
+        "type": "Thematic Research Initiatives",
+        "title": "Monetary Policy in Low-Inflation Environments",
+        "image": "/assets/images/sample2.png",
+        "articleTitle": "Global Trends in Central Banking and Inflation Targeting",
+        "date": "March 10, 2026",
+        "team": "FRPD Monetary Policy Unit",
+        "details": "An extensive review of macroeconomic policy effectiveness in regions experiencing persistent low inflation. This research initiative focuses on the transition from traditional targeting to more flexible frameworks in the post-pandemic era.",
+        "previewUrl": "",
+        "downloadUrl": ""
+    },
+    {
+        "id": "res-003",
+        "category": "International Economics",
+        "type": "Completed Studies",
+        "title": "Trade Liberalization and Digital Services",
+        "image": "/assets/images/sample3.png",
+        "articleTitle": "Cross-Border Data Flows and Trade Agreements",
+        "date": "February 22, 2026",
+        "team": "Global Trade Research Section",
+        "details": "This completed study analyzes the impact of digital trade chapters in recent regional trade agreements. It quantifies the gains from reduced barriers to cross-border data services and digital goods.",
+        "previewUrl": "",
+        "downloadUrl": ""
+    },
+    {
+        "id": "res-004",
+        "category": "Public Economics",
+        "type": "Collaborative Research",
+        "title": "Fiscal Decentralization and Rural Development",
+        "image": "/assets/images/sample1.jpg",
+        "articleTitle": "Local Governance and Resource Allocation Effectiveness",
+        "date": "January 15, 2026",
+        "team": "Public Sector Reform Taskforce",
+        "details": "A collaborative effort exploring how fiscal decentralization impacts the quality of local public goods. The research highlights best practices for resource allocation in education and healthcare infrastructure.",
+        "previewUrl": "",
+        "downloadUrl": ""
+    },
+    {
+        "id": "res-005",
+        "category": "Public Economics",
+        "type": "Public Economics",
+        "title": "Science Development",
+        "image": "/assets/images/sample1.jpg",
+        "articleTitle": "Local Governance and Resource Allocation Effectiveness",
+        "date": "January 15, 2026",
+        "team": "Public Sector Reform Taskforce",
+        "details": "A collaborative effort exploring how fiscal decentralization impacts the quality of local public goods. The research highlights best practices for resource allocation in education and healthcare infrastructure.",
+        "previewUrl": "",
+        "downloadUrl": ""
+    }
+]

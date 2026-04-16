@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="research_wing_title">FRPD - Research Wing</title>
+    <link rel="icon" type="image/jpeg" href="../assets/icons/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', light: '#1e293b', accent: '#3b82f6', white: '#f8fafc', gray: '#f1f5f9' } }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-brand-dark py-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-accent to-transparent"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-5xl font-heading font-bold text-white mb-6 animate__animated animate__fadeInDown">Research Wing</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed animate__animated animate__fadeInUp">
+                    Advancing economic knowledge through rigorous analysis across diverse fields and initiatives.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="py-6 bg-white border-b border-gray-200 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+                <!-- Categories -->
+                <div class="flex flex-wrap justify-center gap-2">
+                    <button onclick="window.filterByCategory('All')" class="category-btn active px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">All Fields</button>
+                    <button onclick="window.filterByCategory('Micro economics')" class="category-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">Micro Economics</button>
+                    <button onclick="window.filterByCategory('Macro Economics')" class="category-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">Macro Economics</button>
+                    <button onclick="window.filterByCategory('International Economics')" class="category-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">International Economics</button>
+                    <button onclick="window.filterByCategory('Development Economics')" class="category-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">Development Economics</button>
+                    <button onclick="window.filterByCategory('Public Economics')" class="category-btn px-6 py-2 rounded-full border border-gray-200 bg-white text-brand-dark font-medium shadow-sm hover:border-brand-accent transition-all">Public Economics</button>
+                </div>
+
+                <!-- Types -->
+                <div class="flex flex-wrap justify-center gap-4 border-t border-gray-100 pt-6">
+                    <button onclick="window.filterByType('All')" class="type-btn active text-sm font-bold uppercase tracking-widest text-brand-accent border-b-2 border-brand-accent pb-1 transition-all">All Types</button>
+                    <button onclick="window.filterByType('Thematic Research Initiatives')" class="type-btn text-sm font-bold uppercase tracking-widest text-brand-dark/50 hover:text-brand-accent transition-all pb-1 hover:border-b-2 hover:border-brand-accent/30">Thematic Initiatives</button>
+                    <button onclick="window.filterByType('Ongoing Projects')" class="type-btn text-sm font-bold uppercase tracking-widest text-brand-dark/50 hover:text-brand-accent transition-all pb-1 hover:border-b-2 hover:border-brand-accent/30">Ongoing Projects</button>
+                    <button onclick="window.filterByType('Completed Studies')" class="type-btn text-sm font-bold uppercase tracking-widest text-brand-dark/50 hover:text-brand-accent transition-all pb-1 hover:border-b-2 hover:border-brand-accent/30">Completed Studies</button>
+                    <button onclick="window.filterByType('Collaborative Research')" class="type-btn text-sm font-bold uppercase tracking-widest text-brand-dark/50 hover:text-brand-accent transition-all pb-1 hover:border-b-2 hover:border-brand-accent/30">Collaborative Research</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research Grid -->
+        <section class="py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="research-wing-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Dynamic Cards Here -->
+                    <div class="col-span-full py-20 text-center text-gray-400">
+                        <i class="fa-solid fa-spinner fa-spin text-4xl mb-4"></i>
+                        <p>Loading research articles...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="research-modal-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <script src="../utils/helpers.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="../js/languageSwitcher.js"></script>
+    <script src="../js/dataLoader.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <script>
+        // Trigger specific initialization for Research Wing
+        document.addEventListener('DOMContentLoaded', () => {
+             const checkInit = setInterval(() => {
+                if (window.initResearchWing) {
+                    window.initResearchWing();
+                    clearInterval(checkInit);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

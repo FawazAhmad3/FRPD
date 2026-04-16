@@ -16,10 +16,16 @@ async function loadComponent(placeholderId, componentPath, callback) {
         return;
     }
     try {
-        // Asynchronously request the static file off the local disk/remote server
-        const response = await fetch(componentPath);
+        const finalPath = typeof getRelativePath === 'function' ? getRelativePath(componentPath) : componentPath;
+        const response = await fetch(finalPath);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const html = await response.text();
+        let html = await response.text();
+        
+        // Correct asset paths relative to the current page depth (e.g. /assets/ -> ./assets/ or ../assets/)
+        const isSubPage = window.location.pathname.includes('/pages/');
+        const assetPrefix = isSubPage ? '../assets/' : './assets/';
+        html = html.replace(/\/assets\//g, assetPrefix);
+
         container.innerHTML = html;
 
         // Force browser to evaluate inline scripts present in the fetched HTML

@@ -16,10 +16,8 @@
                 class="flex-shrink-0 flex items-center pr-4 animate__animated animate__delay-0.1s animate__slower animate__backInRight">
                 <a href="/" class="flex items-center group">
                     <img src="/assets/icons/logo.png" alt="FRPD Logo"
-                        class="h-16 md:h-20 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform">
+                        class="h-12 sm:h-16 lg:h-20 w-auto object-contain rounded shadow-sm group-hover:scale-105 transition-transform">
                     <div class="hidden lg:flex flex-col justify-center ml-3">
-                        <!-- <span
-                            class="text-3xl font-heading font-extrabold text-[#0f172a] tracking-widest leading-none mb-1.5">FRPD</span> -->
                         <span class="text-xs text-brand-accent font-bold uppercase tracking-widest leading-none">Firm
                             of Research and Policy Development</span>
                     </div>
@@ -42,42 +40,28 @@
                                 class="fas fa-chevron-down ml-1 text-xs"></i>
                         </button>
                         <div
-                            class="dropdown-menu absolute left-0 top-full w-64 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1 pb-2 animate__animated animate__zoomIn animate__faster">
-                            <a href="/pages/research.html"
+                            class="dropdown-menu absolute left-0 top-full w-80 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1 pb-2 animate__animated animate__zoomIn animate__faster">
+                            <a href="/pages/research-wing.html"
                                 class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide"
                                 data-i18n="nav_research_wing">Research Wing</a>
                             <div class="border-t border-gray-100"></div>
-                            <a href="/pages/courses.html"
-                                class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide"
-                                data-i18n="nav_training_wing">Training and Development wing</a>
+                            <a href="/pages/capacity-building.html"
+                                class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide">Capacity
+                                Building Programs</a>
                             <div class="border-t border-gray-100"></div>
-                            <a href="/pages/policy.html"
-                                class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide"
-                                data-i18n="nav_policy_wing">Policy and Advocacy Wing</a>
+                            <a href="/pages/workshops-events.html"
+                                class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide">Workshops
+                                & Events</a>
+                            <div class="border-t border-gray-100"></div>
+                            <a href="/pages/consultancy.html"
+                                class="block px-6 py-3 text-base font-semibold hover:bg-brand-gray hover:text-brand-accent tracking-wide">Consultancy
+                                & Advisory Programs</a>
                         </div>
                     </div>
 
                     <!-- Programs Dropdown -->
-                    <div class="relative dropdown group">
-                        <button
-                            class="hover:text-brand-accent flex items-center transition-colors pb-12 -mb-12 pt-12 -mt-12">
-                            <span data-i18n="nav_programs">Programs</span> <i
-                                class="fas fa-chevron-down ml-1 text-xs"></i>
-                        </button>
-                        <div
-                            class="dropdown-menu absolute left-0 top-full w-56 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1 animate__animated animate__zoomIn animate__faster">
-                            <a href="/pages/events.html"
-                                class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_events">Events & Webinars</a>
-                            <a href="/pages/projects.html"
-                                class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_projects">Projects</a>
-                            <div class="border-t border-gray-100 my-1"></div>
-                            <a href="/pages/blog.html"
-                                class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_blog">Blog & Publications</a>
-                        </div>
-                    </div>
+                    <a href="/pages/datahub.html" class="hover:text-brand-accent transition-colors"
+                        data-i18n="nav_datahub">DataHub</a>
 
                     <!-- About Us Dropdown -->
                     <div class="relative dropdown group">
@@ -87,18 +71,17 @@
                         </button>
                         <div
                             class="dropdown-menu absolute right-0 top-full w-56 bg-white text-brand-dark rounded-md shadow-xl z-20 border border-gray-100 mt-1 animate__animated animate__zoomIn animate__faster">
-                            <a href="/pages/about.html#vision"
+                            <a href="/pages/mandate.html"
                                 class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_vision">Vision</a>
-                            <a href="/pages/about.html#mission"
+                                data-i18n="nav_mandate">Mandate</a>
+                            <a href="/pages/governance.html"
                                 class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_mission">Mission</a>
-                            <a href="/pages/about.html#board"
-                                class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_board">Board of Governors</a>
-                            <a href="/pages/about.html#team"
-                                class="block px-4 py-3 text-base hover:bg-brand-gray hover:text-brand-accent"
-                                data-i18n="nav_team">Our Team</a>
+                                data-i18n="nav_governance">Governance</a>
+                            <!-- Re-routing old anchors for safety -->
+                            <a href="/pages/mandate.html#vision" class="hidden" data-i18n="nav_vision">Vision</a>
+                            <a href="/pages/mandate.html#mission" class="hidden" data-i18n="nav_mission">Mission</a>
+                            <a href="/pages/governance.html#board" class="hidden" data-i18n="nav_board">Board</a>
+                            <a href="/pages/governance.html#team" class="hidden" data-i18n="nav_team">Team</a>
                         </div>
                     </div>
                 </div>
@@ -125,9 +108,10 @@
                     </div>
 
                     <!-- Mobile button -->
-                    <div class="md:hidden flex items-center">
+                    <div class="lg:hidden flex items-center">
                         <button id="mobile-menu-btn"
-                            class="text-brand-dark hover:text-brand-accent focus:outline-none p-2">
+                            class="text-brand-dark hover:text-brand-accent focus:outline-none p-2 flex items-center justify-center min-w-[44px] min-h-[44px]"
+                            aria-label="Toggle Menu">
                             <i class="fas fa-bars text-2xl"></i>
                         </button>
                     </div>
@@ -137,29 +121,32 @@
     </div>
 
     <!-- Mobile Menu dropdown -->
-    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 pb-4 shadow-xl">
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 pb-4 shadow-xl">
         <div class="px-2 pt-2 pb-3 space-y-1 bg-white">
             <a href="/"
                 class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
                 data-i18n="nav_home">Home</a>
-            <a href="#"
+            <a href="/pages/research-wing.html"
                 class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_what_we_do">What we do</a>
-            <a href="/pages/courses.html"
+                data-i18n="nav_research_wing">Research Wing</a>
+            <a href="/pages/capacity-building.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition">Capacity
+                Building</a>
+            <a href="/pages/workshops-events.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition">Workshops
+                & Events</a>
+            <a href="/pages/consultancy.html"
+                class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition">Consultancy
+                & Advisory</a>
+            <a href="/pages/datahub.html"
                 class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_training">Training & Courses</a>
-            <a href="/pages/events.html"
+                data-i18n="nav_datahub">DataHub</a>
+            <a href="/pages/mandate.html"
                 class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_events">Events & Webinars</a>
-            <a href="/pages/projects.html"
+                data-i18n="nav_mandate">Mandate</a>
+            <a href="/pages/governance.html"
                 class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_projects">Projects</a>
-            <a href="/pages/blog.html"
-                class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_blog">Blog & Publications</a>
-            <a href="/pages/about.html"
-                class="block px-3 py-2 rounded-md text-base font-medium text-brand-dark hover:text-brand-accent hover:bg-gray-50 transition"
-                data-i18n="nav_about">About Us</a>
+                data-i18n="nav_governance">Governance</a>
             <a href="/pages/contact.html"
                 class="block px-3 py-2 rounded-md text-base font-bold text-brand-accent hover:text-brand-dark hover:bg-gray-50 transition"
                 data-i18n="nav_contact">Contact Us</a>

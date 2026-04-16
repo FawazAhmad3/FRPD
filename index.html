@@ -14,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="home_title">FRPD - Firm of Research and Policy Development</title>
-    <link rel="icon" type="image/jpeg" href="/assets/icons/logo.png">
+    <link rel="icon" type="image/jpeg" href="assets/icons/logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -47,7 +47,7 @@
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
@@ -59,134 +59,21 @@
         <!-- Hero Component -->
         <div id="hero-placeholder"></div>
 
-        <!-- About Summary section -->
-        <section class="py-12 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center">
-                    <h2 class="text-4xl font-heading font-bold text-brand-dark mb-6" data-i18n="about_heading">FRPD</h2>
-                    <p class="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed" data-i18n="about_summary">
-                        Firm of Research and Policy Development (FRPD) is a premier organization dedicated to advancing
-                        multidisciplinary research, offering cutting-edge training, and driving policy innovation
-                        globally.
-                    </p>
-                </div>
-            </div>
-        </section>
+        <!-- About Section Placeholder -->
+        <div id="section-about-placeholder"></div>
 
-        <!-- Stats Section -->
-        <section class="py-10 bg-[#FAFEFF] relative">
-            <div
-                class="absolute inset-0 bg-[url('https://source.unsplash.com/1600x900/?data,network')] opacity-5 mix-blend-overlay">
-            </div>
-            <div
-                class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center text-[#0f1729]">
-                <div class="flex flex-col items-center group">
-                    <i
-                        class="fas fa-file-contract text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="120"
-                        data-suffix="+">0+</div>
-                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Researches</div>
-                </div>
-                <div class="flex flex-col items-center group">
-                    <i
-                        class="fas fa-project-diagram text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="65" data-suffix="">0
-                    </div>
-                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Global Projects</div>
-                </div>
-                <div class="flex flex-col items-center group">
-                    <i
-                        class="fas fa-feather-alt text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="500"
-                        data-suffix="+">0+</div>
-                    <div class="text-gray-600 font-semibold uppercase tracking-wider text-sm">Insights & Blogs</div>
-                </div>
-                <div class="flex flex-col items-center group">
-                    <i
-                        class="fas fa-users text-3xl mb-4 text-brand-accent opacity-80 group-hover:scale-110 transition-transform"></i>
-                    <div class="text-5xl font-extrabold font-heading mb-2 stat-number" data-target="10"
-                        data-suffix="k+">0k+</div>
-                    <div class="text-gray-400 font-semibold uppercase tracking-wider text-sm">Trained Experts</div>
-                </div>
-            </div>
+        <!-- Stats Section Placeholder -->
+        <div id="section-stats-placeholder"></div>
 
-            <!-- Stats Scroll Counter Animation -->
-            <script>
-                document.addEventListener('DOMContentLoaded', () => {
-                    const stats = document.querySelectorAll('.stat-number');
-                    const observerOptions = { root: null, rootMargin: '0px', threshold: 0.5 };
+        <!-- Featured Research Section -->
+        <div id="section-featured-research-placeholder"></div>
 
-                    const statsObserver = new IntersectionObserver((entries, observer) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                const targetElement = entry.target;
-                                const target = parseInt(targetElement.getAttribute('data-target'));
-                                const suffix = targetElement.getAttribute('data-suffix');
-                                const duration = 2500;
-                                let startTimestamp = null;
+        <!-- Upcoming Training Section -->
+        <div id="section-training-header-placeholder"></div>
 
-                                const step = (timestamp) => {
-                                    if (!startTimestamp) startTimestamp = timestamp;
-                                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                                    // Ease-out quadratic function for authentic deceleration
-                                    const easeOutQuad = 1 - (1 - progress) * (1 - progress);
-                                    targetElement.innerText = Math.floor(easeOutQuad * target) + suffix;
-                                    if (progress < 1) {
-                                        window.requestAnimationFrame(step);
-                                    }
-                                };
 
-                                window.requestAnimationFrame(step);
-                                observer.unobserve(targetElement); // Guarantee it only ticks once
-                            }
-                        });
-                    }, observerOptions);
 
-                    stats.forEach(stat => statsObserver.observe(stat));
-                });
-            </script>
-        </section>
 
-        <!-- Featured Blogs/Publications -->
-        <section class="py-12 bg-[#ebeff4] border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-4">Latest Insights & Publications
-                    </h2>
-                    <p class="text-lg text-gray-500 max-w-2xl mx-auto">Explore the newest perspectives assembled by our
-                        international research teams.</p>
-                    <div class="w-16 h-1 bg-brand-accent mx-auto mt-6 rounded-full"></div>
-                </div>
-                <div id="latest-blogs-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <!-- Cards will be populated by JSON Data Loader -->
-                </div>
-                <div class="text-center mt-12">
-                    <a href="/pages/blog.html"
-                        class="inline-block border border-brand-dark text-brand-dark font-bold px-8 py-3 rounded-full hover:bg-brand-dark hover:text-white transition-colors">View
-                        All Publications</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Courses -->
-        <section class="py-12 bg-[#d7dee9]">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div
-                    class="text-center w-full mb-16 flex flex-col items-center justify-center border-b border-gray-200 pb-6">
-                    <div class="text-center">
-                        <h2 class="text-4xl font-heading font-extrabold text-brand-dark mb-4">Upcoming Training</h2>
-                        <p class="text-lg text-gray-500 mb-4">Upgrade your expertise with structured programs.</p>
-                        <a href="/pages/courses.html"
-                            class="text-brand-accent font-bold hover:text-brand-dark transition-colors inline-flex items-center">
-                            Explore All Courses <i class="fas fa-arrow-right ml-2 text-sm"></i>
-                        </a>
-                    </div>
-                </div>
-                <div id="featured-courses-container" class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- Course Cards -->
-                </div>
-            </div>
-        </section>
 
 
     </main>
@@ -195,17 +82,16 @@
     <div id="footer-placeholder"></div>
 
     <!-- Modals from Javascript -->
+    <div id="research-modal-placeholder"></div>
     <div id="modal-placeholder"></div>
     <div id="social-buttons-placeholder"></div>
 
     <!-- Core Scripts -->
-    <script src="/utils/helpers.js"></script>
-    <script src="/js/loadComponents.js"></script>
-    <script src="/js/languageSwitcher.js"></script>
-    <script src="/js/dataLoader.js"></script>
-    <script src="/js/pdfHandler.js"></script>
-    <script src="/js/socialAutoPost.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="utils/helpers.js"></script>
+    <script src="js/loadComponents.js"></script>
+    <script src="js/languageSwitcher.js"></script>
+    <script src="js/dataLoader.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,10 @@
+{
+  "mandate": {
+    "visionTitle": "Global Policy Leadership",
+    "visionText": "To be a global leader in evidence-based research and inclusive policy development, bridging the gap between theoretical knowledge and practical solutions for sustainable development.",
+    "missionTitle": "Empowering Innovation",
+    "missionList": "<li class='flex items-start gap-3'><i class='fa-solid fa-check text-brand-accent mt-1'></i> <span>Conduct high-impact multidisciplinary research to solve complex social and economic challenges.</span></li><li class='flex items-start gap-3'><i class='fa-solid fa-check text-brand-accent mt-1'></i> <span>Provide cutting-edge capacity-building programs for governments, NGOs, and the private sector.</span></li><li class='flex items-start gap-3'><i class='fa-solid fa-check text-brand-accent mt-1'></i> <span>Foster collaborative networks between academia, policy-makers, and practitioners.</span></li>",
+    "approachTitle": "Our Scientific Methodology",
+    "approachContent": "<div><p class='mb-4'>We employ a multi-layered approach to policy development, starting with rigorous data collection and econometric analysis. Our team utilizes both quantitative and qualitative methods to ensure a holistic understanding of the landscape.</p><p>By integrating stakeholders at every stage, we ensure that our recommendations are not only scientifically sound but also practically implementable and socially sustainable.</p></div><div><p class='mb-4'>Global perspective, local impact. We scale our findings through international partnerships while maintaining a sharp focus on the specific cultural and institutional nuances of the regions we serve.</p><ul class='space-y-2 mt-4 text-brand-accent font-bold'><li>Rigor & Integrity</li><li>Innovation & Agility</li><li>Inclusivity & Impact</li></ul></div>"
+  }
+}

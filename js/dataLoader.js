@@ -7,18 +7,16 @@
  * Lists out the explicit locations to the database files to avoid re-writing URLs on functions.
  */
 const DATA_PATHS = {
-    projects: '/data/projects.json',
-    blogs: '/data/blogs.json',
-    courses: '/data/courses.json',
-    events: '/data/events.json',
-    research: '/data/research.json',
-    policy: '/data/policy.json'
+    home: '/data/home',
+    researchWing: '/data/research-wing',
+    mandate: '/data/mandate',
+    governance: '/data/governance'
 };
 
 /**
  * Loads data and array maps it to a specific HTML Component file, injecting it into a container.
  */
-async function loadAndRenderCards(dataPath, containerId, templatePath) {
+async function loadAndRenderCards(dataPath, containerId, templatePath, filterKey = null, filterValue = null) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
@@ -33,8 +31,17 @@ async function loadAndRenderCards(dataPath, containerId, templatePath) {
         const templateHtml = await templateRes.text();
         let htmlContent = '';
 
+        // Filter data if criteria provided
+        let filteredData = data;
+        if (filterKey && filterValue) {
+            filteredData = data.filter(item => {
+                // Support case-insensitive matching
+                return String(item[filterKey] || '').toLowerCase() === String(filterValue).toLowerCase();
+            });
+        }
+
         // Iterate over the parsed JSON array dynamically 
-        data.forEach(item => {
+        filteredData.forEach(item => {
             let cardHtml = templateHtml;
             
             // For every Key:Value mapping inside the JSON (eg. "title": "Example"), 
@@ -63,34 +70,305 @@ async function loadAndRenderCards(dataPath, containerId, templatePath) {
 }
 
 /**
+ * Renders a component using provided data (object).
+ */
+function renderComponent(containerId, templatePath, data) {
+    const container = document.getElementById(containerId);
+    if (!container) return;
+
+    const finalPath = typeof getRelativePath === 'function' ? getRelativePath(templatePath) : templatePath;
+    fetch(finalPath)
+        .then(res => res.ok ? res.text() : null)
+        .then(templateHtml => {
+            if (!templateHtml) return;
+            let htmlContent = templateHtml;
+
+            for (const key in data) {
+                const regex = new RegExp(`{{${key}}}`, 'g');
+                htmlContent = htmlContent.replace(regex, data[key] || '');
+            }
+
+            htmlContent = htmlContent.replace(/{{.*?}}/g, '');
+            container.innerHTML = htmlContent;
+
+            // Force script execution
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
+
+            if (window.applyTranslations) window.applyTranslations(container);
+        })
+        .catch(console.error);
+}
+
+/**
+ * Renders a list of items into a container using a template.
+ */
+async function renderList(containerId, templatePath, items) {
+    const container = document.getElementById(containerId);
+    if (!container || !items || !Array.isArray(items)) return;
+
+    const finalPath = typeof getRelativePath === 'function' ? getRelativePath(templatePath) : templatePath;
+    const res = await fetch(finalPath);
+    if (!res.ok) return;
+    const templateHtml = await res.text();
+
+    let htmlContent = '';
+    items.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
+}
+
+/**
  * GLOBAL DISPATCHER INVOKER
  * Fired instantly from `main.js` upon completion of the basic layout components.
  * Configured explicitly linking logical specific arrays into defined matching front-end containers mapped across any site page.
  */
 // Global invocation - called specifically in various pages
 window.initDataLoading = function () {
-    loadAndRenderCards(DATA_PATHS.projects, 'completed-projects-container', '/components/card-project.html');
-    loadAndRenderCards(DATA_PATHS.projects, 'ongoing-projects-container', '/components/card-project.html');
+    const lang = window.currentLang || 'en';
+    const homeDataPath = `${DATA_PATHS.home}-${lang}.json`;
 
-    loadAndRenderCards(DATA_PATHS.blogs, 'latest-blogs-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.blogs, 'all-blogs-container', '/components/card-blog.html');
+    fetchJSON(homeDataPath)
+        .then(data => {
+            if (!data) return;
 
-    // Research Hook Assignments
-    loadAndRenderCards(DATA_PATHS.research, 'micro-research-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.research, 'macro-research-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.research, 'monetary-research-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.research, 'international-research-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.research, 'development-research-container', '/components/card-blog.html');
-    loadAndRenderCards(DATA_PATHS.research, 'public-research-container', '/components/card-blog.html');
+            // Render sections using consolidated data
+            if (data.about) renderComponent('section-about-placeholder', '/components/section-about.html', data.about);
+            if (data.stats) renderComponent('section-stats-placeholder', '/components/section-stats.html', data.stats);
+            if (data.featuredResearch) renderComponent('section-featured-research-placeholder', '/components/section-featured-research.html', data.featuredResearch);
+            if (data.trainingHeader) renderComponent('section-training-header-placeholder', '/components/section-training-header.html', data.trainingHeader);
+            
+            // Note: insightsHeader was deleted previously but we keep the logic ready if added back to JSON
+            if (data.insightsHeader) renderComponent('section-insights-header-placeholder', '/components/section-insights-header.html', data.insightsHeader);
 
-    // Policy Assignments
-    loadAndRenderCards(DATA_PATHS.policy, 'policy-container', '/components/card-blog.html');
-
-    // Course Mappings
-    loadAndRenderCards(DATA_PATHS.courses, 'featured-courses-container', '/components/card-course.html');
-    loadAndRenderCards(DATA_PATHS.courses, 'trainings-container', '/components/card-course.html');
-    loadAndRenderCards(DATA_PATHS.courses, 'online-courses-container', '/components/card-course.html');
-    
-    // Load Events Data
-    loadAndRenderCards(DATA_PATHS.events, 'events-container', '/components/card-event.html');
+            // Fetch full research data and load modal for featured research interaction
+            if (data.featuredResearch) {
+                const researchPath = `${DATA_PATHS.researchWing}-${lang}.json`;
+                fetchJSON(researchPath).then(resData => {
+                    allResearchData = resData || [];
+                });
+                
+                const modalPlaceholder = document.getElementById('research-modal-placeholder');
+                if (modalPlaceholder) {
+                    const modalPath = typeof getRelativePath === 'function' ? getRelativePath('/components/modal-research.html') : '/components/modal-research.html';
+                    fetch(modalPath).then(res => {
+                        if (res.ok) res.text().then(html => modalPlaceholder.innerHTML = html);
+                    });
+                }
+            }
+        })
+        .catch(console.error);
 }
+
+// ===========================================
+// [RESEARCH WING SPECIALIZED LOGIC]
+// ===========================================
+
+let allResearchData = [];
+let currentCategory = 'All';
+let currentType = 'All';
+
+/**
+ * Initializes the Research Wing page data and interactions.
+ */
+window.initResearchWing = async function() {
+    const lang = window.currentLang || 'en';
+    const researchDataPath = `${DATA_PATHS.researchWing}-${lang}.json`;
+
+    // 1. Load the Modal Component once
+    const modalPlaceholder = document.getElementById('research-modal-placeholder');
+    if (modalPlaceholder) {
+        const modalPath = typeof getRelativePath === 'function' ? getRelativePath('/components/modal-research.html') : '/components/modal-research.html';
+        const modalRes = await fetch(modalPath);
+        if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
+    }
+
+    // 2. Fetch and Store Data
+    allResearchData = await fetchJSON(researchDataPath);
+    if (!allResearchData) return;
+
+    // 3. Initial Render
+    window.renderResearchCards();
+};
+
+/**
+ * Filters data and re-renders the grid.
+ */
+window.filterByCategory = function(category) {
+    currentCategory = category;
+    
+    // Update active UI state
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        const btnText = btn.innerText.trim().toLowerCase();
+        const searchCat = category.toLowerCase();
+        const isActive = (searchCat === 'all' && btnText === 'all fields') || (btnText === searchCat);
+        
+        if (isActive) {
+            btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent', 'shadow-md');
+            btn.classList.remove('bg-white', 'text-brand-dark', 'border-gray-200');
+        } else {
+            btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent', 'shadow-md');
+            btn.classList.add('bg-white', 'text-brand-dark', 'border-gray-200');
+        }
+    });
+
+    window.renderResearchCards();
+};
+
+window.filterByType = function(type) {
+    currentType = type;
+
+    // Update active UI state
+    document.querySelectorAll('.type-btn').forEach(btn => {
+        const btnText = btn.innerText.trim().toLowerCase();
+        const searchType = type.toLowerCase();
+        
+        // Match logic: Exact match or special "all types" case
+        const isActive = (searchType === 'all' && btnText === 'all types') || 
+                        (btnText === searchType) ||
+                        (searchType !== 'all' && btnText.includes(searchType.split(' ')[0]));
+        
+        if (isActive) {
+            btn.classList.add('text-brand-accent', 'border-brand-accent', 'border-b-2');
+            btn.classList.remove('text-brand-dark/50', 'border-transparent');
+        } else {
+            btn.classList.remove('text-brand-accent', 'border-brand-accent', 'border-b-2');
+            btn.classList.add('text-brand-dark/50', 'border-transparent');
+        }
+    });
+
+    window.renderResearchCards();
+};
+
+/**
+ * Renders research cards based on current filters.
+ */
+window.renderResearchCards = async function() {
+    const container = document.getElementById('research-wing-container');
+    if (!container) return;
+
+    const filtered = allResearchData.filter(item => {
+        const catMatch = currentCategory === 'All' || item.category === currentCategory;
+        const typeMatch = currentType === 'All' || item.type === currentType;
+        return catMatch && typeMatch;
+    });
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No research articles found for the selected filters.</div>`;
+        return;
+    }
+
+    const templatePath = typeof getRelativePath === 'function' ? getRelativePath('/components/card-research.html') : '/components/card-research.html';
+    const templateRes = await fetch(templatePath);
+    if (!templateRes.ok) return;
+    const templateHtml = await templateRes.text();
+
+    let htmlContent = '';
+    filtered.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
+};
+
+/**
+ * Handles Modal Data Binding and Visibility
+ */
+window.openResearchModal = function(id) {
+    const item = allResearchData.find(r => r.id === id);
+    if (!item) return;
+
+    const modal = document.getElementById('research-modal');
+    if (!modal) return;
+
+    // Data Binding
+    document.getElementById('modal-category').innerText = item.category;
+    document.getElementById('modal-type').innerText = item.type;
+    document.getElementById('modal-article-title').innerText = item.articleTitle || item.title;
+    document.getElementById('modal-date').innerText = item.date;
+    document.getElementById('modal-team').innerText = item.team;
+    document.getElementById('modal-details').innerText = item.details;
+
+    // PDF Preview
+    const previewFrame = document.getElementById('modal-pdf-preview');
+    const placeholder = document.getElementById('modal-preview-placeholder');
+    if (item.previewUrl) {
+        previewFrame.src = item.previewUrl;
+        previewFrame.classList.remove('hidden');
+        placeholder.classList.add('hidden');
+    } else {
+        previewFrame.src = "";
+        previewFrame.classList.add('hidden');
+        placeholder.classList.remove('hidden');
+    }
+
+    // Buttons
+    document.getElementById('modal-preview-btn').href = item.previewUrl || '#';
+    document.getElementById('modal-download-btn').href = item.downloadUrl || '#';
+
+    // Show Modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden'; // Prevent scroll
+};
+
+window.closeResearchModal = function() {
+    const modal = document.getElementById('research-modal');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = ''; // Restore scroll
+    
+    // Stop iframe content
+    document.getElementById('modal-pdf-preview').src = "";
+};
+
+// ===========================================
+// [ABOUT US: MANDATE & GOVERNANCE]
+// ===========================================
+
+window.initMandatePage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.mandate}-${lang}.json`;
+
+    const data = await fetchJSON(dataPath);
+    if (!data || !data.mandate) return;
+
+    renderComponent('section-mandate-placeholder', '/components/section-mandate.html', data.mandate);
+};
+
+window.initGovernancePage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.governance}-${lang}.json`;
+
+    const data = await fetchJSON(dataPath);
+    if (!data || !data.governance) return;
+
+    // Header Content
+    document.getElementById('board-title').innerText = data.governance.boardTitle;
+    document.getElementById('board-summary').innerText = data.governance.boardSummary;
+    document.getElementById('team-title').innerText = data.governance.teamTitle;
+    document.getElementById('team-summary').innerText = data.governance.teamSummary;
+
+    // Render Lists
+    renderList('board-grid-placeholder', '/components/card-member.html', data.governance.board);
+    renderList('team-grid-placeholder', '/components/card-member.html', data.governance.team);
+};

@@ -1,0 +1,42 @@
+{
+  "governance": {
+    "boardTitle": "Board of Governors",
+    "boardSummary": "The strategic leadership overseeing FRPD's global operations and ethical standards.",
+    "teamTitle": "Our Research & Policy Team",
+    "teamSummary": "The multidisciplinary experts driving our daily research and innovation efforts.",
+    "board": [
+      {
+        "name": "Dr. Sarah Johnson",
+        "role": "Chairperson",
+        "image": "/assets/images/sample1.jpg",
+        "bio": "Over 25 years of experience in global economic policy and institutional reform. Former advisor to international development banks."
+      },
+      {
+        "name": "Prof. David Chen",
+        "role": "Strategy Director",
+        "image": "/assets/images/sample2.png",
+        "bio": "Expert in quantitative economics and strategic foresight. Leads our long-term research roadmap."
+      }
+    ],
+    "team": [
+      {
+        "name": "Michael Okafor",
+        "role": "Lead Researcher",
+        "image": "/assets/images/sample3.png",
+        "bio": "Specializes in microeconomic modeling and supply chain dynamics in emerging markets."
+      },
+      {
+        "name": "Elena Rodriguez",
+        "role": "Policy Analyst",
+        "image": "/assets/images/sample1.jpg",
+        "bio": "Focuses on social policy and inclusive development frameworks for rural communities."
+      },
+      {
+        "name": "Dr. Ahmed Mansour",
+        "role": "Capacity Building Lead",
+        "image": "/assets/images/sample2.png",
+        "bio": "Dedicated to developing high-impact training programs for public sector professionals."
+      }
+    ]
+  }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav_governance">FRPD - Governance</title>
+    <link rel="icon" type="image/jpeg" href="../assets/icons/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', light: '#1e293b', accent: '#3b82f6', white: '#f8fafc', gray: '#f1f5f9' } }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-brand-dark py-20 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute inset-0 bg-gradient-to-r from-brand-accent to-transparent"></div>
+            </div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <h1 class="text-5xl font-heading font-bold text-white mb-6" data-i18n="nav_governance">Governance</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed animate__animated animate__fadeInUp">
+                    Integrity, transparency, and strategic foresight. Our governance structure ensures FRPD remains a trusted leader in global development.
+                </p>
+            </div>
+        </section>
+
+        <!-- Board of Governors Section -->
+        <section class="py-24 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-16">
+                    <h2 id="board-title" class="text-3xl font-heading font-bold text-brand-dark mb-4">Board of Governors</h2>
+                    <p id="board-summary" class="text-gray-500 max-w-2xl"></p>
+                </div>
+                <div id="board-grid-placeholder" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Board Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="py-24 bg-brand-gray">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-16">
+                    <h2 id="team-title" class="text-3xl font-heading font-bold text-brand-dark mb-4">Our Team</h2>
+                    <p id="team-summary" class="text-gray-500 max-w-2xl"></p>
+                </div>
+                <div id="team-grid-placeholder" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Team Cards -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <script src="../utils/helpers.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="../js/languageSwitcher.js"></script>
+    <script src="../js/dataLoader.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const checkInit = setInterval(() => {
+                if (window.initGovernancePage) {
+                    window.initGovernancePage();
+                    clearInterval(checkInit);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

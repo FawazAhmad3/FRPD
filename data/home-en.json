@@ -1,0 +1,45 @@
+{
+    "about": {
+        "title": "FRPD",
+        "summary": "Firm of Research and Policy Development (FRPD) is a premier organization dedicated to advancing multidisciplinary research, offering cutting-edge training, and driving policy innovation globally."
+    },
+    "stats": {
+        "researchesTarget": "120",
+        "researchesSuffix": "+",
+        "researchesLabel": "Researches",
+        "projectsTarget": "65",
+        "projectsSuffix": "",
+        "projectsLabel": "Global Projects",
+        "blogsTarget": "500",
+        "blogsSuffix": "+",
+        "blogsLabel": "Insights & Blogs",
+        "expertsTarget": "10",
+        "expertsSuffix": "k+",
+        "expertsLabel": "Trained Experts"
+    },
+    "trainingHeader": {
+        "title": "Upcoming Training",
+        "summary": "Upgrade your expertise with structured programs.",
+        "linkText": "Explore All Courses",
+        "linkUrl": "/pages/courses.html"
+    },
+    "featuredResearch": {
+        "title": "Featured Research",
+        "summary": "Exploring the frontiers of economic and policy innovation.",
+        "res1_id": "res-001",
+        "res1_title": "Supply Chain Resilience",
+        "res1_image": "/assets/images/sample1.jpg",
+        "res1_category": "Microeconomics",
+        "res1_type": "Ongoing Projects",
+        "res2_id": "res-002",
+        "res2_title": "Monetary Policy Trends",
+        "res2_image": "/assets/images/sample2.png",
+        "res2_category": "Macroeconomics",
+        "res2_type": "Thematic Initiatives",
+        "res3_id": "res-003",
+        "res3_title": "Trade & Digital Services",
+        "res3_image": "/assets/images/sample3.png",
+        "res3_category": "International Economics",
+        "res3_type": "Completed Studies"
+    }
+}

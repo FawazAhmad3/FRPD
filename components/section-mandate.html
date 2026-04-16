@@ -1,0 +1,41 @@
+<!-- section-mandate.html -->
+<section class="py-20 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Vision & Mission -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+            <div class="animate__animated animate__fadeInLeft">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-accent/10 text-brand-accent rounded-full text-xs sm:text-sm font-bold uppercase mb-6">
+                    <i class="fa-solid fa-telescope"></i> Our Vision
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-heading font-bold text-brand-dark mb-4 sm:mb-6">{{visionTitle}}</h2>
+                <p class="text-base sm:text-lg text-gray-600 leading-relaxed italic">
+                    "{{visionText}}"
+                </p>
+            </div>
+            <div class="animate__animated animate__fadeInRight bg-brand-gray p-6 sm:p-10 rounded-3xl relative">
+                <div class="absolute -top-6 -right-6 w-24 h-24 bg-brand-accent/10 rounded-full blur-2xl"></div>
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-brand-accent text-white rounded-full text-xs sm:text-sm font-bold uppercase mb-6">
+                    <i class="fa-solid fa-crosshairs"></i> Our Mission
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-heading font-bold text-brand-dark mb-4 sm:mb-6">{{missionTitle}}</h2>
+                <ul class="space-y-4">
+                    {{missionList}}
+                </ul>
+            </div>
+        </div>
+
+        <!-- Approach -->
+        <div class="animate__animated animate__fadeInUp bg-brand-dark text-white p-8 sm:p-12 lg:p-20 rounded-[2rem] sm:rounded-[3rem] relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-brand-accent opacity-10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+            <div class="relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 text-brand-accent rounded-full text-xs sm:text-sm font-bold uppercase mb-6">
+                    <i class="fa-solid fa-route"></i> Our Approach
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-heading font-bold mb-6 sm:mb-8">{{approachTitle}}</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 text-gray-300 text-base sm:text-lg leading-relaxed">
+                    {{approachContent}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

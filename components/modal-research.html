@@ -1,0 +1,59 @@
+<!-- modal-research.html -->
+<div id="research-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm" onclick="window.closeResearchModal()"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row animate__animated animate__zoomIn animate__faster">
+        <!-- Close Button -->
+        <button onclick="window.closeResearchModal()" class="absolute top-4 right-4 z-[110] w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center text-brand-dark hover:text-red-500 transition-colors">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <!-- Preview Area -->
+        <div class="w-full md:w-3/5 bg-brand-gray border-r border-gray-100 min-h-[400px]">
+            <iframe id="modal-pdf-preview" src="" class="w-full h-full border-none" allow="autoplay"></iframe>
+            <div id="modal-preview-placeholder" class="w-full h-full flex flex-col items-center justify-center p-12 text-center text-gray-400">
+                <i class="fa-solid fa-file-pdf text-6xl mb-4 opacity-20"></i>
+                <p>Preview not available for this article</p>
+            </div>
+        </div>
+
+        <!-- Detail Area -->
+        <div class="w-full md:w-2/5 p-8 overflow-y-auto bg-white flex flex-col">
+            <div class="mb-6">
+                <span id="modal-category" class="px-3 py-1 bg-brand-accent/10 text-brand-accent text-xs font-bold rounded-full uppercase tracking-wider mb-3">Category</span>
+                <span id="modal-type" class="block mt-2 text-gray-400 text-xs font-medium">Research Type</span>
+            </div>
+
+            <h2 id="modal-article-title" class="text-3xl font-heading font-bold text-brand-dark mb-4 leading-tight">Article Title</h2>
+            
+            <div class="space-y-4 mb-8">
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fa-solid fa-calendar-day w-6 text-brand-accent"></i>
+                    <span id="modal-date">Date</span>
+                </div>
+                <div class="flex items-center text-sm text-gray-500">
+                    <i class="fa-solid fa-users w-6 text-brand-accent"></i>
+                    <span id="modal-team">FRPD Research Team</span>
+                </div>
+            </div>
+
+            <div class="flex-grow">
+                <h4 class="text-sm font-bold text-brand-dark uppercase tracking-widest mb-3 opacity-50">About this research</h4>
+                <p id="modal-details" class="text-gray-600 leading-relaxed text-sm"></p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-2 gap-4">
+                <a id="modal-preview-btn" href="#" target="_blank" class="flex items-center justify-center gap-2 px-6 py-3 bg-brand-gray text-brand-dark font-bold rounded-xl hover:bg-gray-200 transition-colors">
+                    <i class="fa-solid fa-eye"></i>
+                    Preview
+                </a>
+                <a id="modal-download-btn" href="#" target="_blank" class="flex items-center justify-center gap-2 px-6 py-3 bg-brand-accent text-white font-bold rounded-xl hover:bg-blue-600 shadow-lg shadow-brand-accent/20 transition-all active:scale-95">
+                    <i class="fa-solid fa-download"></i>
+                    Download
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
