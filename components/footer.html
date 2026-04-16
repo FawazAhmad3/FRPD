@@ -1,92 +1,172 @@
-<footer class="bg-white text-gray-700 mt-auto border-t-8 border-brand-accent">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            
-            <!-- Left Side: Brand & Quick links -->
-            <div class="lg:col-span-7 space-y-10">
-                <!-- Branding -->
-                <div class="flex items-center gap-6">
-                    <img src="/assets/icons/logo.png" alt="FRPD" class="h-24 w-auto object-contain">
-                    <div class="border-l-2 border-gray-200 pl-6">
-                        <h3 class="text-3xl font-heading font-bold text-gray-900 leading-tight">FRPD</h3>
-                        <p class="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-gray-500">Firm of Research, Policy and Development</p>
-                    </div>
-                </div>
-
-                <!-- Specialized Link Grid -->
-                <div class="flex flex-wrap gap-x-6 gap-y-4 text-sm font-medium border-y border-gray-100 py-6">
-                    <a href="/pages/research-wing.html" class="hover:text-brand-accent transition-colors">Research Wing</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/online-courses.html" class="hover:text-brand-accent transition-colors">Online Courses</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/capacity-building.html" class="hover:text-brand-accent transition-colors">Capacity Building</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/datahub.html" class="hover:text-brand-accent transition-colors">DataHub</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/mandate.html" class="hover:text-brand-accent transition-colors">Mandate</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/governance.html" class="hover:text-brand-accent transition-colors">Governance</a>
-                    <span class="text-gray-300">|</span>
-                    <a href="/pages/contact.html" class="hover:text-brand-accent transition-colors">Contact Us</a>
-                </div>
-
-                <!-- Affiliations Removed per user request -->
-                <div class="pt-2 text-sm text-gray-500 leading-relaxed italic">
-                    Providing multidisciplinary research, cutting-edge training, and driving policy innovation globally.
-                </div>
-            </div>
-
-            <!-- Right Side: Subscribe & Contact -->
-            <div class="lg:col-span-5 space-y-10">
-                <!-- Subscribe -->
-                <div class="text-center lg:text-left">
-                    <h4 class="text-2xl font-heading font-bold text-gray-900 mb-2">Subscribe</h4>
-                    <p class="text-sm text-gray-500 mb-4">Select topics and stay current with our latest insights</p>
-                    <form id="footer-newsletter-form" class="flex max-w-md mx-auto lg:ml-0 overflow-hidden border border-gray-300 rounded shadow-sm focus-within:border-brand-accent transition-all">
-                        <input type="email" name="email" required placeholder="Your e-mail here" class="flex-grow px-4 py-3 text-sm focus:outline-none bg-transparent">
-                        <button type="submit" class="bg-brand-accent text-white px-6 hover:bg-blue-600 transition-colors">
-                            <i class="fas fa-envelope"></i>
-                        </button>
-                    </form>
-                    <p id="newsletter-status" class="mt-2 text-xs font-semibold hidden"></p>
-                </div>
-
-                <!-- Contact & Staff -->
-                <div class="space-y-6">
-                    <div class="space-y-4">
-                        <div class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4">
-                            <i class="fas fa-phone text-brand-accent"></i>
-                            <span class="font-medium group-hover:text-brand-accent">+92 51 9248051</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4">
-                            <i class="fas fa-envelope text-brand-accent"></i>
-                            <span class="font-medium group-hover:text-brand-accent">info@frpd.org.pk</span>
-                        </div>
-                        <div class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4 pb-2">
-                            <i class="fas fa-map-marker-alt text-brand-accent"></i>
-                            <span class="font-medium group-hover:text-brand-accent">FRPD, QAU Campus, Islamabad</span>
-                        </div>
-                    </div>
-                    
-                    <div class="text-right">
-                        <a href="/pages/governance.html" class="inline-flex items-center gap-2 text-brand-accent font-bold text-sm hover:gap-3 transition-all">
-                            Explore Staff Directory <i class="fas fa-chevron-right text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
+<footer class="bg-blue-50 text-gray-700 mt-auto border-t-8 border-brand-accent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Left Side: Brand & Quick links -->
+      <div class="lg:col-span-7 space-y-10">
+        <!-- Branding -->
+        <div class="flex items-center gap-6">
+          <img
+            src="/assets/icons/logo.png"
+            alt="FRPD"
+            class="h-24 w-auto object-contain"
+          />
+          <div class="border-l-2 border-gray-200 pl-6">
+            <h3
+              class="text-3xl font-heading font-bold text-gray-900 leading-tight"
+            >
+              FRPD
+            </h3>
+            <p
+              class="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-bold text-gray-500"
+            >
+              Firm of Research, Policy and Development
+            </p>
+          </div>
         </div>
-    </div>
 
-    <!-- Copyright Bar -->
-    <div class="bg-brand-dark text-white py-6">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm font-medium tracking-wide">
-            &copy; <span id="year"></span> Firm of Research, Policy and Development. All rights reserved.
+        <!-- Specialized Link Grid -->
+        <div
+          class="flex flex-wrap gap-x-6 gap-y-4 text-sm font-medium border-y border-gray-100 py-6"
+        >
+          <a
+            href="/pages/research-wing.html"
+            class="hover:text-brand-accent transition-colors"
+            >Research Wing</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/online-courses.html"
+            class="hover:text-brand-accent transition-colors"
+            >Online Courses</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/capacity-building.html"
+            class="hover:text-brand-accent transition-colors"
+            >Capacity Building</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/datahub.html"
+            class="hover:text-brand-accent transition-colors"
+            >DataHub</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/mandate.html"
+            class="hover:text-brand-accent transition-colors"
+            >Mandate</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/governance.html"
+            class="hover:text-brand-accent transition-colors"
+            >Governance</a
+          >
+          <span class="text-gray-300">|</span>
+          <a
+            href="/pages/contact.html"
+            class="hover:text-brand-accent transition-colors"
+            >Contact Us</a
+          >
         </div>
-    </div>
 
-    <script src="/js/newsletter.js"></script>
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
+        <!-- Affiliations Removed per user request -->
+        <div class="pt-2 text-sm text-gray-500 leading-relaxed italic">
+          Providing multidisciplinary research, cutting-edge training, and
+          driving policy innovation globally.
+        </div>
+      </div>
+
+      <!-- Right Side: Subscribe & Contact -->
+      <div class="lg:col-span-5 space-y-10">
+        <!-- Subscribe -->
+        <div class="text-center lg:text-left">
+          <h4 class="text-2xl font-heading font-bold text-gray-900 mb-2">
+            Subscribe
+          </h4>
+          <p class="text-sm text-gray-500 mb-4">
+            Select topics and stay current with our latest insights
+          </p>
+          <form
+            id="footer-newsletter-form"
+            class="flex max-w-md mx-auto lg:ml-0 overflow-hidden border border-gray-300 rounded shadow-sm focus-within:border-brand-accent transition-all"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Your e-mail here"
+              class="flex-grow px-4 py-3 text-sm focus:outline-none bg-transparent"
+            />
+            <button
+              type="submit"
+              class="bg-brand-accent text-white px-6 hover:bg-blue-600 transition-colors"
+            >
+              <i class="fas fa-envelope"></i>
+            </button>
+          </form>
+          <p
+            id="newsletter-status"
+            class="mt-2 text-xs font-semibold hidden"
+          ></p>
+        </div>
+
+        <!-- Contact & Staff -->
+        <div class="space-y-6">
+          <div class="space-y-4">
+            <div
+              class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4"
+            >
+              <i class="fas fa-phone text-brand-accent"></i>
+              <span class="font-medium group-hover:text-brand-accent"
+                >0092 344 9198158</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4"
+            >
+              <i class="fas fa-envelope text-brand-accent"></i>
+              <span class="font-medium group-hover:text-brand-accent"
+                >info@frpd.pk</span
+              >
+            </div>
+            <div
+              class="flex items-center gap-4 text-sm group cursor-pointer border-t border-gray-50 pt-4 pb-2"
+            >
+              <i class="fas fa-map-marker-alt text-brand-accent"></i>
+              <span class="font-medium group-hover:text-brand-accent"
+                >CDA Headworks Road, Barakahu, Islamabad</span
+              >
+            </div>
+          </div>
+
+          <div class="text-right">
+            <a
+              href="/pages/governance.html"
+              class="inline-flex items-center gap-2 text-brand-accent font-bold text-sm hover:gap-3 transition-all"
+            >
+              Explore Staff Directory
+              <i class="fas fa-chevron-right text-[10px]"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright Bar -->
+  <div class="bg-brand-dark text-white py-6">
+    <div
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm font-medium tracking-wide"
+    >
+      &copy; <span id="year"></span> Firm of Research, Policy and Development.
+      All rights reserved.
+    </div>
+  </div>
+
+  <script src="/js/newsletter.js"></script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </footer>

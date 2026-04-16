@@ -10,7 +10,8 @@ const DATA_PATHS = {
     home: '/data/home',
     researchWing: '/data/research-wing',
     mandate: '/data/mandate',
-    governance: '/data/governance'
+    governance: '/data/governance',
+    contact: '/data/contact'
 };
 
 /**
@@ -72,16 +73,17 @@ async function loadAndRenderCards(dataPath, containerId, templatePath, filterKey
 /**
  * Renders a component using provided data (object).
  */
-function renderComponent(containerId, templatePath, data) {
+async function renderComponent(containerId, templatePath, data) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
-    const finalPath = typeof getRelativePath === 'function' ? getRelativePath(templatePath) : templatePath;
-    fetch(finalPath)
-        .then(res => res.ok ? res.text() : null)
-        .then(templateHtml => {
-            if (!templateHtml) return;
-            let htmlContent = templateHtml;
+    try {
+        const finalPath = typeof getRelativePath === 'function' ? getRelativePath(templatePath) : templatePath;
+        const res = await fetch(finalPath);
+        if (!res.ok) throw new Error(`Template load failed for ${templatePath}`);
+        
+        let templateHtml = await res.text();
+        let htmlContent = templateHtml;
 
             for (const key in data) {
                 const regex = new RegExp(`{{${key}}}`, 'g');
@@ -101,8 +103,9 @@ function renderComponent(containerId, templatePath, data) {
             });
 
             if (window.applyTranslations) window.applyTranslations(container);
-        })
-        .catch(console.error);
+    } catch (e) {
+        console.error(`Error in renderComponent for ${templatePath}:`, e);
+    }
 }
 
 /**
@@ -370,5 +373,41 @@ window.initGovernancePage = async function() {
 
     // Render Lists
     renderList('board-grid-placeholder', '/components/card-member.html', data.governance.board);
-    renderList('team-grid-placeholder', '/components/card-member.html', data.governance.team);
+    renderList('team-container', '/components/card-member.html', data.governance.team);
+};
+
+window.initContactPage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.contact}-${lang}.json`;
+
+    const data = await fetchJSON(dataPath);
+    if (!data) return;
+
+    // Header Content
+    if (data.hero) {
+        if (document.getElementById('contact-hero-title')) document.getElementById('contact-hero-title').innerText = data.hero.title;
+        if (document.getElementById('contact-hero-description')) document.getElementById('contact-hero-description').innerText = data.hero.description;
+    }
+
+    // Contact Section
+    await renderComponent('contact-section-placeholder', '/components/section-contact.html', data.details);
+
+    // Update individual fields after rendering (if using IDs inside the template)
+    if (data.details) {
+        if (document.getElementById('contact-phone')) document.getElementById('contact-phone').innerText = data.details.phone;
+        if (document.getElementById('contact-email')) document.getElementById('contact-email').innerText = data.details.email;
+        if (document.getElementById('contact-address')) document.getElementById('contact-address').innerText = data.details.address;
+        if (document.getElementById('contact-hours')) document.getElementById('contact-hours').innerText = data.details.workHours;
+    }
+
+    // Map Update
+    if (data.map && data.map.embedUrl) {
+        const mapFrame = document.getElementById('contact-map');
+        if (mapFrame) mapFrame.src = data.map.embedUrl;
+    }
+
+    // New: Departmental Contacts
+    if (data.departments) {
+        renderList('departments-grid', '/components/card-department.html', data.departments);
+    }
 };

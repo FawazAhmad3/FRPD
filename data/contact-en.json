@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "title": "Contact Us",
+    "description": "Have questions or need assistance? Reach out to us through any of the channels below."
+  },
+  "details": {
+    "phone": "0092 344 9198158",
+    "email": "info@frpd.pk",
+    "address": "CDA Headworks Road, Barakahu, Islamabad",
+    "workHours": "Monday - Friday: 9:00 AM - 5:00 PM"
+  },
+  "map": {
+    "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13271.6022359489!2d73.1812!3d33.7389!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38dfbf848c1a9333%3A0xe549cd97b0a7c9f!2sCDA%20Head%20Works%20Rd%2C%20Islamabad!5e0!3m2!1sen!2spk!4v1713250000000!5m2!1sen!2spk"
+  },
+  "departments": [
+    {
+      "name": "Admin Office",
+      "phone": "+92-51 9248051",
+      "email": "admin@frpd.pk"
+    },
+    {
+      "name": "Research Wing",
+      "phone": "+92-51 344 9198158",
+      "email": "research@frpd.pk"
+    },
+    {
+      "name": "Capacity Building",
+      "phone": "+92-51 9248053",
+      "email": "training@frpd.pk"
+    }
+  ]
+}
