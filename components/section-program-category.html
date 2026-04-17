@@ -1,0 +1,20 @@
+<section class="py-16 md:py-24 {{bgClass}} overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Header -->
+        <div class="flex items-center gap-6 mb-12 animate__animated animate__fadeInLeft">
+            <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center {{colorClass}} text-2xl">
+                <i class="{{icon}}"></i>
+            </div>
+            <div>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold text-brand-dark">{{title}}</h2>
+                <div class="h-1.5 w-24 bg-brand-accent mt-3 rounded-full"></div>
+            </div>
+        </div>
+
+        <!-- Programs List -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="programs-grid-{{id}}">
+            <!-- Program cards will be injected here or hardcoded if we don't need further recursion -->
+            {{programListHtml}}
+        </div>
+    </div>
+</section>

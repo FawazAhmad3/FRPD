@@ -1,0 +1,66 @@
+{
+  "en": {
+    "hero": {
+      "title": "Capacity Building Programs",
+      "description": "FRPD provides specialized capacity-building initiatives designed to empower organizations and individuals with the tools needed for sustainable development and institutional excellence."
+    },
+    "categories": [
+      {
+        "id": "policy",
+        "title": "Policy & Governance",
+        "icon": "fas fa-gavel",
+        "color": "blue",
+        "colorClass": "text-blue-600",
+        "bgClass": "bg-blue-50",
+        "programs": [
+          { "title": "Public Policy Design and Implementation Program", "url": "/pages/contact.html" },
+          { "title": "Governance, Regulatory Frameworks, and Institutional Reform Training", "url": "/pages/contact.html" },
+          { "title": "Fiscal Policy, Budgeting, and Public Financial Management Program", "url": "/pages/contact.html" },
+          { "title": "Strategic Planning and National Development Policy Program", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "data",
+        "title": "Data & Research",
+        "icon": "fas fa-chart-bar",
+        "color": "orange",
+        "colorClass": "text-orange-600",
+        "bgClass": "bg-orange-50",
+        "programs": [
+          { "title": "Applied Data Analytics and Visualization Program", "url": "/pages/contact.html" },
+          { "title": "Research Methodology and Advanced Econometrics Training", "url": "/pages/contact.html" },
+          { "title": "Impact Evaluation and Evidence-Based Policy Analysis Program", "url": "/pages/contact.html" },
+          { "title": "Big Data Management and Statistical Modeling Program", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "management",
+        "title": "Management & Leadership",
+        "icon": "fas fa-users-gear",
+        "color": "green",
+        "colorClass": "text-green-600",
+        "bgClass": "bg-green-50",
+        "programs": [
+          { "title": "Executive Leadership and Decision-Making Excellence Program", "url": "/pages/contact.html" },
+          { "title": "Project Management and Operational Efficiency Training", "url": "/pages/contact.html" },
+          { "title": "Human Resource Management and Organizational Behavior Program", "url": "/pages/contact.html" },
+          { "title": "Change Management and Institutional Leadership Development Program", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "technology",
+        "title": "Technology & Digitalization",
+        "icon": "fas fa-laptop-code",
+        "color": "indigo",
+        "colorClass": "text-indigo-600",
+        "bgClass": "bg-indigo-50",
+        "programs": [
+          { "title": "Digital Transformation and E-Governance Strategy Program", "url": "/pages/contact.html" },
+          { "title": "Artificial Intelligence and Data-Driven Decision-Making Training", "url": "/pages/contact.html" },
+          { "title": "Cybersecurity Awareness and Digital Risk Management Program", "url": "/pages/contact.html" },
+          { "title": "Information Systems and Digital Infrastructure Development Program", "url": "/pages/contact.html" }
+        ]
+      }
+    ]
+  }
+}
