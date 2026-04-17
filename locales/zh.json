@@ -26,8 +26,10 @@
     "status_ongoing": "进行中",
     "nav_datahub": "数据中心",
     "nav_what_we_do": "我们的业务",
-    "nav_research_wing": "研究分部",
-    "nav_online_courses": "在线课程",
-    "nav_mandate": "职责范围",
-    "nav_governance": "治理结构"
+    "nav_research_wing": "Research & Development (R&D)",
+    "nav_online_courses": "Executive Online Programs",
+    "nav_policy_advisory": "Policy & Advisory Services",
+    "nav_workshops_events": "Workshops & Events",
+    "nav_mandate": "授权",
+    "nav_governance": "治理"
 }

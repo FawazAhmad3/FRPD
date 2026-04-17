@@ -26,8 +26,10 @@
     "status_ongoing": "جاري",
     "nav_datahub": "مركز البيانات",
     "nav_what_we_do": "ماذا نفعل",
-    "nav_research_wing": "جناح الأبحاث",
-    "nav_online_courses": "دورات عبر الإنترنت",
+    "nav_research_wing": "Research & Development (R&D)",
+    "nav_online_courses": "Executive Online Programs",
+    "nav_policy_advisory": "Policy & Advisory Services",
+    "nav_workshops_events": "Workshops & Events",
     "nav_mandate": "التكليف",
     "nav_governance": "الحوكمة"
 }

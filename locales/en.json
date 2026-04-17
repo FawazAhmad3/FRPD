@@ -26,8 +26,10 @@
     "status_ongoing": "Ongoing",
     "nav_datahub": "DataHub",
     "nav_what_we_do": "What we do",
-    "nav_research_wing": "Research Wing",
-    "nav_online_courses": "Online courses",
+    "nav_research_wing": "Research & Development (R&D)",
+    "nav_online_courses": "Executive Online Programs",
+    "nav_policy_advisory": "Policy & Advisory Services",
+    "nav_workshops_events": "Workshops & Events",
     "nav_mandate": "Mandate",
     "nav_governance": "Governance"
 }
