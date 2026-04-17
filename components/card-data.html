@@ -1,0 +1,33 @@
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full group animate__animated animate__fadeInUp">
+    <!-- Icon & Badge Bar -->
+    <div class="p-6 pb-0 flex justify-between items-start">
+        <div class="w-12 h-12 rounded-xl bg-brand-gray flex items-center justify-center text-brand-accent text-xl group-hover:bg-brand-accent group-hover:text-white transition-all duration-300">
+            <i class="{{icon}}"></i>
+        </div>
+        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider {{accessClass}}">
+            {{access}}
+        </span>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 flex flex-col flex-grow">
+        <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">{{category}}</span>
+        <h3 class="text-lg font-heading font-bold text-brand-dark mb-2 leading-tight group-hover:text-brand-accent transition-colors">
+            {{title}}
+        </h3>
+        <p class="text-gray-500 text-sm mb-4 line-clamp-3">
+            {{description}}
+        </p>
+
+        <!-- Meta Footer -->
+        <div class="mt-auto flex items-center justify-between pt-4 border-t border-gray-50">
+            <div class="flex items-center text-[10px] font-bold text-gray-400 uppercase">
+                <i class="fas fa-file-invoice mr-2"></i>
+                <span>Format: {{format}}</span>
+            </div>
+            <a href="{{url}}" class="text-brand-accent hover:text-blue-700 transition-colors">
+                <i class="fas fa-circle-arrow-down text-xl"></i>
+            </a>
+        </div>
+    </div>
+</div>

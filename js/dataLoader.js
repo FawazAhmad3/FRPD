@@ -10,6 +10,8 @@ const DATA_PATHS = {
     home: '/data/home',
     researchWing: '/data/research-wing',
     events: '/data/events',
+    capacityBuilding: '/data/capacity-building',
+    datahub: '/data/datahub',
     mandate: '/data/mandate',
     governance: '/data/governance',
     contact: '/data/contact'
@@ -497,4 +499,99 @@ window.renderEventCards = async function() {
 
     container.innerHTML = htmlContent;
 };
+
+// ===========================================
+// [DATAHUB SPECIALIZED LOGIC]
+// ===========================================
+
+let allDataHubResources = [];
+let currentDataFilter = 'All';
+
+/**
+ * Initializes the DataHub page.
+ */
+window.initDataHubPage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.datahub}.json`;
+
+    const data = await fetchJSON(dataPath);
+    if (!data || !data[lang]) return;
+
+    const pageData = data[lang];
+
+    // 1. Hero Content
+    if (pageData.hero) {
+        if (document.getElementById('hero-title')) document.getElementById('hero-title').innerText = pageData.hero.title;
+        if (document.getElementById('hero-description')) document.getElementById('hero-description').innerText = pageData.hero.description;
+    }
+
+    // 2. Store Resources
+    allDataHubResources = pageData.resources || [];
+
+    // 3. Initial Render
+    window.renderDataCards();
+};
+
+/**
+ * Filters DataHub resources by category.
+ */
+window.filterData = function(category) {
+    currentDataFilter = category;
+
+    // Update active UI state
+    document.querySelectorAll('.data-filter-btn').forEach(btn => {
+        const btnText = btn.innerText.trim();
+        // Match either exact category or the "All" case
+        const isActive = (category === 'All' && btnText.includes('All')) || 
+                        (btnText.toLowerCase().includes(category.toLowerCase().split(' ')[0]));
+        
+        if (isActive) {
+            btn.classList.add('bg-brand-accent', 'text-white', 'border-brand-accent', 'shadow-md', 'active');
+            btn.classList.remove('bg-white', 'text-brand-dark', 'border-gray-200');
+        } else {
+            btn.classList.remove('bg-brand-accent', 'text-white', 'border-brand-accent', 'shadow-md', 'active');
+            btn.classList.add('bg-white', 'text-brand-dark', 'border-gray-200');
+        }
+    });
+
+    window.renderDataCards();
+};
+
+/**
+ * Renders DataHub cards based on filter.
+ */
+window.renderDataCards = async function() {
+    const container = document.getElementById('data-grid-container');
+    if (!container) return;
+
+    const filtered = allDataHubResources.filter(item => {
+        return currentDataFilter === 'All' || item.category === currentDataFilter;
+    });
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No data resources found in this category.</div>`;
+        return;
+    }
+
+    const templatePath = typeof getRelativePath === 'function' ? getRelativePath('/components/card-data.html') : '/components/card-data.html';
+    const templateRes = await fetch(templatePath);
+    if (!templateRes.ok) return;
+    const templateHtml = await templateRes.text();
+
+    let htmlContent = '';
+    filtered.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
+
+    // Apply translations
+    if (window.applyTranslations) window.applyTranslations(container);
+};
+
 
