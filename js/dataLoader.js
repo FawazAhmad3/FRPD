@@ -9,6 +9,7 @@
 const DATA_PATHS = {
     home: '/data/home',
     researchWing: '/data/research-wing',
+    events: '/data/events',
     mandate: '/data/mandate',
     governance: '/data/governance',
     contact: '/data/contact'
@@ -411,3 +412,89 @@ window.initContactPage = async function() {
         renderList('departments-grid', '/components/card-department.html', data.departments);
     }
 };
+
+// ===========================================
+// [WORKSHOPS & EVENTS SPECIALIZED LOGIC]
+// ===========================================
+
+let allEventsData = [];
+let currentEventFilter = 'All';
+let isStatusFilter = false;
+
+/**
+ * Initializes the Events Page.
+ */
+window.initEventsPage = async function() {
+    const lang = window.currentLang || 'en';
+    const eventsDataPath = `${DATA_PATHS.events}.json`;
+
+    // Fetch Unified Data
+    const data = await fetchJSON(eventsDataPath);
+    if (!data) return;
+
+    // Extract language-specific array
+    allEventsData = data[lang] || data['en'] || [];
+
+    // Initial Render
+    window.renderEventCards();
+};
+
+/**
+ * Filters events by type or status.
+ */
+window.filterEvents = function(filter, isStatus = false) {
+    currentEventFilter = filter;
+    isStatusFilter = isStatus;
+
+    // Update active UI state
+    document.querySelectorAll('.event-filter-btn').forEach(btn => {
+        const btnText = btn.innerText.trim();
+        const isActive = (filter === 'All' && btnText.includes('All')) || 
+                        (btnText.includes(filter));
+        
+        if (isActive) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    window.renderEventCards();
+};
+
+/**
+ * Renders event cards based on current filter.
+ */
+window.renderEventCards = async function() {
+    const container = document.getElementById('events-grid-container');
+    if (!container) return;
+
+    const filtered = allEventsData.filter(item => {
+        if (currentEventFilter === 'All') return true;
+        if (isStatusFilter) return item.status === currentEventFilter;
+        return item.type === currentEventFilter;
+    });
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No events found for the selected category.</div>`;
+        return;
+    }
+
+    const templatePath = typeof getRelativePath === 'function' ? getRelativePath('/components/card-event.html') : '/components/card-event.html';
+    const templateRes = await fetch(templatePath);
+    if (!templateRes.ok) return;
+    const templateHtml = await templateRes.text();
+
+    let htmlContent = '';
+    filtered.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
+};
+

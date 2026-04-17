@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="events_page_title">FRPD - Workshops & Events</title>
+    <link rel="icon" type="image/jpeg" href="../assets/icons/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', light: '#1e293b', accent: '#3b82f6', white: '#f8fafc', gray: '#f1f5f9' } }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-brand-dark py-24 relative overflow-hidden">
+            <!-- Decorative Elements -->
+            <div class="absolute inset-0 opacity-20">
+                <div class="absolute top-0 left-0 w-96 h-96 bg-brand-accent rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+                <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-600 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block px-4 py-1.5 bg-brand-accent/20 text-brand-accent text-sm font-bold uppercase tracking-widest rounded-full mb-6 animate__animated animate__fadeInDown">
+                    Knowledge Hub
+                </span>
+                <h1 class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 animate__animated animate__fadeInUp">
+                    Workshops & Events
+                </h1>
+                <p class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed animate__animated animate__fadeInUp animate__delay-1s">
+                    Connecting global experts, policy makers, and researchers through high-impact workshops, seminars, and academic conferences.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <section class="sticky top-28 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-6 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-3" id="filters-container">
+                    <button onclick="window.filterEvents('All')" class="event-filter-btn active px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        All Events
+                    </button>
+                    <button onclick="window.filterEvents('Workshop')" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Workshops
+                    </button>
+                    <button onclick="window.filterEvents('Seminar')" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Seminars
+                    </button>
+                    <button onclick="window.filterEvents('Conference')" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Conferences
+                    </button>
+                    <button onclick="window.filterEvents('Webinar')" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Webinars
+                    </button>
+                    <button onclick="window.filterEvents('Roundtable')" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Roundtables
+                    </button>
+                    <button onclick="window.filterEvents('Coming Soon', true)" class="event-filter-btn px-6 py-2.5 rounded-xl border border-gray-200 bg-white text-brand-dark font-semibold shadow-sm hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <section class="py-20 bg-gray-50/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Grid Container -->
+                <div id="events-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Dynamic Event Cards will be injected here -->
+                    <div class="col-span-full py-20 text-center text-gray-400">
+                        <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-brand-accent"></i>
+                        <p class="font-medium">Populating event calendar...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="../utils/helpers.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="../js/languageSwitcher.js"></script>
+    <script src="../js/dataLoader.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- Page Specific Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkDataLoad = setInterval(() => {
+                if (window.initEventsPage) {
+                    window.initEventsPage();
+                    clearInterval(checkDataLoad);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

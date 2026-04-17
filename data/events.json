@@ -1,0 +1,92 @@
+{
+  "en": [
+    {
+      "id": "1",
+      "type": "Workshop",
+      "typeColor": "bg-blue-600",
+      "title": "Applied Econometrics & Data Visualization",
+      "date": "May 15-17, 2026",
+      "time": "09:00 AM - 04:00 PM",
+      "location": "Islamabad, Pakistan / Hybrid",
+      "description": "A comprehensive hands-on workshop focused on advanced econometric models and modern data visualization techniques using R and Stata.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "/pages/contact.html",
+      "status": "Coming Soon",
+      "statusColor": "text-green-500"
+    },
+    {
+      "id": "2",
+      "type": "Seminar",
+      "typeColor": "bg-purple-600",
+      "title": "Global Trade Dynamics in a Post-Pandemic World",
+      "date": "June 05, 2026",
+      "time": "02:00 PM - 05:00 PM",
+      "location": "Online via Zoom",
+      "description": "Expert panel discussion on the shifting paradigms of international trade, supply chain resilience, and emerging economic blocs.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "/pages/contact.html",
+      "status": "Coming Soon",
+      "statusColor": "text-green-500"
+    },
+    {
+      "id": "3",
+      "type": "Conference",
+      "typeColor": "bg-indigo-600",
+      "title": "FRPD Annual Economic Summit 2026",
+      "date": "September 12-14, 2026",
+      "time": "Full Day",
+      "location": "National Convention center",
+      "description": "Our flagship annual conference bringing together policy makers, academics, and industry leaders to discuss sustainable development goals.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "/pages/contact.html",
+      "status": "Coming Soon",
+      "statusColor": "text-green-500"
+    },
+    {
+      "id": "4",
+      "type": "Webinar",
+      "typeColor": "bg-teal-600",
+      "title": "Digital Transformation in Developing Economies",
+      "date": "April 28, 2026",
+      "time": "03:30 PM - 05:00 PM",
+      "location": "Online / YouTube Live",
+      "description": "Exploring the impact of financial technologies and digital infrastructure on economic growth in emerging markets.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "/pages/contact.html",
+      "status": "Registration Open",
+      "statusColor": "text-blue-500"
+    },
+    {
+      "id": "5",
+      "type": "Roundtable",
+      "typeColor": "bg-orange-600",
+      "title": "Policy Framework for Climate Resilience",
+      "date": "May 22, 2026",
+      "time": "11:00 AM - 01:00 PM",
+      "location": "FRPD Boardroom / Invite Only",
+      "description": "A closed-door discussion among senior advisors on integrating climate risk into national economic planning.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "#",
+      "status": "Closed",
+      "statusColor": "text-red-500"
+    },
+    {
+      "id": "6",
+      "type": "Seminar",
+      "typeColor": "bg-purple-600",
+      "title": "Launch of the Economic Outlook Report Q3",
+      "date": "July 10, 2026",
+      "time": "10:30 AM",
+      "location": "Press Club / Live Stream",
+      "description": "Unveiling our quarterly analysis of national economic indicators and growth projections for the upcoming year.",
+      "imageUrl": "/assets/images/sample1.jpg",
+      "registrationUrl": "/pages/contact.html",
+      "status": "Coming Soon",
+      "statusColor": "text-green-500"
+    }
+  ],
+  "ar": [],
+  "fr": [],
+  "de": [],
+  "zh": []
+}
