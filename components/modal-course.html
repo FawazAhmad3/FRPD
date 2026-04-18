@@ -1,0 +1,104 @@
+<div id="course-modal" class="hidden fixed inset-0 z-[100] bg-brand-dark/80 backdrop-blur-md items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-4xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+        <!-- Modal Content Scrollable -->
+        <div class="flex-grow overflow-y-auto custom-scrollbar">
+            <!-- Header Image & Info -->
+            <div class="relative h-48 md:h-64 overflow-hidden">
+                <img id="modal-image" src="" alt="Course Image" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-brand-dark to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <span id="modal-level" class="inline-block px-3 py-1 bg-brand-accent/30 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded mb-2">Executive</span>
+                    <h2 id="modal-title" class="text-2xl md:text-3xl font-heading font-bold text-white leading-tight">Course Title</h2>
+                </div>
+                <button onclick="window.closeCourseModal()" class="absolute top-6 right-6 w-10 h-10 bg-white/10 backdrop-blur-sm text-white rounded-full flex items-center justify-center hover:bg-white/20 transition-all border border-white/20">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="p-8 grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Left: Curriculum & Description -->
+                <div class="lg:col-span-12 space-y-10">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Overview -->
+                        <div>
+                            <h3 class="text-xl font-heading font-bold text-brand-dark mb-4 flex items-center">
+                                <i class="fas fa-info-circle mr-3 text-brand-accent"></i> Course Overview
+                            </h3>
+                            <p id="modal-description" class="text-gray-500 text-sm leading-relaxed">Detailed course description text here.</p>
+                        </div>
+                        
+                        <!-- Curriculum -->
+                        <div>
+                            <h3 class="text-xl font-heading font-bold text-brand-dark mb-4 flex items-center">
+                                <i class="fas fa-list-check mr-3 text-brand-accent"></i> Curriculum
+                            </h3>
+                            <ul id="modal-curriculum" class="space-y-3">
+                                <!-- Dynamic curriculum modules -->
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="h-px bg-gray-100 w-full"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <!-- Right: Payment & Enrollment -->
+                        <div class="bg-blue-50 p-6 md:p-8 rounded-2xl border border-blue-100 flex flex-col justify-center">
+                            <h3 class="text-xl font-heading font-bold text-brand-dark mb-2">Easypaisa Payment</h3>
+                            <p class="text-xs text-gray-500 mb-6">Complete your payment and submit the form below. We will verify and provide Google Drive access via email.</p>
+                            
+                            <div class="bg-white p-6 rounded-xl shadow-sm space-y-4">
+                                <div class="flex items-center justify-between border-b border-gray-50 pb-3">
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase">Account Number</span>
+                                    <span id="modal-account-number" class="text-lg font-bold text-brand-accent">0344 9198158</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase">Account Name</span>
+                                    <span id="modal-account-name" class="text-sm font-bold text-brand-dark italic">FRPD Training</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 flex items-center gap-4 p-4 bg-brand-accent/5 rounded-xl border border-brand-accent/10">
+                                <div class="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-brand-accent text-xl shadow-sm">
+                                    <i class="fas fa-money-bill-transfer"></i>
+                                </div>
+                                <div>
+                                    <p class="text-[10px] text-gray-400 uppercase font-bold">Total Amount</p>
+                                    <p id="modal-price" class="text-xl font-bold text-brand-dark">9,999 PKR</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Enrollment Form -->
+                        <div class="flex flex-col">
+                            <h3 class="text-xl font-heading font-bold text-brand-dark mb-6">Complete Enrollment</h3>
+                            <form id="enrollment-form" action="https://formspree.io/f/{{your_form_id}}" method="POST" class="space-y-4">
+                                <input type="hidden" id="form-course-title" name="Course Title">
+                                
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold text-gray-400 uppercase ml-2">Full Name</label>
+                                    <input type="text" name="name" required placeholder="Fawaz Ahmad" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-brand-accent transition-all text-sm">
+                                </div>
+                                
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold text-gray-400 uppercase ml-2">Email Address</label>
+                                    <input type="email" name="email" required placeholder="fawaz@example.com" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-brand-accent transition-all text-sm">
+                                </div>
+                                
+                                <div class="space-y-1">
+                                    <label class="text-[10px] font-bold text-gray-400 uppercase ml-2">Phone / WhatsApp</label>
+                                    <input type="tel" name="phone" required placeholder="03XXXXXXXXX" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-brand-accent transition-all text-sm">
+                                </div>
+
+                                <button type="submit" class="w-full mt-4 py-4 bg-brand-dark text-white font-bold rounded-xl hover:bg-brand-accent hover:-translate-y-1 transition-all duration-300 shadow-xl">
+                                    Submit Registration Request <i class="fas fa-paper-plane ml-2"></i>
+                                </button>
+                                
+                                <p class="text-[9px] text-gray-400 text-center uppercase tracking-widest font-bold">Manual Verification Required (24-48 Hours)</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

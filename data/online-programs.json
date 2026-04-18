@@ -1,0 +1,74 @@
+{
+  "en": {
+    "hero": {
+      "title": "Executive Online Programs",
+      "description": "Unlock global opportunities with our certified online courses. Designed by industry experts for senior professionals and aspiring leaders."
+    },
+    "courses": [
+      {
+        "id": "course-1",
+        "title": "Advanced Data Analytics for Policy Makers",
+        "price": "9,999 PKR",
+        "duration": "8 Weeks",
+        "level": "Executive",
+        "image": "/assets/images/research-economics-2.jpg",
+        "shortDesc": "Transform raw data into actionable policy insights using modern analytical tools.",
+        "description": "This premium course provides a deep dive into statistical modeling, data visualization, and evidence-based decision making. Ideal for government officials and research leads.",
+        "curriculum": [
+          "Module 1: Foundations of Data-Driven Governance",
+          "Module 2: Advanced Econometric Modeling",
+          "Module 3: Visualization with R and Tableu",
+          "Module 4: Final Capstone Project"
+        ],
+        "easypaisaDetails": {
+          "account": "0344 9198158",
+          "name": "FRPD Training Division"
+        }
+      },
+      {
+        "id": "course-2",
+        "title": "Digital Transformation Leadership",
+        "price": "12,500 PKR",
+        "duration": "6 Weeks",
+        "level": "Senior Management",
+        "image": "/assets/images/research-economics-3.jpg",
+        "shortDesc": "Lead your organization through the complexities of the digital-first era.",
+        "description": "Master the strategies needed to implement AI, cloud infrastructure, and agile workflows within large-scale institutions.",
+        "curriculum": [
+          "Module 1: The Digital Disruption Landscape",
+          "Module 2: Agile Institutional Reform",
+          "Module 3: Cybersecurity for non-technical leaders",
+          "Module 4: Emerging Tech: AI & Blockchain"
+        ],
+        "easypaisaDetails": {
+          "account": "0344 9198158",
+          "name": "FRPD Training Division"
+        }
+      },
+      {
+        "id": "course-3",
+        "title": "Python",
+        "price": "12,500 PKR",
+        "duration": "6 Weeks",
+        "level": "Senior Management",
+        "image": "/assets/images/research-economics-3.jpg",
+        "shortDesc": "Lead your organization through the complexities of the digital-first era.",
+        "description": "Master the strategies needed to implement AI, cloud infrastructure, and agile workflows within large-scale institutions.",
+        "curriculum": [
+          "Module 1: The Digital Disruption Landscape",
+          "Module 2: Agile Institutional Reform",
+          "Module 3: Cybersecurity for non-technical leaders",
+          "Module 4: Emerging Tech: AI & Blockchain"
+        ],
+        "easypaisaDetails": {
+          "account": "0344 9198158",
+          "name": "FRPD Training Division"
+        }
+      }
+    ]
+  },
+  "ar": {},
+  "fr": {},
+  "de": {},
+  "zh": {}
+}

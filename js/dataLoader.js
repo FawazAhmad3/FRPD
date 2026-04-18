@@ -10,6 +10,9 @@ const DATA_PATHS = {
     home: '/data/home',
     researchWing: '/data/research-wing',
     events: '/data/events',
+    capacityBuilding: '/data/capacity-building',
+    datahub: '/data/datahub',
+    onlinePrograms: '/data/online-programs',
     mandate: '/data/mandate',
     governance: '/data/governance',
     contact: '/data/contact'
@@ -497,4 +500,119 @@ window.renderEventCards = async function() {
 
     container.innerHTML = htmlContent;
 };
+
+// ===========================================
+// [EXECUTIVE ONLINE PROGRAMS SPECIALIZED LOGIC]
+// ===========================================
+
+let allOnlineCourses = [];
+
+/**
+ * Initializes the Online Programs page.
+ */
+window.initOnlineProgramsPage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.onlinePrograms}.json`;
+
+    // 1. Load Modal Component
+    const modalPlaceholder = document.getElementById('course-modal-placeholder');
+    if (modalPlaceholder) {
+        const modalPath = typeof getRelativePath === 'function' ? getRelativePath('/components/modal-course.html') : '/components/modal-course.html';
+        const modalRes = await fetch(modalPath);
+        if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
+    }
+
+    // 2. Fetch Data
+    const data = await fetchJSON(dataPath);
+    if (!data || !data[lang]) return;
+
+    const pageData = data[lang];
+    allOnlineCourses = pageData.courses || [];
+
+    // 3. Render Hero
+    if (pageData.hero) {
+        if (document.getElementById('hero-title')) document.getElementById('hero-title').innerText = pageData.hero.title;
+        if (document.getElementById('hero-description')) document.getElementById('hero-description').innerText = pageData.hero.description;
+    }
+
+    // 4. Render Grid
+    const container = document.getElementById('courses-grid-container');
+    if (!container) return;
+
+    const templatePath = typeof getRelativePath === 'function' ? getRelativePath('/components/card-course.html') : '/components/card-course.html';
+    const templateRes = await fetch(templatePath);
+    if (!templateRes.ok) return;
+    const templateHtml = await templateRes.text();
+
+    let htmlContent = '';
+    allOnlineCourses.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
+
+    if (window.applyTranslations) window.applyTranslations(container);
+};
+
+/**
+ * Opens the course enrollment modal and populates it with data.
+ */
+window.openCourseModal = function(id) {
+    const item = allOnlineCourses.find(c => c.id === id);
+    if (!item) return;
+
+    const modal = document.getElementById('course-modal');
+    if (!modal) return;
+
+    // Data Binding
+    document.getElementById('modal-image').src = item.image;
+    document.getElementById('modal-title').innerText = item.title;
+    document.getElementById('modal-description').innerText = item.description;
+    document.getElementById('modal-price').innerText = item.price;
+    document.getElementById('modal-level').innerText = item.level;
+    
+    // Easypaisa Info
+    if (item.easypaisaDetails) {
+        document.getElementById('modal-account-number').innerText = item.easypaisaDetails.account;
+        document.getElementById('modal-account-name').innerText = item.easypaisaDetails.name;
+    }
+
+    // Curriculum List
+    const curriculumContainer = document.getElementById('modal-curriculum');
+    if (curriculumContainer && item.curriculum) {
+        curriculumContainer.innerHTML = item.curriculum.map(mod => `
+            <li class="flex items-start text-xs text-gray-400 group">
+                <i class="fas fa-check-circle text-brand-accent mt-0.5 mr-3"></i>
+                <span class="font-medium text-brand-dark group-hover:text-brand-accent transition-colors">${mod}</span>
+            </li>
+        `).join('');
+    }
+
+    // Form Update
+    const formCourseTitle = document.getElementById('form-course-title');
+    if (formCourseTitle) formCourseTitle.value = item.title;
+
+    // Show Modal
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+};
+
+/**
+ * Closes the enrollment modal.
+ */
+window.closeCourseModal = function() {
+    const modal = document.getElementById('course-modal');
+    if (!modal) return;
+
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+};
+
 
