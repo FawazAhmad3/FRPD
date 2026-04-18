@@ -11,6 +11,7 @@ const DATA_PATHS = {
     researchWing: '/data/research-wing',
     events: '/data/events',
     capacityBuilding: '/data/capacity-building',
+    publications: '/data/publications',
     mandate: '/data/mandate',
     governance: '/data/governance',
     contact: '/data/contact'
@@ -562,6 +563,100 @@ window.initCapacityBuildingPage = async function() {
     });
 
     container.innerHTML = finalHtml;
+
+    // Apply translations
+    if (window.applyTranslations) window.applyTranslations(container);
+};
+
+// ===========================================
+// [PUBLICATIONS SPECIALIZED LOGIC]
+// ===========================================
+
+let allPublicationsData = [];
+let currentPubFilter = 'All';
+
+/**
+ * Initializes the Publications page.
+ */
+window.initPublicationsPage = async function() {
+    const lang = window.currentLang || 'en';
+    const dataPath = `${DATA_PATHS.publications}.json`;
+
+    // Fetch Unified Data
+    const data = await fetchJSON(dataPath);
+    if (!data || !data[lang]) return;
+
+    // Hero Content
+    const pageData = data[lang];
+    if (pageData.hero) {
+        if (document.getElementById('hero-title')) document.getElementById('hero-title').innerText = pageData.hero.title;
+        if (document.getElementById('hero-description')) document.getElementById('hero-description').innerText = pageData.hero.description;
+    }
+
+    // Store Data
+    allPublicationsData = pageData.publications || [];
+
+    // Initial Render
+    window.renderPublicationCards();
+};
+
+/**
+ * Filters publications by type.
+ */
+window.filterPublications = function(type) {
+    currentPubFilter = type;
+
+    // Update active UI state
+    document.querySelectorAll('.pub-filter-btn').forEach(btn => {
+        const btnText = btn.innerText.trim();
+        // Match logic: 'All' button vs type string
+        const isActive = (type === 'All' && btnText.includes('All')) || 
+                        (btnText.includes(type) || btnText.includes(type + 's'));
+        
+        if (isActive) {
+            btn.classList.add('bg-brand-accent', 'text-white', 'active');
+            btn.classList.remove('bg-white', 'text-brand-dark');
+        } else {
+            btn.classList.remove('bg-brand-accent', 'text-white', 'active');
+            btn.classList.add('bg-white', 'text-brand-dark');
+        }
+    });
+
+    window.renderPublicationCards();
+};
+
+/**
+ * Renders publication cards based on filter.
+ */
+window.renderPublicationCards = async function() {
+    const container = document.getElementById('publications-grid-container');
+    if (!container) return;
+
+    const filtered = allPublicationsData.filter(item => {
+        return currentPubFilter === 'All' || item.type === currentPubFilter;
+    });
+
+    if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No publications found for the selected category.</div>`;
+        return;
+    }
+
+    const templatePath = typeof getRelativePath === 'function' ? getRelativePath('/components/card-publication.html') : '/components/card-publication.html';
+    const templateRes = await fetch(templatePath);
+    if (!templateRes.ok) return;
+    const templateHtml = await templateRes.text();
+
+    let htmlContent = '';
+    filtered.forEach(item => {
+        let card = templateHtml;
+        for (const key in item) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            card = card.replace(regex, item[key] || '');
+        }
+        htmlContent += card;
+    });
+
+    container.innerHTML = htmlContent;
 
     // Apply translations
     if (window.applyTranslations) window.applyTranslations(container);

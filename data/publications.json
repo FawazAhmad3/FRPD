@@ -1,0 +1,47 @@
+{
+  "en": {
+    "hero": {
+      "title": "Publications",
+      "description": "Explore our library of research reports, policy briefs, and academic publications driving global development dialogue."
+    },
+    "publications": [
+      {
+        "id": "pub-1",
+        "title": "Global Economic Outlook 2025: Navigation through Uncertainty",
+        "author": "Dr. Sarah Johnson, et al.",
+        "date": "March 2025",
+        "type": "Report",
+        "typeClass": "bg-blue-100 text-blue-700",
+        "description": "A comprehensive analysis of emerging market resilience and fiscal optimization strategies.",
+        "thumbnail": "/assets/images/research-economics-1.jpg",
+        "downloadUrl": "#"
+      },
+      {
+        "id": "pub-2",
+        "title": "The Future of Rural Health Systems in South Asia",
+        "author": "FRPD Health Unit",
+        "date": "January 2025",
+        "type": "Policy Brief",
+        "typeClass": "bg-green-100 text-green-700",
+        "description": "Recommendations for digital integration in primary healthcare across developing nations.",
+        "thumbnail": "/assets/images/research-economics-2.jpg",
+        "downloadUrl": "#"
+      },
+      {
+        "id": "pub-3",
+        "title": "Climate Adaptation and Infrastructure Finance",
+        "author": "Marcus Thorne, PhD",
+        "date": "December 2024",
+        "type": "Article",
+        "typeClass": "bg-purple-100 text-purple-700",
+        "description": "Investigating public-private partnership models for localized climate resilience projects.",
+        "thumbnail": "/assets/images/research-economics-3.jpg",
+        "downloadUrl": "#"
+      }
+    ]
+  },
+  "ar": {},
+  "fr": {},
+  "de": {},
+  "zh": {}
+}
