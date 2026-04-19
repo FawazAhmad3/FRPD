@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav_datahub">FRPD - DataHub</title>
+    <link rel="icon" type="image/jpeg" href="../assets/icons/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', light: '#1e293b', accent: '#3b82f6', white: '#f8fafc', gray: '#f1f5f9' } }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-brand-dark py-24 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <span class="inline-block px-4 py-1.5 bg-brand-accent/20 text-brand-accent text-xs font-bold uppercase tracking-widest rounded-full mb-6 animate__animated animate__fadeInDown">
+                    Central Repository
+                </span>
+                <h1 id="hero-title" class="text-4xl md:text-6xl font-heading font-bold text-white mb-6 animate__animated animate__fadeInUp">
+                    FRPD DataHub
+                </h1>
+                <p id="hero-description" class="text-gray-400 max-w-2xl mx-auto text-lg leading-relaxed animate__animated animate__fadeInUp animate__delay-1s">
+                    Empowering research and policy with evidence-based datasets, interactive dashboards, and specialized survey microdata.
+                </p>
+            </div>
+        </section>
+
+        <!-- Filter Bar -->
+        <section class="sticky top-28 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-6 transition-all duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-wrap justify-center gap-2" id="data-filters">
+                    <button onclick="window.filterData('All')" class="data-filter-btn active px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        All Resources
+                    </button>
+                    <button onclick="window.filterData('Open Economic Data')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Open Data
+                    </button>
+                    <button onclick="window.filterData('Premium Data')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Premium
+                    </button>
+                    <button onclick="window.filterData('Surveys & Microdata')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Surveys
+                    </button>
+                    <button onclick="window.filterData('Dashboards & Visualizations')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Dashboards
+                    </button>
+                    <button onclick="window.filterData('Research & Reports')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Reports
+                    </button>
+                    <button onclick="window.filterData('Data Tools & Resources')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Tools
+                    </button>
+                    <button onclick="window.filterData('Data Request')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                        Custom Request
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Grid -->
+        <section class="py-20 bg-gray-50/50 min-h-[600px]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="data-grid-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Dynamic Data Cards injected here -->
+                    <div class="col-span-full py-20 text-center text-gray-400">
+                        <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-4 text-brand-accent"></i>
+                        <p class="font-medium">Connecting to DataHub repository...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Request CTA -->
+        <section class="py-20 bg-brand-dark text-white text-center">
+            <div class="max-w-4xl mx-auto px-4">
+                <h2 class="text-3xl font-heading font-bold mb-6">Need a Specialized Dataset?</h2>
+                <p class="text-gray-400 mb-10 text-lg">
+                    Our data engineering team provides custom data procurement, cleaning, and advanced analytical services tailored to your specific research or policy objectives.
+                </p>
+                <a href="/pages/contact.html" class="inline-block px-10 py-4 bg-brand-accent text-white font-bold rounded-full hover:bg-blue-600 transition-all btn-hover shadow-xl">
+                    Submit Data Request <i class="fas fa-paper-plane ml-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <!-- Core Scripts -->
+    <script src="../utils/helpers.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="../js/languageSwitcher.js"></script>
+    <script src="../js/dataLoader.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- Page Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkDataLoad = setInterval(() => {
+                if (window.initDataHubPage) {
+                    window.initDataHubPage();
+                    clearInterval(checkDataLoad);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>
