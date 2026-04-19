@@ -1,0 +1,46 @@
+<div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full group animate__animated animate__fadeInUp">
+    <!-- Image Header with Price Badge -->
+    <div class="relative h-56 overflow-hidden">
+        <img src="{{image}}" alt="{{title}}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+        <div class="absolute top-4 right-4">
+            <span class="px-4 py-1.5 bg-brand-accent text-white font-bold rounded-lg shadow-lg">
+                {{price}}
+            </span>
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent"></div>
+        <div class="absolute bottom-4 left-4">
+            <span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded">
+                {{level}}
+            </span>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="p-6 flex flex-col flex-grow">
+        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors leading-tight">
+            {{title}}
+        </h3>
+        <p class="text-gray-500 text-sm mb-6 line-clamp-3">
+            {{shortDesc}}
+        </p>
+
+        <!-- Stats -->
+        <div class="mt-auto flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-400">
+            <div class="flex items-center">
+                <i class="far fa-clock mr-2 text-brand-accent"></i>
+                <span>{{duration}}</span>
+            </div>
+            <div class="flex items-center">
+                <i class="fas fa-graduation-cap mr-2 text-brand-accent"></i>
+                <span>Certified</span>
+            </div>
+        </div>
+
+        <!-- Action -->
+        <div class="mt-6 pt-6 border-t border-gray-50">
+            <button onclick="window.openCourseModal('{{id}}')" class="w-full py-3 bg-brand-gray text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300">
+                Course Details & Enroll
+            </button>
+        </div>
+    </div>
+</div>

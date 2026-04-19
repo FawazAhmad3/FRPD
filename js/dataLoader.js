@@ -12,6 +12,7 @@ const DATA_PATHS = {
   events: "/data/events",
   capacityBuilding: "/data/capacity-building",
   datahub: "/data/datahub",
+  onlinePrograms: "/data/online-programs",
   mandate: "/data/mandate",
   governance: "/data/governance",
   contact: "/data/contact",
@@ -615,25 +616,37 @@ window.renderEventCards = async function () {
 };
 
 // ===========================================
-// [DATAHUB SPECIALIZED LOGIC]
+// [EXECUTIVE ONLINE PROGRAMS SPECIALIZED LOGIC]
 // ===========================================
 
-let allDataHubResources = [];
-let currentDataFilter = "All";
+let allOnlineCourses = [];
 
 /**
- * Initializes the DataHub page.
+ * Initializes the Online Programs page.
  */
-window.initDataHubPage = async function () {
+window.initOnlineProgramsPage = async function () {
   const lang = window.currentLang || "en";
-  const dataPath = `${DATA_PATHS.datahub}.json`;
+  const dataPath = `${DATA_PATHS.onlinePrograms}.json`;
 
+  // 1. Load Modal Component
+  const modalPlaceholder = document.getElementById("course-modal-placeholder");
+  if (modalPlaceholder) {
+    const modalPath =
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/modal-course.html")
+        : "/components/modal-course.html";
+    const modalRes = await fetch(modalPath);
+    if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
+  }
+
+  // 2. Fetch Data
   const data = await fetchJSON(dataPath);
   if (!data || !data[lang]) return;
 
   const pageData = data[lang];
+  allOnlineCourses = pageData.courses || [];
 
-  // 1. Hero Content
+  // 3. Render Hero
   if (pageData.hero) {
     if (document.getElementById("hero-title"))
       document.getElementById("hero-title").innerText = pageData.hero.title;
@@ -642,77 +655,20 @@ window.initDataHubPage = async function () {
         pageData.hero.description;
   }
 
-  // 2. Store Resources
-  allDataHubResources = pageData.resources || [];
-
-  // 3. Initial Render
-  window.renderDataCards();
-};
-
-/**
- * Filters DataHub resources by category.
- */
-window.filterData = function (category) {
-  currentDataFilter = category;
-
-  // Update active UI state
-  document.querySelectorAll(".data-filter-btn").forEach((btn) => {
-    const btnText = btn.innerText.trim();
-    // Match either exact category or the "All" case
-    const isActive =
-      (category === "All" && btnText.includes("All")) ||
-      btnText.toLowerCase().includes(category.toLowerCase().split(" ")[0]);
-
-    if (isActive) {
-      btn.classList.add(
-        "bg-brand-accent",
-        "text-white",
-        "border-brand-accent",
-        "shadow-md",
-        "active",
-      );
-      btn.classList.remove("bg-white", "text-brand-dark", "border-gray-200");
-    } else {
-      btn.classList.remove(
-        "bg-brand-accent",
-        "text-white",
-        "border-brand-accent",
-        "shadow-md",
-        "active",
-      );
-      btn.classList.add("bg-white", "text-brand-dark", "border-gray-200");
-    }
-  });
-
-  window.renderDataCards();
-};
-
-/**
- * Renders DataHub cards based on filter.
- */
-window.renderDataCards = async function () {
-  const container = document.getElementById("data-grid-container");
+  // 4. Render Grid
+  const container = document.getElementById("courses-grid-container");
   if (!container) return;
-
-  const filtered = allDataHubResources.filter((item) => {
-    return currentDataFilter === "All" || item.category === currentDataFilter;
-  });
-
-  if (filtered.length === 0) {
-    container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No data resources found in this category.</div>`;
-    return;
-  }
 
   const templatePath =
     typeof getRelativePath === "function"
-      ? getRelativePath("/components/card-data.html")
-      : "/components/card-data.html";
+      ? getRelativePath("/components/card-course.html")
+      : "/components/card-course.html";
   const templateRes = await fetch(templatePath);
   if (!templateRes.ok) return;
   const templateHtml = await templateRes.text();
 
   let htmlContent = "";
-  filtered.forEach((item) => {
+  allOnlineCourses.forEach((item) => {
     let card = templateHtml;
     for (const key in item) {
       const regex = new RegExp(`{{${key}}}`, "g");
@@ -723,6 +679,67 @@ window.renderDataCards = async function () {
 
   container.innerHTML = htmlContent;
 
-  // Apply translations
   if (window.applyTranslations) window.applyTranslations(container);
+};
+
+/**
+ * Opens the course enrollment modal and populates it with data.
+ */
+window.openCourseModal = function (id) {
+  const item = allOnlineCourses.find((c) => c.id === id);
+  if (!item) return;
+
+  const modal = document.getElementById("course-modal");
+  if (!modal) return;
+
+  // Data Binding
+  document.getElementById("modal-image").src = item.image;
+  document.getElementById("modal-title").innerText = item.title;
+  document.getElementById("modal-description").innerText = item.description;
+  document.getElementById("modal-price").innerText = item.price;
+  document.getElementById("modal-level").innerText = item.level;
+
+  // Easypaisa Info
+  if (item.easypaisaDetails) {
+    document.getElementById("modal-account-number").innerText =
+      item.easypaisaDetails.account;
+    document.getElementById("modal-account-name").innerText =
+      item.easypaisaDetails.name;
+  }
+
+  // Curriculum List
+  const curriculumContainer = document.getElementById("modal-curriculum");
+  if (curriculumContainer && item.curriculum) {
+    curriculumContainer.innerHTML = item.curriculum
+      .map(
+        (mod) => `
+            <li class="flex items-start text-xs text-gray-400 group">
+                <i class="fas fa-check-circle text-brand-accent mt-0.5 mr-3"></i>
+                <span class="font-medium text-brand-dark group-hover:text-brand-accent transition-colors">${mod}</span>
+            </li>
+        `,
+      )
+      .join("");
+  }
+
+  // Form Update
+  const formCourseTitle = document.getElementById("form-course-title");
+  if (formCourseTitle) formCourseTitle.value = item.title;
+
+  // Show Modal
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+};
+
+/**
+ * Closes the enrollment modal.
+ */
+window.closeCourseModal = function () {
+  const modal = document.getElementById("course-modal");
+  if (!modal) return;
+
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
 };
