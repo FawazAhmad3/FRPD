@@ -37,6 +37,17 @@
         "description": "Investigating public-private partnership models for localized climate resilience projects.",
         "thumbnail": "/assets/images/research-economics-3.jpg",
         "downloadUrl": "#"
+      },
+      {
+        "id": "pub-4",
+        "title": "Infrastructure Finance",
+        "author": "Marcus Thorne, PhD",
+        "date": "December 2024",
+        "type": "Article",
+        "typeClass": "bg-purple-100 text-purple-700",
+        "description": "Investigating public-private partnership models for localized climate resilience projects.",
+        "thumbnail": "/assets/images/research-economics-3.jpg",
+        "downloadUrl": "#"
       }
     ]
   },
