@@ -11,7 +11,7 @@ const DATA_PATHS = {
   researchWing: "/data/research-wing",
   events: "/data/events",
   capacityBuilding: "/data/capacity-building",
-  policyAdvisory: "/data/policy-advisory",
+  publications: "/data/publications",
   mandate: "/data/mandate",
   governance: "/data/governance",
   contact: "/data/contact",
@@ -615,11 +615,11 @@ window.renderEventCards = async function () {
 };
 
 // ===========================================
-// [CAPACITY BUILDING SPECIALIZED LOGIC]
+// [POLICY & ADVISORY SPECIALIZED LOGIC]
 // ===========================================
 
 /**
- * Initializes the Capacity Building page.
+ * Initializes the Policy & Advisory Services page.
  */
 window.initCapacityBuildingPage = async function () {
   const lang = window.currentLang || "en";
@@ -694,22 +694,25 @@ window.initCapacityBuildingPage = async function () {
 };
 
 // ===========================================
-// [POLICY & ADVISORY SPECIALIZED LOGIC]
+// [PUBLICATIONS SPECIALIZED LOGIC]
 // ===========================================
 
-/**
- * Initializes the Policy & Advisory Services page.
- */
-window.initPolicyAdvisoryPage = async function () {
-  const lang = window.currentLang || "en";
-  const dataPath = `${DATA_PATHS.policyAdvisory}.json`;
+let allPublicationsData = [];
+let currentPubFilter = "All";
 
+/**
+ * Initializes the Publications page.
+ */
+window.initPublicationsPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.publications}.json`;
+
+  // Fetch Unified Data
   const data = await fetchJSON(dataPath);
   if (!data || !data[lang]) return;
 
+  // Hero Content
   const pageData = data[lang];
-
-  // 1. Hero Content
   if (pageData.hero) {
     if (document.getElementById("hero-title"))
       document.getElementById("hero-title").innerText = pageData.hero.title;
@@ -718,126 +721,76 @@ window.initPolicyAdvisoryPage = async function () {
         pageData.hero.description;
   }
 
-  // 2. Render Categories
-  const container = document.getElementById("policy-advisory-container");
-  if (!container || !pageData.categories) return;
+  // Store Data
+  allPublicationsData = pageData.publications || [];
 
-  // Load templates (reusing program card templates)
-  const [sectionRes, cardRes] = await Promise.all([
-    fetch(
-      typeof getRelativePath === "function"
-        ? getRelativePath("/components/section-program-category.html")
-        : "/components/section-program-category.html",
-    ),
-    fetch(
-      typeof getRelativePath === "function"
-        ? getRelativePath("/components/card-program.html")
-        : "/components/card-program.html",
-    ),
-  ]);
+  // Initial Render
+  window.renderPublicationCards();
+};
 
-  if (!sectionRes.ok || !cardRes.ok) return;
-  const sectionTemplate = await sectionRes.text();
-  const cardTemplate = await cardRes.text();
+/**
+ * Filters publications by type.
+ */
+window.filterPublications = function (type) {
+  currentPubFilter = type;
 
-  let finalHtml = "";
+  // Update active UI state
+  document.querySelectorAll(".pub-filter-btn").forEach((btn) => {
+    const btnText = btn.innerText.trim();
+    // Match logic: 'All' button vs type string
+    const isActive =
+      (type === "All" && btnText.includes("All")) ||
+      btnText.includes(type) ||
+      btnText.includes(type + "s");
 
-  pageData.categories.forEach((cat) => {
-    // Build the programs list HTML
-    let programListHtml = "";
-    if (cat.programs) {
-      cat.programs.forEach((prog) => {
-        let pCard = cardTemplate;
-        for (const k in prog) {
-          const r = new RegExp(`{{${k}}}`, "g");
-          pCard = pCard.replace(r, prog[k] || "");
-        }
-        programListHtml += pCard;
-      });
+    if (isActive) {
+      btn.classList.add("bg-brand-accent", "text-white", "active");
+      btn.classList.remove("bg-white", "text-brand-dark");
+    } else {
+      btn.classList.remove("bg-brand-accent", "text-white", "active");
+      btn.classList.add("bg-white", "text-brand-dark");
     }
-
-    // Build the section HTML
-    let sectionHtml = sectionTemplate;
-    for (const k in cat) {
-      if (k === "programs") continue;
-      const r = new RegExp(`{{${k}}}`, "g");
-      sectionHtml = sectionHtml.replace(r, cat[k] || "");
-    }
-
-    // Custom override for grid ID to avoid conflicts if multiple sections exist
-    sectionHtml = sectionHtml.replace(
-      /programs-grid-{{id}}/g,
-      `advisory-grid-${cat.id}`,
-    );
-    sectionHtml = sectionHtml.replace(/{{programListHtml}}/g, programListHtml);
-
-    finalHtml += sectionHtml;
   });
 
-  container.innerHTML = finalHtml;
+  window.renderPublicationCards();
+};
+
+/**
+ * Renders publication cards based on filter.
+ */
+window.renderPublicationCards = async function () {
+  const container = document.getElementById("publications-grid-container");
+  if (!container) return;
+
+  const filtered = allPublicationsData.filter((item) => {
+    return currentPubFilter === "All" || item.type === currentPubFilter;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No publications found for the selected category.</div>`;
+    return;
+  }
+
+  const templatePath =
+    typeof getRelativePath === "function"
+      ? getRelativePath("/components/card-publication.html")
+      : "/components/card-publication.html";
+  const templateRes = await fetch(templatePath);
+  if (!templateRes.ok) return;
+  const templateHtml = await templateRes.text();
+
+  let htmlContent = "";
+  filtered.forEach((item) => {
+    let card = templateHtml;
+    for (const key in item) {
+      const regex = new RegExp(`{{${key}}}`, "g");
+      card = card.replace(regex, item[key] || "");
+    }
+    htmlContent += card;
+  });
+
+  container.innerHTML = htmlContent;
 
   // Apply translations
   if (window.applyTranslations) window.applyTranslations(container);
-};
-
-/**
- * Opens the course enrollment modal and populates it with data.
- */
-window.openCourseModal = function (id) {
-  const item = allOnlineCourses.find((c) => c.id === id);
-  if (!item) return;
-
-  const modal = document.getElementById("course-modal");
-  if (!modal) return;
-
-  // Data Binding
-  document.getElementById("modal-image").src = item.image;
-  document.getElementById("modal-title").innerText = item.title;
-  document.getElementById("modal-description").innerText = item.description;
-  document.getElementById("modal-price").innerText = item.price;
-  document.getElementById("modal-level").innerText = item.level;
-
-  // Easypaisa Info
-  if (item.easypaisaDetails) {
-    document.getElementById("modal-account-number").innerText =
-      item.easypaisaDetails.account;
-    document.getElementById("modal-account-name").innerText =
-      item.easypaisaDetails.name;
-  }
-
-  // Curriculum List
-  const curriculumContainer = document.getElementById("modal-curriculum");
-  if (curriculumContainer && item.curriculum) {
-    curriculumContainer.innerHTML = item.curriculum
-      .map(
-        (mod) => `
-            <li class="flex items-start text-xs text-gray-400 group">
-                <i class="fas fa-check-circle text-brand-accent mt-0.5 mr-3"></i>
-                <span class="font-medium text-brand-dark group-hover:text-brand-accent transition-colors">${mod}</span>
-            </li>
-        `,
-      )
-      .join("");
-  }
-
-  // Form Update
-  const formCourseTitle = document.getElementById("form-course-title");
-  if (formCourseTitle) formCourseTitle.value = item.title;
-
-  // Show Modal
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-  document.body.style.overflow = "hidden";
-};
-
-/**
- * Closes the enrollment modal.
- */
-window.closeCourseModal = function () {
-  const modal = document.getElementById("course-modal");
-  if (!modal) return;
-
-  modal.classList.add("hidden");
-  modal.classList.remove("flex");
-  document.body.style.overflow = "";
 };
