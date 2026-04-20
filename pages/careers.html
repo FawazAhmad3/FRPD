@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="careers_page_title">Join Our Team - FRPD</title>
+    <link rel="icon" type="image/jpeg" href="../assets/icons/logo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { brand: { dark: '#0f172a', light: '#1e293b', accent: '#3b82f6', white: '#f8fafc', gray: '#f1f5f9' } }, fontFamily: { sans: ['Inter', 'sans-serif'], heading: ['Outfit', 'sans-serif'] } } } };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body class="bg-brand-gray text-gray-900 font-sans antialiased text-base flex flex-col min-h-screen">
+    <div id="navbar-placeholder"></div>
+
+    <main class="flex-grow">
+        <!-- Page Header -->
+        <section class="bg-brand-dark py-24 relative overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-brand-accent/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4"></div>
+                <div class="absolute bottom-0 left-0 w-[30rem] h-[30rem] bg-brand-accent/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/4"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                <div class="inline-flex items-center gap-3 px-5 py-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-brand-accent text-xs font-bold uppercase tracking-[0.2em] mb-10 animate__animated animate__fadeIn">
+                    <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+                    Careers at FRPD
+                </div>
+                <h1 id="careers-title" class="text-4xl sm:text-7xl font-heading font-bold text-white mb-8 leading-tight animate__animated animate__fadeInDown">Join Our Team</h1>
+                <p id="careers-summary" class="text-gray-400 max-w-2xl mx-auto text-lg sm:text-xl leading-relaxed animate__animated animate__fadeInUp"></p>
+            </div>
+        </section>
+
+        <!-- Listings Section -->
+        <section class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div id="careers-grid-placeholder" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Career Cards will be injected here -->
+                </div>
+
+                <!-- Empty State -->
+                <div id="careers-empty" class="hidden text-center py-20">
+                    <div class="w-24 h-24 bg-brand-gray rounded-full flex items-center justify-center mx-auto mb-6 text-gray-400 text-4xl">
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-2">No Open Positions Currently</h3>
+                    <p class="text-gray-500">Check back later or follow us on social media for updates.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-brand-gray">
+            <div class="max-w-3xl mx-auto px-4 text-center">
+                <h2 class="text-3xl font-heading font-bold text-brand-dark mb-6">Can't Find a Role?</h2>
+                <p class="text-gray-600 text-lg mb-10">We are always looking for exceptional talent. Send your CV to our talent pool and we'll reach out if there's a match.</p>
+                <a id="careers-cv-link" href="/pages/contact.html" class="inline-flex items-center gap-3 bg-brand-dark text-white px-10 py-4 rounded-full font-bold hover:bg-brand-accent transition-all shadow-xl hover:-translate-y-1">
+                    Send Your CV <i class="fa-solid fa-paper-plane"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <div id="social-buttons-placeholder"></div>
+
+    <script src="../utils/helpers.js"></script>
+    <script src="../js/loadComponents.js"></script>
+    <script src="../js/languageSwitcher.js"></script>
+    <script src="../js/dataLoader.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+             const checkInit = setInterval(() => {
+                if (window.initCareersPage) {
+                    window.initCareersPage();
+                    clearInterval(checkInit);
+                }
+            }, 100);
+        });
+    </script>
+</body>
+
+</html>

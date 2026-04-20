@@ -1,0 +1,33 @@
+{
+  "careers": {
+    "title": "Join Our Global Network",
+    "summary": "At FRPD, we believe in the power of evidence-based research to transform lives. We are looking for passionate, multidisciplinary experts to join us in driving sustainable global reforms.",
+    "cvLink": "https://forms.gle/cv-talent-pool",
+    "listings": [
+      {
+        "title": "Senior Policy Researcher",
+        "department": "Policy & Advisory",
+        "location": "Remote / Islamabad",
+        "type": "Full-time",
+        "description": "Lead multidisciplinary research projects focused on institutional reform and economic policy.",
+        "applyLink": "https://forms.gle/sample1"
+      },
+      {
+        "title": "Data Analyst",
+        "department": "Research Wing",
+        "location": "Hybrid",
+        "type": "Full-time",
+        "description": "Execute complex econometric modeling and data visualization for large-scale social research.",
+        "applyLink": "https://forms.gle/sample2"
+      },
+      {
+        "title": "Capacity Building Specialist",
+        "department": "Training",
+        "location": "Global",
+        "type": "Contract",
+        "description": "Design and deliver high-impact training programs for public sector professionals.",
+        "applyLink": "https://forms.gle/sample3"
+      }
+    ]
+  }
+}

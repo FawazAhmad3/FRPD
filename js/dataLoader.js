@@ -18,6 +18,7 @@ const DATA_PATHS = {
   mandate: "/data/mandate",
   governance: "/data/governance",
   contact: "/data/contact",
+  careers: "/data/careers",
 };
 
 /**
@@ -563,6 +564,31 @@ window.initContactPage = async function () {
       data.departments,
     );
   }
+};
+
+window.initCareersPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.careers}-${lang}.json`;
+
+  const data = await fetchJSON(dataPath);
+  if (!data || !data.careers) return;
+
+  // Header Content
+  document.getElementById("careers-title").innerText = data.careers.title;
+  document.getElementById("careers-summary").innerText = data.careers.summary;
+
+  // Global CV Link
+  if (data.careers.cvLink && document.getElementById("careers-cv-link")) {
+    document.getElementById("careers-cv-link").href = data.careers.cvLink;
+    document.getElementById("careers-cv-link").target = "_blank";
+  }
+
+  // Render Grid
+  renderList(
+    "careers-grid-placeholder",
+    "/components/card-career.html",
+    data.careers.listings,
+  );
 };
 
 // ===========================================
