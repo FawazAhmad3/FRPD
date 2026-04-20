@@ -1,0 +1,91 @@
+{
+  "en": {
+    "hero": {
+      "title": "Policy & Advisory Services",
+      "description": "FRPD provides high-level strategic advisory across multiple sectors, combining data-driven insights with deep institutional knowledge to drive growth and efficiency."
+    },
+    "categories": [
+      {
+        "id": "business",
+        "title": "Business Advisory Services",
+        "icon": "fas fa-briefcase",
+        "color": "blue",
+        "colorClass": "text-blue-600",
+        "bgClass": "bg-blue-50",
+        "programs": [
+          { "title": "Business Ideas", "url": "/pages/contact.html" },
+          { "title": "Business Plan", "url": "/pages/contact.html" },
+          { "title": "Business Strategies", "url": "/pages/contact.html" },
+          { "title": "Feasibility Reports", "url": "/pages/contact.html" },
+          { "title": "Revenue Generation Models", "url": "/pages/contact.html" },
+          { "title": "Expenditure Reduction Models", "url": "/pages/contact.html" },
+          { "title": "Business Risk Services", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "economic",
+        "title": "Economic Advisory Services",
+        "icon": "fas fa-scale-balanced",
+        "color": "amber",
+        "colorClass": "text-amber-600",
+        "bgClass": "bg-amber-50",
+        "programs": [
+          { "title": "Policy & Economic Advisory", "url": "/pages/contact.html" },
+          { "title": "Data-Driven Insights (Econometrics)", "url": "/pages/contact.html" },
+          { "title": "Market & Impact Analysis", "url": "/pages/contact.html" },
+          { "title": "Feasibility & Cost-Benefit Studies", "url": "/pages/contact.html" },
+          { "title": "Strategic Economic Planning", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "educational",
+        "title": "Educational Advisory Services",
+        "icon": "fas fa-user-graduate",
+        "color": "indigo",
+        "colorClass": "text-indigo-600",
+        "bgClass": "bg-indigo-50",
+        "programs": [
+          { "title": "Academic & Institutional Advisory", "url": "/pages/contact.html" },
+          { "title": "Curriculum & Program Development", "url": "/pages/contact.html" },
+          { "title": "Student Guidance & Career Pathways", "url": "/pages/contact.html" },
+          { "title": "Training & Capacity Building", "url": "/pages/contact.html" },
+          { "title": "Quality Assurance & Accreditation Support", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "agriculture",
+        "title": "Agriculture Advisory Services",
+        "icon": "fas fa-wheat-awn",
+        "color": "emerald",
+        "colorClass": "text-emerald-600",
+        "bgClass": "bg-emerald-50",
+        "programs": [
+          { "title": "Agri Policy & Farm Advisory", "url": "/pages/contact.html" },
+          { "title": "Crop Planning & Productivity Optimization", "url": "/pages/contact.html" },
+          { "title": "Market Linkages & Value Chain Support", "url": "/pages/contact.html" },
+          { "title": "Agri Data & Impact Analysis", "url": "/pages/contact.html" },
+          { "title": "Sustainable & Climate-Smart Practices", "url": "/pages/contact.html" }
+        ]
+      },
+      {
+        "id": "medical",
+        "title": "Medical Advisory Services",
+        "icon": "fas fa-house-medical",
+        "color": "rose",
+        "colorClass": "text-rose-600",
+        "bgClass": "bg-rose-50",
+        "programs": [
+          { "title": "Clinical & Public Health Research Advisory", "url": "/pages/contact.html" },
+          { "title": "Study Design & Biostatistics Support", "url": "/pages/contact.html" },
+          { "title": "Data Analysis & Evidence Synthesis", "url": "/pages/contact.html" },
+          { "title": "Ethics, Protocol & Compliance Guidance", "url": "/pages/contact.html" },
+          { "title": "Healthcare Policy & Impact Evaluation", "url": "/pages/contact.html" }
+        ]
+      }
+    ]
+  },
+  "ar": {},
+  "fr": {},
+  "de": {},
+  "zh": {}
+}

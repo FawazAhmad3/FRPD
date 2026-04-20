@@ -11,8 +11,7 @@ const DATA_PATHS = {
   researchWing: "/data/research-wing",
   events: "/data/events",
   capacityBuilding: "/data/capacity-building",
-  datahub: "/data/datahub",
-  onlinePrograms: "/data/online-programs",
+  policyAdvisory: "/data/policy-advisory",
   mandate: "/data/mandate",
   governance: "/data/governance",
   contact: "/data/contact",
@@ -616,37 +615,22 @@ window.renderEventCards = async function () {
 };
 
 // ===========================================
-// [EXECUTIVE ONLINE PROGRAMS SPECIALIZED LOGIC]
+// [CAPACITY BUILDING SPECIALIZED LOGIC]
 // ===========================================
 
-let allOnlineCourses = [];
-
 /**
- * Initializes the Online Programs page.
+ * Initializes the Capacity Building page.
  */
-window.initOnlineProgramsPage = async function () {
+window.initCapacityBuildingPage = async function () {
   const lang = window.currentLang || "en";
-  const dataPath = `${DATA_PATHS.onlinePrograms}.json`;
+  const dataPath = `${DATA_PATHS.capacityBuilding}.json`;
 
-  // 1. Load Modal Component
-  const modalPlaceholder = document.getElementById("course-modal-placeholder");
-  if (modalPlaceholder) {
-    const modalPath =
-      typeof getRelativePath === "function"
-        ? getRelativePath("/components/modal-course.html")
-        : "/components/modal-course.html";
-    const modalRes = await fetch(modalPath);
-    if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
-  }
-
-  // 2. Fetch Data
   const data = await fetchJSON(dataPath);
   if (!data || !data[lang]) return;
 
   const pageData = data[lang];
-  allOnlineCourses = pageData.courses || [];
 
-  // 3. Render Hero
+  // 1. Hero Content
   if (pageData.hero) {
     if (document.getElementById("hero-title"))
       document.getElementById("hero-title").innerText = pageData.hero.title;
@@ -655,30 +639,144 @@ window.initOnlineProgramsPage = async function () {
         pageData.hero.description;
   }
 
-  // 4. Render Grid
-  const container = document.getElementById("courses-grid-container");
-  if (!container) return;
+  // 2. Render Categories
+  const container = document.getElementById("capacity-building-container");
+  if (!container || !pageData.categories) return;
 
-  const templatePath =
-    typeof getRelativePath === "function"
-      ? getRelativePath("/components/card-course.html")
-      : "/components/card-course.html";
-  const templateRes = await fetch(templatePath);
-  if (!templateRes.ok) return;
-  const templateHtml = await templateRes.text();
+  // Load templates
+  const [sectionRes, cardRes] = await Promise.all([
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/section-program-category.html")
+        : "/components/section-program-category.html",
+    ),
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/card-program.html")
+        : "/components/card-program.html",
+    ),
+  ]);
 
-  let htmlContent = "";
-  allOnlineCourses.forEach((item) => {
-    let card = templateHtml;
-    for (const key in item) {
-      const regex = new RegExp(`{{${key}}}`, "g");
-      card = card.replace(regex, item[key] || "");
+  if (!sectionRes.ok || !cardRes.ok) return;
+  const sectionTemplate = await sectionRes.text();
+  const cardTemplate = await cardRes.text();
+
+  let finalHtml = "";
+
+  pageData.categories.forEach((cat) => {
+    // Build the programs list HTML
+    let programListHtml = "";
+    cat.programs.forEach((prog) => {
+      let pCard = cardTemplate;
+      for (const k in prog) {
+        const r = new RegExp(`{{${k}}}`, "g");
+        pCard = pCard.replace(r, prog[k] || "");
+      }
+      programListHtml += pCard;
+    });
+
+    // Build the section HTML
+    let sectionHtml = sectionTemplate;
+    for (const k in cat) {
+      if (k === "programs") continue;
+      const r = new RegExp(`{{${k}}}`, "g");
+      sectionHtml = sectionHtml.replace(r, cat[k] || "");
     }
-    htmlContent += card;
+    sectionHtml = sectionHtml.replace(/{{programListHtml}}/g, programListHtml);
+
+    finalHtml += sectionHtml;
   });
 
-  container.innerHTML = htmlContent;
+  container.innerHTML = finalHtml;
 
+  // Apply translations
+  if (window.applyTranslations) window.applyTranslations(container);
+};
+
+// ===========================================
+// [POLICY & ADVISORY SPECIALIZED LOGIC]
+// ===========================================
+
+/**
+ * Initializes the Policy & Advisory Services page.
+ */
+window.initPolicyAdvisoryPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.policyAdvisory}.json`;
+
+  const data = await fetchJSON(dataPath);
+  if (!data || !data[lang]) return;
+
+  const pageData = data[lang];
+
+  // 1. Hero Content
+  if (pageData.hero) {
+    if (document.getElementById("hero-title"))
+      document.getElementById("hero-title").innerText = pageData.hero.title;
+    if (document.getElementById("hero-description"))
+      document.getElementById("hero-description").innerText =
+        pageData.hero.description;
+  }
+
+  // 2. Render Categories
+  const container = document.getElementById("policy-advisory-container");
+  if (!container || !pageData.categories) return;
+
+  // Load templates (reusing program card templates)
+  const [sectionRes, cardRes] = await Promise.all([
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/section-program-category.html")
+        : "/components/section-program-category.html",
+    ),
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/card-program.html")
+        : "/components/card-program.html",
+    ),
+  ]);
+
+  if (!sectionRes.ok || !cardRes.ok) return;
+  const sectionTemplate = await sectionRes.text();
+  const cardTemplate = await cardRes.text();
+
+  let finalHtml = "";
+
+  pageData.categories.forEach((cat) => {
+    // Build the programs list HTML
+    let programListHtml = "";
+    if (cat.programs) {
+      cat.programs.forEach((prog) => {
+        let pCard = cardTemplate;
+        for (const k in prog) {
+          const r = new RegExp(`{{${k}}}`, "g");
+          pCard = pCard.replace(r, prog[k] || "");
+        }
+        programListHtml += pCard;
+      });
+    }
+
+    // Build the section HTML
+    let sectionHtml = sectionTemplate;
+    for (const k in cat) {
+      if (k === "programs") continue;
+      const r = new RegExp(`{{${k}}}`, "g");
+      sectionHtml = sectionHtml.replace(r, cat[k] || "");
+    }
+
+    // Custom override for grid ID to avoid conflicts if multiple sections exist
+    sectionHtml = sectionHtml.replace(
+      /programs-grid-{{id}}/g,
+      `advisory-grid-${cat.id}`,
+    );
+    sectionHtml = sectionHtml.replace(/{{programListHtml}}/g, programListHtml);
+
+    finalHtml += sectionHtml;
+  });
+
+  container.innerHTML = finalHtml;
+
+  // Apply translations
   if (window.applyTranslations) window.applyTranslations(container);
 };
 
