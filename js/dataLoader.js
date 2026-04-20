@@ -197,13 +197,40 @@ window.initDataLoading = function () {
           data.trainingHeader,
         );
 
-      // Note: insightsHeader was deleted previously but we keep the logic ready if added back to JSON
-      if (data.insightsHeader)
-        renderComponent(
-          "section-insights-header-placeholder",
-          "/components/section-insights-header.html",
-          data.insightsHeader,
-        );
+      // New: Featured Publications Logic
+      if (data.featuredPublications) {
+        const publicationsPath = `${DATA_PATHS.publications}.json`;
+        fetchJSON(publicationsPath).then((pubData) => {
+          if (!pubData || !pubData[lang]) return;
+          const publications = pubData[lang].publications || [];
+          const top3 = publications.slice(0, 3);
+          
+          // Flatten first 3 into a single object for template placeholders
+          const pubSectionData = {
+            title: data.featuredPublications.title,
+            summary: data.featuredPublications.summary
+          };
+
+          top3.forEach((pub, index) => {
+            const i = index + 1;
+            pubSectionData[`pub${i}_id`] = pub.id;
+            pubSectionData[`pub${i}_title`] = pub.title;
+            pubSectionData[`pub${i}_author`] = pub.author;
+            pubSectionData[`pub${i}_date`] = pub.date;
+            pubSectionData[`pub${i}_description`] = pub.description;
+            pubSectionData[`pub${i}_thumbnail`] = pub.thumbnail;
+            pubSectionData[`pub${i}_type`] = pub.type;
+            pubSectionData[`pub${i}_typeClass`] = pub.typeClass;
+            pubSectionData[`pub${i}_downloadUrl`] = pub.downloadUrl;
+          });
+
+          renderComponent(
+            "section-featured-publications-placeholder",
+            "/components/section-featured-publications.html",
+            pubSectionData,
+          );
+        });
+      }
 
       // Fetch full research data and load modal for featured research interaction
       if (data.featuredResearch) {

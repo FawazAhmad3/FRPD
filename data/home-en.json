@@ -41,5 +41,9 @@
         "res3_image": "/assets/images/sample3.png",
         "res3_category": "International Economics",
         "res3_type": "Completed Studies"
+    },
+    "featuredPublications": {
+        "title": "Featured Publications",
+        "summary": "Access our latest research reports, policy briefs, and academic articles to stay informed on global developmental trends."
     }
 }

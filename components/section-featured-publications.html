@@ -1,0 +1,96 @@
+<!-- section-featured-publications.html -->
+<section class="py-20 bg-brand-gray/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10 sm:mb-16 animate__animated animate__fadeIn">
+            <h2 class="text-2xl sm:text-4xl font-heading font-bold text-brand-dark mb-4">{{title}}</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-base sm:text-lg">{{summary}}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Publication Card 1 -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="aspect-[16/10] overflow-hidden relative">
+                    <img src="{{pub1_thumbnail}}" alt="{{pub1_title}}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider {{pub1_typeClass}} shadow-sm">
+                            {{pub1_type}}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3 text-[10px] font-bold text-gray-400">
+                        <span>{{pub1_date}}</span>
+                        <span>•</span>
+                        <span class="text-brand-accent uppercase">{{pub1_author}}</span>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-dark group-hover:text-brand-accent transition-colors mb-3 line-clamp-2">{{pub1_title}}</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">{{pub1_description}}</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                        <a href="{{pub1_downloadUrl}}" class="inline-flex items-center text-xs font-bold text-brand-accent uppercase tracking-widest hover:text-blue-700 transition-colors">
+                            <i class="fas fa-file-download mr-2"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publication Card 2 -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="aspect-[16/10] overflow-hidden relative">
+                    <img src="{{pub2_thumbnail}}" alt="{{pub2_title}}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider {{pub2_typeClass}} shadow-sm">
+                            {{pub2_type}}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3 text-[10px] font-bold text-gray-400">
+                        <span>{{pub2_date}}</span>
+                        <span>•</span>
+                        <span class="text-brand-accent uppercase">{{pub2_author}}</span>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-dark group-hover:text-brand-accent transition-colors mb-3 line-clamp-2">{{pub2_title}}</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">{{pub2_description}}</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                        <a href="{{pub2_downloadUrl}}" class="inline-flex items-center text-xs font-bold text-brand-accent uppercase tracking-widest hover:text-blue-700 transition-colors">
+                            <i class="fas fa-file-download mr-2"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Publication Card 3 -->
+            <div class="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="aspect-[16/10] overflow-hidden relative">
+                    <img src="{{pub3_thumbnail}}" alt="{{pub3_title}}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider {{pub3_typeClass}} shadow-sm">
+                            {{pub3_type}}
+                        </span>
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-2 mb-3 text-[10px] font-bold text-gray-400">
+                        <span>{{pub3_date}}</span>
+                        <span>•</span>
+                        <span class="text-brand-accent uppercase">{{pub3_author}}</span>
+                    </div>
+                    <h3 class="text-lg font-heading font-bold text-brand-dark group-hover:text-brand-accent transition-colors mb-3 line-clamp-2">{{pub3_title}}</h3>
+                    <p class="text-gray-500 text-sm mb-6 line-clamp-2">{{pub3_description}}</p>
+                    <div class="mt-auto pt-4 border-t border-gray-50 flex items-center justify-between">
+                        <a href="{{pub3_downloadUrl}}" class="inline-flex items-center text-xs font-bold text-brand-accent uppercase tracking-widest hover:text-blue-700 transition-colors">
+                            <i class="fas fa-file-download mr-2"></i> Download
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="/pages/publications.html" class="inline-flex items-center gap-2 text-brand-accent font-bold hover:gap-3 transition-all">
+                Access Full Publication Archive
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
