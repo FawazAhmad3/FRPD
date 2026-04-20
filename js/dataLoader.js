@@ -11,6 +11,9 @@ const DATA_PATHS = {
   researchWing: "/data/research-wing",
   events: "/data/events",
   capacityBuilding: "/data/capacity-building",
+  datahub: "/data/datahub",
+  policyAdvisory: "/data/policy-advisory",
+  onlinePrograms: "/data/online-programs",
   publications: "/data/publications",
   mandate: "/data/mandate",
   governance: "/data/governance",
@@ -615,6 +618,115 @@ window.renderEventCards = async function () {
 };
 
 // ===========================================
+// [DATAHUB SPECIALIZED LOGIC]
+// ===========================================
+
+let allDatahubResources = [];
+let currentDataFilter = "All";
+
+/**
+ * Initializes the DataHub Page.
+ */
+window.initDataHubPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.datahub}.json`;
+
+  const data = await fetchJSON(dataPath);
+  if (!data || !data[lang]) return;
+
+  const pageData = data[lang];
+
+  // 1. Hero Content
+  if (pageData.hero) {
+    if (document.getElementById("hero-title"))
+      document.getElementById("hero-title").innerText = pageData.hero.title;
+    if (document.getElementById("hero-description"))
+      document.getElementById("hero-description").innerText =
+        pageData.hero.description;
+  }
+
+  // 2. Store Data
+  allDatahubResources = pageData.resources || [];
+
+  // 3. Initial Render
+  window.renderDataCards();
+};
+
+/**
+ * Filters DataHub resources by category.
+ */
+window.filterData = function (category) {
+  currentDataFilter = category;
+
+  // Update active UI state
+  document.querySelectorAll(".data-filter-btn").forEach((btn) => {
+    const btnText = btn.innerText.trim().toLowerCase();
+    const filterCat = category.toLowerCase();
+
+    // Match logic: 
+    // 1. "All" case
+    // 2. Exact match
+    // 3. Category contains button text (e.g., "Open Economic Data" contains "Open Data")
+    // 4. Button text contains category
+    const isActive =
+      (category === "All" && btnText.includes("all")) ||
+      btnText === filterCat ||
+      filterCat.includes(btnText.replace("data", "").trim()) ||
+      btnText.includes(filterCat);
+
+    if (isActive) {
+      btn.classList.add("active", "bg-brand-accent", "text-white");
+      btn.classList.remove("bg-white", "text-brand-dark");
+    } else {
+      btn.classList.remove("active", "bg-brand-accent", "text-white");
+      btn.classList.add("bg-white", "text-brand-dark");
+    }
+  });
+
+  window.renderDataCards();
+};
+
+/**
+ * Renders data cards based on filter.
+ */
+window.renderDataCards = async function () {
+  const container = document.getElementById("data-grid-container");
+  if (!container) return;
+
+  const filtered = allDatahubResources.filter((item) => {
+    return currentDataFilter === "All" || item.category === currentDataFilter;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No resources found for the selected category.</div>`;
+    return;
+  }
+
+  const templatePath =
+    typeof getRelativePath === "function"
+      ? getRelativePath("/components/card-data.html")
+      : "/components/card-data.html";
+  const templateRes = await fetch(templatePath);
+  if (!templateRes.ok) return;
+  const templateHtml = await templateRes.text();
+
+  let htmlContent = "";
+  filtered.forEach((item) => {
+    let card = templateHtml;
+    for (const key in item) {
+      const regex = new RegExp(`{{${key}}}`, "g");
+      card = card.replace(regex, item[key] || "");
+    }
+    htmlContent += card;
+  });
+
+  container.innerHTML = htmlContent;
+
+  // Apply translations
+  if (window.applyTranslations) window.applyTranslations(container);
+};
+
+// ===========================================
 // [POLICY & ADVISORY SPECIALIZED LOGIC]
 // ===========================================
 
@@ -691,6 +803,199 @@ window.initCapacityBuildingPage = async function () {
 
   // Apply translations
   if (window.applyTranslations) window.applyTranslations(container);
+};
+
+/**
+ * Initializes the Policy & Advisory Services page.
+ */
+window.initPolicyAdvisoryPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.policyAdvisory}.json`;
+
+  const data = await fetchJSON(dataPath);
+  if (!data || !data[lang]) return;
+
+  const pageData = data[lang];
+
+  // 1. Hero Content
+  if (pageData.hero) {
+    if (document.getElementById("hero-title"))
+      document.getElementById("hero-title").innerText = pageData.hero.title;
+    if (document.getElementById("hero-description"))
+      document.getElementById("hero-description").innerText =
+        pageData.hero.description;
+  }
+
+  // 2. Render Categories
+  const container = document.getElementById("policy-advisory-container");
+  if (!container || !pageData.categories) return;
+
+  // Load templates
+  const [sectionRes, cardRes] = await Promise.all([
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/section-program-category.html")
+        : "/components/section-program-category.html",
+    ),
+    fetch(
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/card-program.html")
+        : "/components/card-program.html",
+    ),
+  ]);
+
+  if (!sectionRes.ok || !cardRes.ok) return;
+  const sectionTemplate = await sectionRes.text();
+  const cardTemplate = await cardRes.text();
+
+  let finalHtml = "";
+
+  pageData.categories.forEach((cat) => {
+    // Build the programs list HTML
+    let programListHtml = "";
+    if (cat.programs) {
+      cat.programs.forEach((prog) => {
+        let pCard = cardTemplate;
+        for (const k in prog) {
+          const r = new RegExp(`{{${k}}}`, "g");
+          pCard = pCard.replace(r, prog[k] || "");
+        }
+        programListHtml += pCard;
+      });
+    }
+
+    // Build the section HTML
+    let sectionHtml = sectionTemplate;
+    for (const k in cat) {
+      if (k === "programs") continue;
+      const r = new RegExp(`{{${k}}}`, "g");
+      sectionHtml = sectionHtml.replace(r, cat[k] || "");
+    }
+    sectionHtml = sectionHtml.replace(/{{programListHtml}}/g, programListHtml);
+
+    finalHtml += sectionHtml;
+  });
+
+  container.innerHTML = finalHtml;
+
+  // Apply translations
+  if (window.applyTranslations) window.applyTranslations(container);
+};
+
+// ===========================================
+// [ONLINE PROGRAMS SPECIALIZED LOGIC]
+// ===========================================
+
+let allCoursesData = [];
+
+/**
+ * Initializes the Online Programs page.
+ */
+window.initOnlineProgramsPage = async function () {
+  const lang = window.currentLang || "en";
+  const dataPath = `${DATA_PATHS.onlinePrograms}.json`;
+
+  // 1. Fetch Data
+  const data = await fetchJSON(dataPath);
+  if (!data || !data[lang]) return;
+
+  const pageData = data[lang];
+  allCoursesData = pageData.courses || [];
+
+  // 2. Hero Content
+  if (pageData.hero) {
+    if (document.getElementById("hero-title"))
+      document.getElementById("hero-title").innerText = pageData.hero.title;
+    if (document.getElementById("hero-description"))
+      document.getElementById("hero-description").innerText =
+        pageData.hero.description;
+  }
+
+  // 3. Render Grid
+  const container = document.getElementById("courses-grid-container");
+  if (!container) return;
+
+  const templatePath =
+    typeof getRelativePath === "function"
+      ? getRelativePath("/components/card-course.html")
+      : "/components/card-course.html";
+  const templateRes = await fetch(templatePath);
+  if (!templateRes.ok) return;
+  const templateHtml = await templateRes.text();
+
+  let htmlContent = "";
+  allCoursesData.forEach((item) => {
+    let card = templateHtml;
+    for (const key in item) {
+      const regex = new RegExp(`{{${key}}}`, "g");
+      card = card.replace(regex, item[key] || "");
+    }
+    htmlContent += card;
+  });
+
+  container.innerHTML = htmlContent;
+
+  // 4. Load Modal Template
+  const modalPlaceholder = document.getElementById("course-modal-placeholder");
+  if (modalPlaceholder) {
+    const modalPath =
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/modal-course.html")
+        : "/components/modal-course.html";
+    const modalRes = await fetch(modalPath);
+    if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
+  }
+
+  // Apply translations
+  if (window.applyTranslations) window.applyTranslations(container);
+};
+
+/**
+ * Opens Course details modal.
+ */
+window.openCourseModal = function (id) {
+  const item = allCoursesData.find((c) => c.id === id);
+  if (!item) return;
+
+  const modal = document.getElementById("course-modal");
+  if (!modal) return;
+
+  // Bind Data
+  document.getElementById("modal-course-title").innerText = item.title;
+  document.getElementById("modal-course-price").innerText = item.price;
+  document.getElementById("modal-course-duration").innerText = item.duration;
+  document.getElementById("modal-course-level").innerText = item.level;
+  document.getElementById("modal-course-description").innerText =
+    item.description || item.shortDesc;
+
+  // Bind Curriculum
+  const curriculumList = document.getElementById("modal-course-curriculum");
+  if (curriculumList && item.curriculum) {
+    curriculumList.innerHTML = item.curriculum
+      .map((step) => `<li>${step}</li>`)
+      .join("");
+  }
+
+  // Bind Payment Details
+  if (item.easypaisaDetails) {
+    document.getElementById("modal-payment-account").innerText =
+      item.easypaisaDetails.account;
+    document.getElementById("modal-payment-name").innerText =
+      item.easypaisaDetails.name;
+  }
+
+  // Show Modal
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeCourseModal = function () {
+  const modal = document.getElementById("course-modal");
+  if (!modal) return;
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
 };
 
 // ===========================================
