@@ -6,16 +6,16 @@
     "teamSummary": "The multidisciplinary experts driving our daily research and innovation efforts.",
     "board": [
       {
-        "name": "Dr. Sarah Johnson",
-        "role": "Chairperson",
-        "image": "/assets/images/sample1.jpg",
-        "bio": "Over 25 years of experience in global economic policy and institutional reform. Former advisor to international development banks."
+        "name": "Dr. Shakeel Shahzad",
+        "role": "Chief Executive Officer",
+        "image": "/assets/images/Governance/Dr Shakeel.jpg",
+        "bio": "Over 15 years of distinguished experience in national and international economic policy and institutional reform. Former Advisor to GIZ International Services (GIZ IS/GmbH) and the Central Asia Development Group (CADG)."
       },
       {
-        "name": "Prof. David Chen",
-        "role": "Strategy Director",
-        "image": "/assets/images/sample2.png",
-        "bio": "Expert in quantitative economics and strategic foresight. Leads our long-term research roadmap."
+        "name": "Dr. Miraj Ul Haq",
+        "role": "",
+        "image": "/assets/images/Governance/Dr Miraj.png",
+        "bio": "Over 18 years of distinguished experience in national economic policy and institutional reform in education. Currently, working as Associate Professor at International Islamic University – IIUI, Islamabad. "
       }
     ],
     "team": [
@@ -36,6 +36,28 @@
         "role": "Capacity Building Lead",
         "image": "/assets/images/sample2.png",
         "bio": "Dedicated to developing high-impact training programs for public sector professionals."
+      }
+    ],
+    "adminTitle": "Administrative Staff",
+    "adminSummary": "The dedicated support team ensuring seamless day-to-day operations and institutional excellence.",
+    "adminStaff": [
+      {
+        "name": "Sarah Collins",
+        "role": "Operations Manager",
+        "image": "/assets/images/sample1.jpg",
+        "bio": "Expert in institutional logistics and process optimization. Manages the core administrative functions across global offices."
+      },
+      {
+        "name": "David Miller",
+        "role": "Financial Administrator",
+        "image": "/assets/images/sample2.png",
+        "bio": "Oversees fiscal reporting and accounting standards, ensuring complete transparency and regulatory compliance."
+      },
+      {
+        "name": "Linda Thompson",
+        "role": "Institutional Support",
+        "image": "/assets/images/sample3.png",
+        "bio": "Coordinates departmental communications and high-level project scheduling for the executive board."
       }
     ]
   }

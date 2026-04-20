@@ -489,7 +489,11 @@ window.initGovernancePage = async function () {
   document.getElementById("team-title").innerText = data.governance.teamTitle;
   document.getElementById("team-summary").innerText =
     data.governance.teamSummary;
-
+  document.getElementById("admin-title").innerText =
+    data.governance.adminTitle || "Administrative Staff";
+  document.getElementById("admin-summary").innerText =
+    data.governance.adminSummary || "";
+ 
   // Render Lists
   renderList(
     "board-grid-placeholder",
@@ -497,9 +501,14 @@ window.initGovernancePage = async function () {
     data.governance.board,
   );
   renderList(
-    "team-container",
+    "team-grid-placeholder",
     "/components/card-member.html",
     data.governance.team,
+  );
+  renderList(
+    "admin-grid-placeholder",
+    "/components/card-member.html",
+    data.governance.adminStaff,
   );
 };
 
