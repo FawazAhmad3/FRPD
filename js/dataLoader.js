@@ -305,7 +305,7 @@ window.filterByCategory = function (category) {
     const btnText = btn.innerText.trim().toLowerCase();
     const searchCat = category.toLowerCase();
     const isActive =
-      (searchCat === "all" && btnText === "all fields") ||
+      (searchCat === "all" && btnText === "all types") ||
       btnText === searchCat;
 
     if (isActive) {
