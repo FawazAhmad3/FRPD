@@ -1,46 +1,41 @@
-<div class="bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col h-full group animate__animated animate__fadeInUp">
-    <!-- Image Header with Price Badge -->
-    <div class="relative h-56 overflow-hidden">
-        <img src="{{image}}" alt="{{title}}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
-        <div class="absolute top-4 right-4">
-            <span class="px-4 py-1.5 bg-brand-accent text-white font-bold rounded-lg shadow-lg">
-                {{price}}
-            </span>
-        </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent"></div>
-        <div class="absolute bottom-4 left-4">
-            <span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest rounded">
-                {{level}}
-            </span>
-        </div>
+<div class="flex-shrink-0 w-[280px] flex flex-col h-full group cursor-pointer animate__animated animate__fadeInUp bg-white border border-gray-100 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300" onclick="window.openCourseModal('{{id}}')">
+    <!-- Image -->
+    <div class="relative aspect-video overflow-hidden bg-gray-100">
+        <img src="{{image}}" alt="{{title}}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
     </div>
 
     <!-- Content -->
-    <div class="p-6 flex flex-col flex-grow">
-        <h3 class="text-xl font-heading font-bold text-brand-dark mb-3 group-hover:text-brand-accent transition-colors leading-tight">
+    <div class="p-4 flex flex-col flex-grow">
+        <h3 class="text-sm font-bold text-gray-900 mb-1 line-clamp-2 leading-snug group-hover:text-brand-accent transition-colors">
             {{title}}
         </h3>
-        <p class="text-gray-500 text-sm mb-6 line-clamp-3">
-            {{shortDesc}}
-        </p>
-
-        <!-- Stats -->
-        <div class="mt-auto flex items-center justify-between text-xs font-bold uppercase tracking-wider text-gray-400">
-            <div class="flex items-center">
-                <i class="far fa-clock mr-2 text-brand-accent"></i>
-                <span>{{duration}}</span>
-            </div>
-            <div class="flex items-center">
-                <i class="fas fa-graduation-cap mr-2 text-brand-accent"></i>
-                <span>Certified</span>
-            </div>
+        <p class="text-[11px] text-gray-500 mb-1 leading-tight">{{instructor}}</p>
+        
+        <!-- Badge -->
+        <div class="mb-1 {{badgeVisibility}}">
+            <span class="inline-block px-2 py-0.5 bg-[#eceb98] text-[#3d3c0a] text-[10px] font-bold rounded-sm uppercase tracking-tight">
+                {{badge}}
+            </span>
         </div>
 
-        <!-- Action -->
-        <div class="mt-6 pt-6 border-t border-gray-50">
-            <button onclick="window.openCourseModal('{{id}}')" class="w-full py-3 bg-brand-gray text-brand-dark font-bold rounded-xl hover:bg-brand-accent hover:text-white transition-all duration-300">
-                Course Details & Enroll
-            </button>
+        <!-- Rating -->
+        <div class="flex items-center gap-1 mb-2">
+            <span class="text-xs font-bold text-[#b4690e]">{{rating}}</span>
+            <div class="flex text-[8px] text-[#b4690e]">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <span class="text-[10px] text-gray-400">({{reviewsCount}})</span>
+        </div>
+
+        <!-- Price -->
+        <div class="mt-auto flex items-center gap-2">
+            <span class="text-base font-bold text-gray-900">{{price}} PKR</span>
+            <span class="text-xs text-gray-400 line-through">{{oldPrice}} PKR</span>
         </div>
     </div>
 </div>

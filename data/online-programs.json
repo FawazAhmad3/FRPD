@@ -1,69 +1,128 @@
 {
   "en": {
     "hero": {
-      "title": "Executive Online Programs",
-      "description": "Unlock global opportunities with our certified online courses. Designed by industry experts for senior professionals and aspiring leaders."
+      "title": "Skills to transform your career and life",
+      "description": "From critical skills to technical topics, FRPD supports your professional development."
     },
-    "courses": [
+    "categories": [
       {
-        "id": "course-1",
-        "title": "Advanced Data Analytics for Policy Makers",
-        "price": "9,999 PKR",
-        "duration": "8 Weeks",
-        "level": "Executive",
-        "image": "/assets/images/research-economics-2.jpg",
-        "shortDesc": "Transform raw data into actionable policy insights using modern analytical tools.",
-        "description": "This premium course provides a deep dive into statistical modeling, data visualization, and evidence-based decision making. Ideal for government officials and research leads.",
-        "curriculum": [
-          "Module 1: Foundations of Data-Driven Governance",
-          "Module 2: Advanced Econometric Modeling",
-          "Module 3: Visualization with R and Tableu",
-          "Module 4: Final Capstone Project"
-        ],
-        "easypaisaDetails": {
-          "account": "0344 9198158",
-          "name": "FRPD Training Division"
-        }
+        "id": "cat-ai",
+        "name": "Artificial Intelligence (AI)",
+        "description": "Master the world of Generative AI, Neural Networks, and Agentic workflows with hands-on projects.",
+        "courses": [
+          {
+            "id": "cp-ai-1",
+            "title": "The AI Engineer Course 2026: Complete AI Engineer Bootcamp",
+            "instructor": "Dr. Sarah Mitchell",
+            "rating": 4.8,
+            "reviewsCount": "19,409",
+            "price": "2,500",
+            "oldPrice": "15,000",
+            "badge": "Bestseller",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/ai_course_1_1776755108297.png",
+            "duration": "45.5 hours",
+            "level": "All Levels"
+          },
+          {
+            "id": "cp-ai-2",
+            "title": "AI Agents & Agentic AI: Building the Future of Automation",
+            "instructor": "Alex Rivera",
+            "rating": 4.9,
+            "reviewsCount": "5,120",
+            "price": "3,500",
+            "oldPrice": "18,000",
+            "badge": "Highest Rated",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/ai_course_1_1776755108297.png",
+            "duration": "12 hours",
+            "level": "Intermediate"
+          }
+        ]
       },
       {
-        "id": "course-2",
-        "title": "Digital Transformation Leadership",
-        "price": "12,500 PKR",
-        "duration": "6 Weeks",
-        "level": "Senior Management",
-        "image": "/assets/images/research-economics-3.jpg",
-        "shortDesc": "Lead your organization through the complexities of the digital-first era.",
-        "description": "Master the strategies needed to implement AI, cloud infrastructure, and agile workflows within large-scale institutions.",
-        "curriculum": [
-          "Module 1: The Digital Disruption Landscape",
-          "Module 2: Agile Institutional Reform",
-          "Module 3: Cybersecurity for non-technical leaders",
-          "Module 4: Emerging Tech: AI & Blockchain"
-        ],
-        "easypaisaDetails": {
-          "account": "0344 9198158",
-          "name": "FRPD Training Division"
-        }
+        "id": "cat-web",
+        "name": "Web Development",
+        "description": "Build modern, responsive websites and web applications using the latest technologies.",
+        "courses": [
+          {
+            "id": "cp-web-1",
+            "title": "The Complete 2026 Web Development Bootcamp",
+            "instructor": "James Wilson",
+            "rating": 4.7,
+            "reviewsCount": "152,940",
+            "price": "2,500",
+            "oldPrice": "18,000",
+            "badge": "Bestseller",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/web_dev_course_1_1776755122933.png",
+            "duration": "64 hours",
+            "level": "All Levels"
+          }
+        ]
       },
       {
-        "id": "course-3",
-        "title": "Python",
-        "price": "12,500 PKR",
-        "duration": "6 Weeks",
-        "level": "Senior Management",
-        "image": "/assets/images/research-economics-3.jpg",
-        "shortDesc": "Lead your organization through the complexities of the digital-first era.",
-        "description": "Master the strategies needed to implement AI, cloud infrastructure, and agile workflows within large-scale institutions.",
-        "curriculum": [
-          "Module 1: The Digital Disruption Landscape",
-          "Module 2: Agile Institutional Reform",
-          "Module 3: Cybersecurity for non-technical leaders",
-          "Module 4: Emerging Tech: AI & Blockchain"
-        ],
-        "easypaisaDetails": {
-          "account": "0344 9198158",
-          "name": "FRPD Training Division"
-        }
+        "id": "cat-data",
+        "name": "Data Science",
+        "description": "Learn to analyze data, build predictive models, and extract insights with Python and R.",
+        "courses": [
+          {
+            "id": "cp-data-1",
+            "title": "Data Science & AI Masters 2026 - From Python to Gen AI",
+            "instructor": "Prof. Michael Chen",
+            "rating": 4.8,
+            "reviewsCount": "8,243",
+            "price": "3,000",
+            "oldPrice": "12,000",
+            "badge": "Bestseller",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/data_science_course_1_1776755140538.png",
+            "duration": "52 hours",
+            "level": "Beginner to Pro"
+          }
+        ]
+      },
+      {
+        "id": "cat-lead",
+        "name": "Leadership",
+        "description": "Develop the soft skills and strategic mindset needed to lead modern organizations.",
+        "courses": [
+          {
+            "id": "cp-lead-1",
+            "title": "Leadership: Practical Leadership Skills",
+            "instructor": "Gregory Caremans",
+            "rating": 4.6,
+            "reviewsCount": "45,000",
+            "price": "2,500",
+            "oldPrice": "4,500",
+            "badge": "Bestseller",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/leadership_course_1_1776755161106.png",
+            "duration": "3 hours",
+            "level": "Intermediate"
+          }
+        ]
+      },
+      {
+        "id": "cat-biz",
+        "name": "Business Analytics & Intelligence",
+        "description": "Master data-driven decision making with Power BI, SQL, and Advanced Analytics.",
+        "courses": [
+          {
+            "id": "cp-biz-1",
+            "title": "Business Intelligence Mastery: Power BI & SQL",
+            "instructor": "Elena Rodriguez",
+            "rating": 4.7,
+            "reviewsCount": "12,300",
+            "price": "2,500",
+            "oldPrice": "7,500",
+            "badge": "New",
+            "badgeVisibility": "block",
+            "image": "/Users/fawaz/.gemini/antigravity/brain/f08df287-e437-41cd-b278-deca17d938cb/business_analytics_course_1_retry_1776755245494.png",
+            "duration": "18 hours",
+            "level": "All Levels"
+          }
+        ]
       }
     ]
   },
