@@ -42,29 +42,43 @@
         <!-- Filter Bar -->
         <section class="sticky top-28 z-30 bg-white/80 backdrop-blur-md border-b border-gray-100 py-6 transition-all duration-300">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Search Bar -->
+                <div class="max-w-2xl mx-auto mb-8 relative">
+                    <div class="relative">
+                        <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                        <input 
+                            type="text" 
+                            id="data-search-input" 
+                            oninput="window.searchData(this.value)"
+                            placeholder="Search economic datasets, formats, or providers..." 
+                            class="w-full pl-12 pr-4 py-4 bg-white border border-gray-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-brand-accent transition-all text-gray-700"
+                        >
+                    </div>
+                </div>
+
                 <div class="flex flex-wrap justify-center gap-2" id="data-filters">
                     <button onclick="window.filterData('All')" class="data-filter-btn active px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         All Resources
                     </button>
-                    <button onclick="window.filterData('Open Economic Data')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Open Data')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Open Data
                     </button>
-                    <button onclick="window.filterData('Premium Data')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Premium')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Premium
                     </button>
-                    <button onclick="window.filterData('Surveys & Microdata')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Surveys')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Surveys
                     </button>
-                    <button onclick="window.filterData('Dashboards & Visualizations')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Dashboards')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Dashboards
                     </button>
-                    <button onclick="window.filterData('Research & Reports')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Reports')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Reports
                     </button>
-                    <button onclick="window.filterData('Data Tools & Resources')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.filterData('Tools')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Tools
                     </button>
-                    <button onclick="window.filterData('Data Request')" class="data-filter-btn px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
+                    <button onclick="window.location.href='/pages/contact.html'" class="px-4 py-2 rounded-lg border border-gray-200 bg-white text-xs font-bold uppercase tracking-wider text-brand-dark hover:border-brand-accent hover:text-brand-accent transition-all">
                         Custom Request
                     </button>
                 </div>
@@ -100,6 +114,7 @@
 
     <div id="footer-placeholder"></div>
     <div id="social-buttons-placeholder"></div>
+    <div id="data-modal-placeholder"></div>
 
     <!-- Core Scripts -->
     <script src="../utils/helpers.js"></script>

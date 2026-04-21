@@ -685,6 +685,7 @@ window.renderEventCards = async function () {
 
 let allDatahubResources = [];
 let currentDataFilter = "All";
+let currentDataSearchQuery = "";
 
 /**
  * Initializes the DataHub Page.
@@ -710,8 +711,57 @@ window.initDataHubPage = async function () {
   // 2. Store Data
   allDatahubResources = pageData.resources || [];
 
-  // 3. Initial Render
+  // 3. Load Modal Template
+  const modalPlaceholder = document.getElementById("data-modal-placeholder");
+  if (modalPlaceholder) {
+    const modalPath =
+      typeof getRelativePath === "function"
+        ? getRelativePath("/components/modal-data.html")
+        : "/components/modal-data.html";
+    const modalRes = await fetch(modalPath);
+    if (modalRes.ok) modalPlaceholder.innerHTML = await modalRes.text();
+  }
+
+  // 4. Initial Render
   window.renderDataCards();
+};
+
+/**
+ * Opens Data Resource details modal.
+ */
+window.openDataModal = function (id) {
+  const item = allDatahubResources.find((r) => r.id === id);
+  if (!item) return;
+
+  const modal = document.getElementById("data-modal");
+  if (!modal) return;
+
+  // Bind Data
+  document.getElementById("modal-data-category").innerText = item.category;
+  document.getElementById("modal-data-format").innerText = item.format;
+  document.getElementById("modal-data-access").innerText = item.access;
+  document.getElementById("modal-data-title").innerText = item.title;
+  document.getElementById("modal-data-description").innerHTML = item.description;
+  document.getElementById("modal-data-link").href = item.url;
+  
+  // Set Icon
+  const iconEl = document.getElementById("modal-data-icon");
+  if (iconEl) {
+    iconEl.className = item.icon || "fas fa-database";
+  }
+
+  // Show Modal
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+  document.body.style.overflow = "hidden";
+};
+
+window.closeDataModal = function () {
+  const modal = document.getElementById("data-modal");
+  if (!modal) return;
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+  document.body.style.overflow = "";
 };
 
 /**
@@ -745,18 +795,33 @@ window.filterData = function (category) {
     }
   });
 
+    window.renderDataCards();
+};
+
+/**
+ * Handles real-time searching of DataHub resources.
+ */
+window.searchData = function (query) {
+  currentDataSearchQuery = query.toLowerCase().trim();
   window.renderDataCards();
 };
 
 /**
- * Renders data cards based on filter.
+ * Renders data cards based on filter and search query.
  */
 window.renderDataCards = async function () {
   const container = document.getElementById("data-grid-container");
   if (!container) return;
 
   const filtered = allDatahubResources.filter((item) => {
-    return currentDataFilter === "All" || item.category === currentDataFilter;
+    // 1. Category Filter
+    const catMatch = currentDataFilter === "All" || item.category === currentDataFilter;
+    
+    // 2. Search Query Filter
+    const searchMatch = !currentDataSearchQuery || 
+      item.title.toLowerCase().includes(currentDataSearchQuery);
+
+    return catMatch && searchMatch;
   });
 
   if (filtered.length === 0) {

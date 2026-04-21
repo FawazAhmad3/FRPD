@@ -1,0 +1,46 @@
+<!-- modal-data.html -->
+<div id="data-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm" onclick="window.closeDataModal()"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col animate__animated animate__zoomIn animate__faster">
+        <!-- Close Button -->
+        <button onclick="window.closeDataModal()" class="absolute top-4 right-4 z-[110] w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center text-brand-dark hover:text-red-500 transition-colors">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <div class="p-8 md:p-12 overflow-y-auto">
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span id="modal-data-category" class="px-3 py-1 bg-brand-accent/10 text-brand-accent text-xs font-bold rounded-full uppercase tracking-wider">Category</span>
+                <span id="modal-data-format" class="px-3 py-1 bg-gray-100 text-gray-500 text-xs font-bold rounded-full uppercase tracking-wider">Format</span>
+                <span id="modal-data-access" class="px-3 py-1 bg-green-100 text-green-700 text-xs font-bold rounded-full uppercase tracking-wider">Free</span>
+            </div>
+
+            <div class="flex items-center gap-6 mb-8">
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-brand-gray flex items-center justify-center text-brand-accent text-3xl md:text-4xl">
+                    <i id="modal-data-icon" class="fas fa-database"></i>
+                </div>
+                <div>
+                    <h2 id="modal-data-title" class="text-3xl md:text-4xl font-heading font-bold text-brand-dark leading-tight">Resource Title</h2>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-100 pt-8 mt-4">
+                <h4 class="text-sm font-bold text-brand-dark uppercase tracking-widest mb-4 opacity-50">Detailed Description</h4>
+                <div id="modal-data-description" class="text-gray-600 leading-relaxed text-lg space-y-4">
+                    <!-- Description injected here with <br> tags rendered as new lines -->
+                </div>
+            </div>
+
+            <div class="mt-12 flex flex-col sm:flex-row gap-4">
+                <a id="modal-data-link" href="#" target="_blank" rel="noopener noreferrer" class="flex-grow flex items-center justify-center gap-3 px-8 py-4 bg-brand-accent text-white font-bold rounded-2xl hover:bg-blue-600 shadow-xl shadow-brand-accent/20 transition-all active:scale-95 text-lg">
+                    Access Resource Portal <i class="fa-solid fa-up-right-from-square"></i>
+                </a>
+                <button onclick="window.closeDataModal()" class="px-8 py-4 bg-brand-gray text-brand-dark font-bold rounded-2xl hover:bg-gray-200 transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
