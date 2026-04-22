@@ -15,6 +15,19 @@
         <h3 class="text-lg font-heading font-bold text-brand-dark mb-2 leading-tight group-hover:text-brand-accent transition-colors">
             {{title}}
         </h3>
+
+        <!-- Interactive Preview (Visible for Dashboards) -->
+        <div id="preview-{{id}}" class="dashboard-preview hidden mb-4 p-3 bg-gray-50 rounded-xl border border-gray-100 overflow-hidden h-24 relative">
+            <div id="chart-mini-{{id}}" class="w-full h-full"></div>
+            <!-- Pulse indicator -->
+            <div class="absolute top-2 right-2 flex items-center gap-1.5">
+                <span class="flex h-1.5 w-1.5 relative">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500"></span>
+                </span>
+                <span class="text-[7px] font-bold text-green-600 uppercase tracking-tighter">Live</span>
+            </div>
+        </div>
         
         <div class="flex-grow overflow-hidden">
             <p class="text-gray-500 text-sm mb-4 line-clamp-3">

@@ -684,7 +684,8 @@ window.renderEventCards = async function () {
 // ===========================================
 
 let allDatahubResources = [];
-let currentDataFilter = "All";
+let currentDataCategory = "All";
+let currentDataAccessType = "All";
 let currentDataSearchQuery = "";
 
 /**
@@ -727,75 +728,45 @@ window.initDataHubPage = async function () {
 };
 
 /**
- * Opens Data Resource details modal.
+ * Filters by Category (Sidebar).
  */
-window.openDataModal = function (id) {
-  const item = allDatahubResources.find((r) => r.id === id);
-  if (!item) return;
-
-  const modal = document.getElementById("data-modal");
-  if (!modal) return;
-
-  // Bind Data
-  document.getElementById("modal-data-category").innerText = item.category;
-  document.getElementById("modal-data-format").innerText = item.format;
-  document.getElementById("modal-data-access").innerText = item.access;
-  document.getElementById("modal-data-title").innerText = item.title;
-  document.getElementById("modal-data-description").innerHTML = item.description;
-  document.getElementById("modal-data-link").href = item.url;
+window.filterCategory = function (category) {
+  currentDataCategory = category;
   
-  // Set Icon
-  const iconEl = document.getElementById("modal-data-icon");
-  if (iconEl) {
-    iconEl.className = item.icon || "fas fa-database";
-  }
-
-  // Show Modal
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-  document.body.style.overflow = "hidden";
-};
-
-window.closeDataModal = function () {
-  const modal = document.getElementById("data-modal");
-  if (!modal) return;
-  modal.classList.add("hidden");
-  modal.classList.remove("flex");
-  document.body.style.overflow = "";
-};
-
-/**
- * Filters DataHub resources by category.
- */
-window.filterData = function (category) {
-  currentDataFilter = category;
-
-  // Update active UI state
-  document.querySelectorAll(".data-filter-btn").forEach((btn) => {
-    const btnText = btn.innerText.trim().toLowerCase();
-    const filterCat = category.toLowerCase();
-
-    // Match logic: 
-    // 1. "All" case
-    // 2. Exact match
-    // 3. Category contains button text (e.g., "Open Economic Data" contains "Open Data")
-    // 4. Button text contains category
-    const isActive =
-      (category === "All" && btnText.includes("all")) ||
-      btnText === filterCat ||
-      filterCat.includes(btnText.replace("data", "").trim()) ||
-      btnText.includes(filterCat);
-
+  // Update UI Sidebar
+  document.querySelectorAll(".category-filter-btn").forEach(btn => {
+    const isActive = btn.innerText.includes(category) || (category === "All" && btn.innerText.includes("All"));
     if (isActive) {
-      btn.classList.add("active", "bg-brand-accent", "text-white");
-      btn.classList.remove("bg-white", "text-brand-dark");
+      btn.classList.add("active", "bg-brand-accent/5", "text-brand-accent");
+      btn.classList.remove("text-gray-500");
     } else {
-      btn.classList.remove("active", "bg-brand-accent", "text-white");
-      btn.classList.add("bg-white", "text-brand-dark");
+      btn.classList.remove("active", "bg-brand-accent/5", "text-brand-accent");
+      btn.classList.add("text-gray-500");
     }
   });
 
-    window.renderDataCards();
+  window.renderDataCards();
+};
+
+/**
+ * Filters by Access Type (Top Bar).
+ */
+window.filterAccess = function (accessType) {
+  currentDataAccessType = accessType;
+  
+  // Update UI Top Bar
+  document.querySelectorAll(".access-filter-btn").forEach(btn => {
+    const isActive = btn.innerText.includes(accessType === "Free" ? "Open" : accessType) || (accessType === "All" && btn.innerText.includes("All"));
+    if (isActive) {
+      btn.classList.add("active", "bg-white", "text-brand-dark", "shadow-sm");
+      btn.classList.remove("text-gray-500");
+    } else {
+      btn.classList.remove("active", "bg-white", "text-brand-dark", "shadow-sm");
+      btn.classList.add("text-gray-500");
+    }
+  });
+
+  window.renderDataCards();
 };
 
 /**
@@ -807,25 +778,31 @@ window.searchData = function (query) {
 };
 
 /**
- * Renders data cards based on filter and search query.
+ * Renders data cards based on dual-filter and search query.
  */
 window.renderDataCards = async function () {
   const container = document.getElementById("data-grid-container");
+  const countEl = document.getElementById("data-count");
   if (!container) return;
 
   const filtered = allDatahubResources.filter((item) => {
     // 1. Category Filter
-    const catMatch = currentDataFilter === "All" || item.category === currentDataFilter;
+    const catMatch = currentDataCategory === "All" || item.category === currentDataCategory;
     
-    // 2. Search Query Filter
+    // 2. Access Type Filter
+    const accessMatch = currentDataAccessType === "All" || item.access === currentDataAccessType;
+    
+    // 3. Search Query Filter
     const searchMatch = !currentDataSearchQuery || 
       item.title.toLowerCase().includes(currentDataSearchQuery);
 
-    return catMatch && searchMatch;
+    return catMatch && accessMatch && searchMatch;
   });
 
+  if (countEl) countEl.innerText = filtered.length;
+
   if (filtered.length === 0) {
-    container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No resources found for the selected category.</div>`;
+    container.innerHTML = `<div class="col-span-full py-20 text-center text-gray-400">No resources found matching your filters.</div>`;
     return;
   }
 
@@ -849,9 +826,187 @@ window.renderDataCards = async function () {
 
   container.innerHTML = htmlContent;
 
+  // Render Mini Charts for Dashboards
+  filtered.forEach(item => {
+    if (item.category === "Dashboards" && item.chartDataUrl) {
+      const previewEl = document.getElementById(`preview-${item.id}`);
+      if (previewEl) {
+        previewEl.classList.remove("hidden");
+        window.renderMiniChart(`chart-mini-${item.id}`, item.chartDataUrl);
+      }
+    }
+  });
+
   // Apply translations
   if (window.applyTranslations) window.applyTranslations(container);
 };
+
+/**
+ * Helper to render mini sparkline charts for cards.
+ */
+window.renderMiniChart = async function (containerId, url) {
+  try {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
+    const jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+
+    if (jsonData.length === 0) return;
+
+    const keys = Object.keys(jsonData[0]);
+    const seriesData = jsonData.map(row => parseFloat(row[keys[1]]) || 0);
+
+    const options = {
+      series: [{ data: seriesData }],
+      chart: { type: 'area', height: '100%', sparkline: { enabled: true }, animations: { enabled: true } },
+      stroke: { curve: 'smooth', width: 2 },
+      fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.4, opacityTo: 0.1 } },
+      colors: ['#3b82f6'],
+      tooltip: { enabled: false }
+    };
+
+    const container = document.getElementById(containerId);
+    if (container) {
+      const chart = new ApexCharts(container, options);
+      chart.render();
+    }
+  } catch (e) {
+    console.error("Mini Chart Error:", e);
+  }
+};
+
+/**
+ * Opens Data Resource details modal.
+ */
+/**
+ * High-performance scroll lock helper.
+ * Prevents the page from 'jumping' when the scrollbar disappears.
+ */
+window.toggleScrollLock = function (isLocked) {
+  const body = document.body;
+  if (isLocked) {
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    body.style.paddingRight = `${scrollBarWidth}px`;
+    body.classList.add("is-locked");
+  } else {
+    body.style.paddingRight = "0";
+    body.classList.remove("is-locked");
+  }
+};
+
+window.openDataModal = function (id) {
+  const item = allDatahubResources.find((r) => r.id === id);
+  if (!item) return;
+
+  const modal = document.getElementById("data-modal");
+  if (!modal) return;
+
+  // 1. Lock Scroll (No-jump)
+  window.toggleScrollLock(true);
+
+  // 2. Prepare Entry
+  modal.classList.remove("hidden", "modal-active");
+  modal.classList.add("flex", "modal-entering");
+
+  // Force Reflow
+  void modal.offsetHeight;
+
+  // 3. Trigger Smooth Transition
+  requestAnimationFrame(() => {
+    modal.classList.remove("modal-entering");
+    modal.classList.add("modal-active");
+  });
+
+  // 4. Bind Text Data
+  document.getElementById("modal-data-category").innerText = item.category;
+  document.getElementById("modal-data-format").innerText = item.format;
+  document.getElementById("modal-data-access").innerText = item.access;
+  document.getElementById("modal-data-title").innerText = item.title;
+  document.getElementById("modal-data-description").innerHTML = item.description;
+  document.getElementById("modal-data-link").href = item.url;
+  
+  const iconEl = document.getElementById("modal-data-icon");
+  if (iconEl) iconEl.className = item.icon || "fas fa-database";
+
+  // 5. Deferred Heavy Rendering (Wait for animation to finish completely)
+  const chartSection = document.getElementById("modal-chart-section");
+  const chartContainer = document.getElementById("modal-chart-container");
+  
+  if (chartSection) {
+    chartSection.classList.add("hidden"); // Reset
+    if (chartContainer) chartContainer.innerHTML = "";
+    
+    if (item.chartDataUrl) {
+      chartSection.classList.remove("hidden");
+      // Delay chart rendering until modal is settled (500ms)
+      setTimeout(() => {
+        window.renderDataChart(item.chartDataUrl);
+      }, 500);
+    }
+  }
+};
+
+window.closeDataModal = function () {
+  const modal = document.getElementById("data-modal");
+  if (!modal) return;
+  
+  modal.classList.remove("modal-active");
+  
+  setTimeout(() => {
+    modal.classList.add("hidden");
+    modal.classList.remove("flex");
+    window.toggleScrollLock(false);
+  }, 350); // Match transition speed
+};
+
+/**
+ * Fetches and renders a large chart from an Excel/CSV file URL (Modal View).
+ */
+window.renderDataChart = async function (url) {
+  const loader = document.getElementById("modal-chart-loader");
+  const container = document.getElementById("modal-chart-container");
+  if (loader) loader.classList.remove("hidden");
+
+  try {
+    const response = await fetch(url);
+    const arrayBuffer = await response.arrayBuffer();
+    const workbook = XLSX.read(new Uint8Array(arrayBuffer), { type: "array" });
+    const jsonData = XLSX.utils.sheet_to_json(workbook.Sheets[workbook.SheetNames[0]]);
+
+    if (jsonData.length === 0) throw new Error("Empty data source");
+
+    const keys = Object.keys(jsonData[0]);
+    const labels = jsonData.map((row) => row[keys[0]]);
+    const series = keys.slice(1).map((key) => {
+      return {
+        name: key,
+        data: jsonData.map((row) => parseFloat(row[key]) || 0),
+      };
+    });
+
+    const options = {
+      series: series,
+      chart: { type: "area", height: 350, toolbar: { show: true }, animations: { enabled: true } },
+      stroke: { curve: "smooth", width: 3 },
+      xaxis: { categories: labels },
+      colors: ["#3b82f6", "#10b981", "#f59e0b", "#ef4444"],
+      fill: { type: "gradient", gradient: { opacityFrom: 0.45, opacityTo: 0.05 } },
+    };
+
+    if (container) {
+      if (window.currentModalChart) window.currentModalChart.destroy();
+      window.currentModalChart = new ApexCharts(container, options);
+      window.currentModalChart.render();
+    }
+  } catch (error) {
+    console.error("Dashboard Error:", error);
+  } finally {
+    if (loader) loader.classList.add("hidden");
+  }
+};
+
+// End of DataHub Logic
+
 
 // ===========================================
 // [POLICY & ADVISORY SPECIALIZED LOGIC]

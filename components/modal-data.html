@@ -1,10 +1,33 @@
 <!-- modal-data.html -->
+<style>
+    #data-modal {
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+    }
+    #data-modal.modal-entering .modal-content {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    #data-modal.modal-active .modal-content {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    .modal-content {
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+        will-change: transform, opacity;
+    }
+    /* Scroll Lock Compensation */
+    body.is-locked {
+        overflow: hidden;
+    }
+</style>
+
 <div id="data-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4">
     <!-- Overlay -->
-    <div class="absolute inset-0 bg-brand-dark/80 backdrop-blur-sm" onclick="window.closeDataModal()"></div>
+    <div class="absolute inset-0 bg-brand-dark/70 backdrop-blur-[1px]" onclick="window.closeDataModal()"></div>
     
     <!-- Modal Content -->
-    <div class="relative bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col animate__animated animate__zoomIn animate__faster">
+    <div class="modal-content relative bg-white w-full max-w-4xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col opacity-0">
         <!-- Close Button -->
         <button onclick="window.closeDataModal()" class="absolute top-4 right-4 z-[110] w-10 h-10 bg-white shadow-lg rounded-full flex items-center justify-center text-brand-dark hover:text-red-500 transition-colors">
             <i class="fa-solid fa-xmark text-xl"></i>
@@ -29,7 +52,18 @@
             <div class="border-t border-gray-100 pt-8 mt-4">
                 <h4 class="text-sm font-bold text-brand-dark uppercase tracking-widest mb-4 opacity-50">Detailed Description</h4>
                 <div id="modal-data-description" class="text-gray-600 leading-relaxed text-lg space-y-4">
-                    <!-- Description injected here with <br> tags rendered as new lines -->
+                    <!-- Description injected here -->
+                </div>
+            </div>
+
+            <!-- Dashboard Visualization Area -->
+            <div id="modal-chart-section" class="hidden border-t border-gray-100 pt-8 mt-8">
+                <h4 class="text-sm font-bold text-brand-dark uppercase tracking-widest mb-6 opacity-50">Interactive Visualization</h4>
+                <div class="bg-brand-gray rounded-3xl p-6 min-h-[350px] relative">
+                    <div id="modal-chart-loader" class="absolute inset-0 flex items-center justify-center bg-white/50 backdrop-blur-sm z-10 rounded-3xl">
+                        <i class="fa-solid fa-circle-notch fa-spin text-3xl text-brand-accent"></i>
+                    </div>
+                    <div id="modal-chart-container"></div>
                 </div>
             </div>
 
